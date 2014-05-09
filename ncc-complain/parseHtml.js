@@ -1,8 +1,6 @@
 var request = require('request');
 var cheerio = require('cheerio');
 
-var url = 'http://w.csie.org/~b97115/file/page.html';
-
 var fieldMap = [{
         title: 'ctl00_ContentPlaceHolder1_Label20',
         value: 'ctl00_ContentPlaceHolder1_V_SERVICE_SERIL_NO',
@@ -50,18 +48,40 @@ var fieldMap = [{
     },
 ]
 
-request.get(url, function(err, res, body) {
-
-    $ = cheerio.load(body);
-    console.log($('#ctl00_ContentPlaceHolder1_Label20').text());
-
-    var result = {};
-    fieldMap.forEach(function(e) {
-        result[e.key] = {
-            title: $("#" + e.title).text(),
-            value: $("#" + e.value).text(),
-        };
+function parseByURL(url, callback) {
+    request.get(url, function(err, res, body) {
+        $ = cheerio.load(body);
+        var result = {};
+        fieldMap.forEach(function(e) {
+            result[e.key] = {
+                title: $("#" + e.title).text(),
+                value: $("#" + e.value).text(),
+            };
+        });
+        if (callback) {
+            callback(result);
+        }
     });
+}
 
-    console.log(result);
-});
+function test() {
+    var urls = [
+        'http://w.csie.org/~b97115/file/ncc/page1.html',
+        'http://w.csie.org/~b97115/file/ncc/page2.html',
+        'http://w.csie.org/~b97115/file/ncc/page3.html',
+        'http://w.csie.org/~b97115/file/ncc/page4.html',
+        'http://w.csie.org/~b97115/file/ncc/page5.html',
+        'http://w.csie.org/~b97115/file/ncc/page6.html',
+        'http://w.csie.org/~b97115/file/ncc/page7.html',
+        'http://w.csie.org/~b97115/file/ncc/page8.html',
+        'http://w.csie.org/~b97115/file/ncc/page9.html',
+        'http://w.csie.org/~b97115/file/ncc/page10.html',
+    ];
+    urls.forEach(function(e) {
+        parseByURL(e, function(result) {
+            console.log(result);
+        });
+    });
+}
+
+test();
