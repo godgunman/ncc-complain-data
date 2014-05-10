@@ -7,6 +7,7 @@ function getItemCountWithDate(date, callback) {
     console.log('prepare get item count');
     // prepare
     var childArgs = [
+        '--ignore-ssl-errors=true',
         path.join(__dirname, 'get_item_count_with_date.js'), date
     ]
 
@@ -15,8 +16,10 @@ function getItemCountWithDate(date, callback) {
         item_count = parseInt(stdout);
         console.log('exec get item count done, count: ' + item_count);
         // loop
-        for (var i = 0; i < item_count; i++) {
-            getPageWithDateItem(date, i, callback);
+        if (item_count < 50) {
+            for (var i = 0; i < item_count; i++) {
+                getPageWithDateItem(date, i, callback);
+            }
         }
     })
 }
@@ -25,6 +28,7 @@ function getPageWithDateItem(date, item, callback) {
     console.log('get page with date item');
     // prepare
     var childArgs = [
+        '--ignore-ssl-errors=true',
         path.join(__dirname, 'get_page_with_date_item.js'), date, item
     ]
 
