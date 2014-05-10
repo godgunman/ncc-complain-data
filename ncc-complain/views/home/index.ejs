@@ -33,10 +33,24 @@
     }
 </style>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+
+    $.get('/channel', function(res){
+        $('#channelName').text(res[0].channelName);
+        $('#size').text(res[0].size);
+    });
+
+</script>
+
 <div id="main" class="container">
     <div class="ui column stackable center aligned page grid">
         <img class="column two wide" src="/images/face.png">
     </div>
+    <div class="ui column stackable center aligned page grid">
+        <img class="column twelven wide" src="/images/home_title.png">
+    </div>
+
     <div class="ui six column stackable center aligned page grid">
         <div class="column five wide"> 
             <div class="ui raised segment">
@@ -44,16 +58,16 @@
                 <b>
                     Pretty nice animals.</b>
                 <div class="countblack">
-                        77
+                    77
                 </div>
             </div>
         </div>
         <div class="column five wide">
             <div class="ui raised segment">
                 <i class="trophy huge icon"></i>
-                <b>Pretty nice animals.</b>
-                <div class="countblack">
-                        43
+                <b id="channelName">Pretty nice animals.</b>
+                <div class="countblack" id="size">
+                    ?
                 </div>
             </div>
         </div>
