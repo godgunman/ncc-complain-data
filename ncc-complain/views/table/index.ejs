@@ -14,6 +14,8 @@
         background-image:url(/images/bg.png); 
         background-repeat: repeat;
         height: 20%;
+        -webkit-box-shadow: 0 0 2px 0;
+        box-shadow: 0 0 2px 0;
     }
 
 
@@ -30,11 +32,11 @@
                 var channelName = $('<td>').text(res[i].channelName);
                 var size = $('<td>').text(res[i].size);
 
-                var categoryPrefix = '';
+                var categoryPrefix = $('<div class="ui large labels">');
                 for (var j = 0; j < res[i].category.length && j < 8;j++) {
-                    categoryPrefix += res[i].category[j].categoryName + ",";
+                    categoryPrefix.append($('<div class="ui label">').text(res[i].category[j].categoryName));
                 }
-                var category = $('<td>').text(categoryPrefix);
+                var category = $('<td>').append(categoryPrefix);
 
                 tr.append(rank);
                 tr.append(channelName);
@@ -52,7 +54,6 @@
             <img class="column eight wide" src="/images/table_head.png">
         </a>
     </div>
-
 </div>
 
 <div id="main" class="container">
