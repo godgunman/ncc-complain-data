@@ -19,6 +19,33 @@
 
 </style>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $(function() {
+        $.get('/channel', function(res){
+
+            for (var i = 0; i < res.length; i++) {
+                var tr = $('<tr>');
+                var rank = $('<td>').text(i+1);
+                var channelName = $('<td>').text(res[i].channelName);
+                var size = $('<td>').text(res[i].size);
+
+                var categoryPrefix = '';
+                for (var j = 0; j < res[i].category.length && j < 8;j++) {
+                    categoryPrefix += res[i].category[j].categoryName + ",";
+                }
+                var category = $('<td>').text(categoryPrefix);
+
+                tr.append(rank);
+                tr.append(channelName);
+                tr.append(category);
+                tr.append(size);
+                $('#tableContent').append(tr);
+            }
+        });
+    });
+</script>
+
 <div id="header">
     <div class="ui column stackable center aligned page grid">
         <img class="column eight wide" src="/images/table_head.png">
@@ -34,25 +61,7 @@
                 <th>該新聞台申訴案件之類別（十六個類別依數量排序）</th>
                 <th>申請件總數</th>
         </tr></thead>
-        <tbody>
-            <tr>
-                <td>John</td>
-                <td>Approved</td>
-                <td>Approved</td>
-                <td>None</td>
-            </tr>
-            <tr>
-                <td>Jamie</td>
-                <td>Approved</td>
-                <td>Requires call</td>
-                <td>Requires call</td>
-            </tr>
-            <tr>
-                <td>Jill</td>
-                <td>Denied</td>
-                <td>None</td>
-                <td>Requires call</td>
-            </tr>
+        <tbody id="tableContent">
         </tbody>
     </table>
 </div>
