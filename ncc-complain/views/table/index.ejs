@@ -10,28 +10,60 @@
         font-family: 'Oswald', serif;
     }
 
-    #main {
+    #header {
         background-image:url(/images/bg.png); 
         background-repeat: repeat;
         height: 20%;
     }
 
-    .ui.raised.segment {
-        -webkit-box-shadow: 2px 2px 1px 1px;
-        box-shadow: 2px 2px 1px 1px;
-        padding: 0px;
-    }
 
-    .countblack {
-        background: #36bac1;
-        width:20%;
-        height:65px;
-        float: right;
-        display:table-cell;
-        vertical-align:middle;
-        font-size:2em;
-    }
 </style>
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script>
+    $(function() {
+        $.get('/channel', function(res){
+
+            for (var i = 0; i < res.length; i++) {
+                var tr = $('<tr>');
+                var rank = $('<td>').text(i+1);
+                var channelName = $('<td>').text(res[i].channelName);
+                var size = $('<td>').text(res[i].size);
+
+                var categoryPrefix = '';
+                for (var j = 0; j < res[i].category.length && j < 8;j++) {
+                    categoryPrefix += res[i].category[j].categoryName + ",";
+                }
+                var category = $('<td>').text(categoryPrefix);
+
+                tr.append(rank);
+                tr.append(channelName);
+                tr.append(category);
+                tr.append(size);
+                $('#tableContent').append(tr);
+            }
+        });
+    });
+</script>
+
+<div id="header">
+    <div class="ui column stackable center aligned page grid">
+        <a href="/">
+            <img class="column eight wide" src="/images/table_head.png">
+        </a>
+    </div>
+
+</div>
+
 <div id="main" class="container">
+    <table class="ui basic table">
+        <thead>
+            <tr><th>排名</th>
+                <th>新聞台名稱</th>
+                <th>該新聞台申訴案件之類別（十六個類別依數量排序）</th>
+                <th>申請件總數</th>
+        </tr></thead>
+        <tbody id="tableContent">
+        </tbody>
+    </table>
 </div>

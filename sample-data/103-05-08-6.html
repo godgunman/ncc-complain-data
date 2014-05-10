@@ -1,0 +1,853 @@
+get_page_with_date_item.js 103/05/08 6
+<head id="ctl00___Mhead"><meta name="Accessible_website" content="本網站通過A+優先等級無障礙網頁檢測"><title>國家通訊傳播委員會-通訊傳播業務陳情網</title><link href="../App_Themes/Default/CustomControls.css" type="text/css" rel="stylesheet"><link href="../App_Themes/Default/MasterPage.css" type="text/css" rel="stylesheet"><link href="../App_Themes/Default/Page.css" type="text/css" rel="stylesheet"><link href="../App_Themes/Default/Style.css" type="text/css" rel="stylesheet"><link href="../App_Themes/Default/UserControl.css" type="text/css" rel="stylesheet"></head>
+<body id="thebody" onkeydown="__PageOnKeydown(event);" onload="__PageOnLoad(event);" onclick="__PageOnClick(event);" onkeypress="__PageOnClick(event);" style="border-width: initial; border-color: initial; height: 100%; padding-top: 0px; padding-right: 0px; padding-bottom: 0px; padding-left: 0px; border-top-style: none; border-right-style: none; border-bottom-style: none; border-left-style: none; border-width: initial; border-color: initial; ">
+    <form name="aspnetForm" method="post" action="SWSF01017.aspx" onsubmit="javascript:return WebForm_OnSubmit();" id="aspnetForm">
+<div>
+
+
+
+<input type="hidden" name="GSSintDateType" id="GSSintDateType" value="1">
+<input type="hidden" name="GSStxtToday" id="GSStxtToday" value="2014/05/10">
+<input type="hidden" name="GSSCalSaturdayColor" id="GSSCalSaturdayColor" value="ff0080ff">
+<input type="hidden" name="GSSCalSundayColor" id="GSSCalSundayColor" value="Red">
+<input type="hidden" name="GSSCalMonthsString" id="GSSCalMonthsString" value="1月,2月,3月,4月,5月,6月,7月,8月,9月,10月,11月,12月">
+<input type="hidden" name="GSSCalWeekDayString" id="GSSCalWeekDayString" value="日,一,二,三,四,五,六">
+<input type="hidden" name="GSSCalTodayString" id="GSSCalTodayString" value="今天">
+<input type="hidden" name="GSSCalYearString" id="GSSCalYearString" value="年">
+<input type="hidden" name="GSSCalYearSelectType" id="GSSCalYearSelectType" value="0">
+<input type="hidden" name="GSSCalYearSelectStartToEnd" id="GSSCalYearSelectStartToEnd" value="1900~2200">
+
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['aspnetForm'];
+if (!theForm) {
+    theForm = document.aspnetForm;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/SWSFront35/WebResource.axd?d=d__mXg2CQ7ihoGHvFn8EB9qTKpmELHYunRhCxFIFJ0ZzGm67Clbgyr6xMB1mbTW4Eha_tYMLIdU0tzSL4lvJg7L78Fg1&amp;t=634210652612724343" type="text/javascript"></script>
+
+<script language="JavaScript" src="/aspnet_client/GSSNBase20/PUB/GSSPageBlocker.js"></script>
+<script src="../js/HeartFrontJs.js" type="text/javascript"></script>
+<script src="../js/jquery.js" type="text/javascript"></script>
+<script src="../js/json.js" type="text/javascript"></script>
+<script src="../js/MsgLib.js" type="text/javascript"></script>
+<script src="SWSF01017.js" type="text/javascript"></script><link href="/aspnet_client/GSSNBase20/PUB/GSSGlobal.css" type="text/css" rel="stylesheet"><script language="JavaScript">
+var __NBaseScriptsFolder = '/aspnet_client/GSSNBase20/PUB/';
+var __NBaseDoPostBack = false;
+var __NBaseDoNext = true;
+</script>
+<script language="JavaScript" src="/aspnet_client/GSSNBase20/PUB/GSSStringLib.js"></script>
+<script language="JavaScript" src="/aspnet_client/GSSNBase20/PUB/GSSDHtmlLib.js"></script>
+<script language="JavaScript" src="/aspnet_client/GSSNBase20/PUB/GSSMsgLib.js"></script><script language="JavaScript" src="/aspnet_client/GSSNBase20/PUB/GSSWebUIValidation.JS"></script>
+<script src="/SWSFront35/ScriptResource.axd?d=lPcNm98J6ZwXJMZuMuoDJsets7PMXejnjVvodpTIP6IK74OyN_TUwra2I63dI21ee6dp4iN5uWXefVWzdwOEHktosjUohp7V7EG_GRWO_vFcAst63OahtJ3LR3VNqLTWcuZ5uMkdr4nN-Z5vq2vHvVrBhho1&amp;t=7d0f98e8" type="text/javascript"></script>
+<script src="../UsrCtls/ucIntervalDateTime.js" type="text/javascript"></script><script language="JavaScript" src="/aspnet_client/GSSNBase20/PUB/GSSDateValidator.JS"></script><script language="JavaScript" src="/aspnet_client/GSSNBase20/PUB/GSSDatePicker.js"></script><script language="JavaScript" src="/aspnet_client/GSSNBase20/PUB/GSSDateValidator.js"></script><script language="JavaScript" src="/aspnet_client/GSSNBase20/PUB/GSSDatePickerObj.js"></script><div id="DynaCal" _nbasecal_type="1" _nbasetoday="2014/5/10" year="2014" month="5" day="10" onclick="CheckClick(event);" onkeypress="CheckClick(event);" class="GSSclsCalObj" style="height: 168px;left: 0px; top: 0px;width: 160px; z-index:10000;position: absolute;display:none; background-color:white;"></div><script language="JavaScript" src="/aspnet_client/GSSNBase20/PUB/GSSCodeDropDownList.JS"></script>
+<script src="/SWSFront35/ScriptResource.axd?d=Mgwrxc1IFTa1xMG7LdxlXBf4eJTBIip7Hfh1QRTf6_VJGxPcktI44JrriAJ-E8YjbGk9bmHTROtwQQqLn_5D7acKfu1zoXS_AUscIW_2o9cyrcpNo9WlnM-qpwLOvez7rlhAa5nM84s6CaRww_ewm8U-lP41&amp;t=5316a953" type="text/javascript"></script>
+<script src="/SWSFront35/ScriptResource.axd?d=A8LXzhRe2RioaiDV-v2S8j5us6vGTs87GLr_pwkZp_Da8yUVtHfuyYAmzHC6jm_Rrh43d60a-oWsX_Ry9E1IfIvemRn728wKVvgqqMkn0ksVUYkvChb3QcZpUFO-1tHGq1gd5-Gsl3fJADvPVdkJ7UBVGLcR0YY9e2t8_kIfqVyvgmAy0&amp;t=48aa5331" type="text/javascript"></script>
+<script src="/SWSFront35/ScriptResource.axd?d=KZMPzyQpgFpuPi67yZZzlRfRFt3dqP6EBEqgqkPgfQxCj9V5vcgFmYaCdJaKA7_7K8GQgXG8A8FIPd_auz-dJ7ekCNxTRryGwP6zyWrQlx7rdr0mvKsOi2oe5jzsRuMI5SJhh7Gsccvktqg3GbwqwfoaYv2eloEWbbTjTpMVyTWf2dWj0&amp;t=48aa5331" type="text/javascript"></script>
+<script type="text/javascript">
+//<![CDATA[
+function WebForm_OnSubmit() {
+if (typeof(ValidatorOnSubmit) == "function" && ValidatorOnSubmit() == false) return false;
+return true;
+}
+//]]>
+</script>
+
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$MasterScriptManager', document.getElementById('aspnetForm'));
+Sys.WebForms.PageRequestManager.getInstance()._updateControls(['fctl00$ContentPlaceHolder1$UpdatePanelQ','tctl00$ContentPlaceHolder1$UpdatePanelA','tctl00$ContentPlaceHolder1$UpdatePanelAlways'], ['ctl00$ContentPlaceHolder1$Q_SOURCE_CODE'], [], 90);
+//]]>
+</script>
+
+    <table width="100%" height="100%" cellspacing="0" summary="排版美觀用">
+        <tbody><tr>
+            <td valign="top">
+                <table id="ctl00_MasterPageBannerTb" cellspacing="0" cellpadding="0" summary="" border="0" style="background-color:#6C150D;height:55px;width:100%;background-image:url(../App_Themes/Default/images/MasterPageBanner.gif);border-collapse:collapse;BACKGROUND-REPEAT : NO-REPEAT;">
+	<tbody><tr>
+		<td align="right" valign="bottom"><table cellspacing="0" cellpadding="0" summary="網站橫幅表格排版美觀用" border="0" style="border-collapse:collapse;">
+			<tbody><tr>
+				<td valign="bottom"><table cellspacing="0" cellpadding="0" summary="" border="0" style="border-width:0px;border-collapse:collapse;">
+					<tbody><tr>
+						<td align="right" colspan="2">
+                                                    <label for="ctl00_Globalization" style="display: none">
+                                                        多國語言</label>
+                                                    
+                                                    &nbsp;&nbsp;
+                                                </td>
+					</tr>
+				</tbody></table></td><td></td>
+			</tr>
+		</tbody></table></td>
+	</tr>
+</tbody></table>
+                
+                <table id="ctl00_MasterPageMenuTb" cellspacing="0" cellpadding="0" summary="" verticalalign="middle" border="0" style="border-width:0px;width:100%;background-image:url(../App_Themes/Default/images/MenuMid.gif);border-collapse:collapse;">
+	<tbody><tr>
+		<td id="ctl00_TableCell2" class="MasterPageMenu"><img id="ctl00_Image2" src="../App_Themes/Default/images/MenuLeft.jpg" alt="標題背景" style="border-width:0px;"></td><td id="ctl00_TableCell1" class="MasterPageMenu"><a href="https://cabletvweb.ncc.gov.tw/SWSFront35/SWSF/SWSF01017.aspx#" id="ctl00_A_M" style="text-decoration: none" accesskey="M" title="上方的導覽連結區"><font color="#ffffff">
+                                :::</font></a></td><td><span id="ctl00_lblMenuHtmlCode"><script language="javascript" src="../js/ig_csom.js"></script><script language="javascript" src="../js/ig_webmenu.js"></script><table submenu="1" border="0" cellpadding="2" cellspacing="1" id="ctl00ultFunMenu_MainM" style=" font-size:Small; height:20px; cursor:pointer; cursor:Hand;" onselectstart="javascript:igmenu_selectStart();" onmouseover="javascript:igmenu_mouseover(this, event);" onfocus="javascript:igmenu_mouseover(this, event);" onmouseout="javascript:igmenu_mouseout(this, event);" onblur="javascript:igmenu_mouseout(this, event);" onmousedown="javascript:igmenu_mousedown(this, event);" onkeydown="javascript:igmenu_mousedown(this, event);" onmouseup="javascript:igmenu_mouseup(this, event);" onkeyup="javascript:igmenu_mouseup(this, event);" tabindex="0"> <tbody><tr><td align="left" id="ctl00ultFunMenu_1" title="網頁導覽" class="ctl00ultFunMenuTopLevelLeafItem" onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" ighov="ctl00ultFunMenuTopLevelHoverItem" igurl="/SWSFront35/SWSF/SWSF01012.aspx?FunId=SWSF01012" igtop="1">│&nbsp;&nbsp;網頁導覽</td><td align="left" id="ctl00ultFunMenu_2" title="常見問題" class="ctl00ultFunMenuTopLevelLeafItem" onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" ighov="ctl00ultFunMenuTopLevelHoverItem" igurl="/SWSFront35/FAQF/FAQF01002.aspx?FunId=FAQF01002" igtop="1">│&nbsp;&nbsp;常見問題</td><td align="left" id="ctl00ultFunMenu_3" title="案件申訴" class="ctl00ultFunMenuTopLevelParentItem" onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" ighov="ctl00ultFunMenuTopLevelHoverItem" igchildid="ctl00ultFunMenu_3M" igtop="1">│&nbsp;&nbsp;案件申訴</td><td align="left" id="ctl00ultFunMenu_4" title="案件查詢" class="ctl00ultFunMenuTopLevelLeafItem" onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" ighov="ctl00ultFunMenuTopLevelHoverItem" igurl="/SWSFront35/SWSF/SWSF01008.aspx?FunId=SWSF01008" igtop="1">│&nbsp;&nbsp;案件查詢</td><td align="left" id="ctl00ultFunMenu_5" title="密碼查詢" class="ctl00ultFunMenuTopLevelLeafItem" onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" ighov="ctl00ultFunMenuTopLevelHoverItem" igurl="/SWSFront35/SWSF/SWSF01010.aspx?FunId=SWSF01010" igtop="1">│&nbsp;&nbsp;密碼查詢</td><td align="left" id="ctl00ultFunMenu_6" title="未確認信查詢" class="ctl00ultFunMenuTopLevelLeafItem" onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" ighov="ctl00ultFunMenuTopLevelHoverItem" igurl="/SWSFront35/SWSF/SWSF01011.aspx?FunId=SWSF01011" igtop="1">│&nbsp;&nbsp;未確認信查詢</td><td align="left" id="ctl00ultFunMenu_7" title="APP會員中心" class="ctl00ultFunMenuTopLevelParentItem" onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" ighov="ctl00ultFunMenuTopLevelHoverItem" igchildid="ctl00ultFunMenu_7M" igtop="1">│&nbsp;&nbsp;APP會員中心</td> </tr><tr style="display:none; visibility:hidden"><td><span style="display:none" id="ctl00_ultFunMenu" name="ctl00_ultFunMenu"></span> <input type="hidden" id="ctl00$ultFunMenu" name="ctl00$ultFunMenu" value=""> </td></tr></tbody></table> <style type="text/css"> <!--.ctl00ultFunMenuItem {  font-size:Small;  background:White;  border-color:LightGrey;  border-style:Solid;  border-width:1px;  height:25px;  cursor:pointer; cursor:Hand;   } .ctl00ultFunMenuTopLevelParentItem {  font-size:Small;  color:Black;  cursor:pointer; cursor:Hand;   } .ctl00ultFunMenuTopLevelLeafItem {  font-size:Small;  color:Black;  cursor:pointer; cursor:Hand;   } .ctl00ultFunMenuTopLevelHoverItem {  font-size:Small !important;  color:Brown !important;  cursor:pointer; cursor:Hand !important;   } .ctl00ultFunMenuHover {  font-size:Small !important;  background:#FFE6CC !important;  border-width:1px !important;  height:25px !important;  cursor:pointer; cursor:Hand !important;   } --></style><div id="abs_ctl00ultFunMenu" style="display:none"><div submenu="1" id="ctl00ultFunMenu_3M" style="position:absolute;z-index:12000;visibility:hidden;display:none;"> <span scrolldiv="1"><table border="0" cellpadding="2" cellspacing="0" style="border-width:0;" onselectstart="javascript:igmenu_selectStart();" onmouseover="javascript:igmenu_mouseover(this, event);" onfocus="javascript:igmenu_mouseover(this, event);" onmouseout="javascript:igmenu_mouseout(this, event);" onblur="javascript:igmenu_mouseout(this, event);" onmousedown="javascript:igmenu_mousedown(this, event);" onkeydown="javascript:igmenu_mousedown(this, event);" onmouseup="javascript:igmenu_mouseup(this, event);" onkeyup="javascript:igmenu_mouseup(this, event);"> <tbody><tr id="ctl00ultFunMenu_3_1" igurl="/SWSFront35/SWSF/SWSF01009.aspx?FunId=SWSF01009_1"> <td onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" title="陳情有線電視問題" class="ctl00ultFunMenuItem"> <div style="margin-top:2;margin-left:25px" igtxt="1">陳情有線電視問題</div> </td></tr><tr id="ctl00ultFunMenu_3_2" igurl="/SWSFront35/SWSF/SWSF01018.aspx?FunId=SWSF01018"> <td onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" title="陳情電信類問題" class="ctl00ultFunMenuItem"> <div style="margin-top:2;margin-left:25px" igtxt="1">陳情電信類問題</div> </td></tr><tr id="ctl00ultFunMenu_3_3" igurl="/SWSFront35/SWSF/SWSF01013.aspx?FunId=SWSF01013"> <td onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" title="申訴傳播內容" class="ctl00ultFunMenuItem"> <div style="margin-top:2;margin-left:25px" igtxt="1">申訴傳播內容</div> </td></tr><tr id="ctl00ultFunMenu_3_4" igurl="/SWSFront35/SWSF/SWSF01014.aspx?FunId=SWSF01014"> <td onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" title="意見信箱" class="ctl00ultFunMenuItem"> <div style="margin-top:2;margin-left:25px" igtxt="1">意見信箱</div> </td></tr></tbody></table> </span> </div> <div submenu="1" id="ctl00ultFunMenu_7M" style="position:absolute;z-index:12000;visibility:hidden;display:none;"> <span scrolldiv="1"><table border="0" cellpadding="2" cellspacing="0" style="border-width:0;" onselectstart="javascript:igmenu_selectStart();" onmouseover="javascript:igmenu_mouseover(this, event);" onfocus="javascript:igmenu_mouseover(this, event);" onmouseout="javascript:igmenu_mouseout(this, event);" onblur="javascript:igmenu_mouseout(this, event);" onmousedown="javascript:igmenu_mousedown(this, event);" onkeydown="javascript:igmenu_mousedown(this, event);" onmouseup="javascript:igmenu_mouseup(this, event);" onkeyup="javascript:igmenu_mouseup(this, event);"> <tbody><tr id="ctl00ultFunMenu_7_1" igurl="/SWSFront35/MEMBER/MEMBER01001.aspx?FunId=MEMBER01001"> <td onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" title="加入會員" class="ctl00ultFunMenuItem"> <div style="margin-top:2;margin-left:25px" igtxt="1">加入會員</div> </td></tr><tr id="ctl00ultFunMenu_7_2" igurl="/SWSFront35/MEMBER/MEMBER01004.aspx?FunId=MEMBER01004"> <td onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" title="會員密碼修改" class="ctl00ultFunMenuItem"> <div style="margin-top:2;margin-left:25px" igtxt="1">會員密碼修改</div> </td></tr><tr id="ctl00ultFunMenu_7_3" igurl="/SWSFront35/MEMBER/MEMBER01003.aspx?FunId=MEMBER01003"> <td onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" title="會員資料修改" class="ctl00ultFunMenuItem"> <div style="margin-top:2;margin-left:25px" igtxt="1">會員資料修改</div> </td></tr><tr id="ctl00ultFunMenu_7_4" igurl="/SWSFront35/MEMBER/MEMBER01002.aspx?FunId=MEMBER01002"> <td onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" title="帳號密碼查詢" class="ctl00ultFunMenuItem"> <div style="margin-top:2;margin-left:25px" igtxt="1">帳號密碼查詢</div> </td></tr><tr id="ctl00ultFunMenu_7_5" igurl="/SWSFront35/MEMBER/MEMBER01005.aspx?FunId=MEMBER01005"> <td onkeydown="igmenu_kbMD(this,event);" onkeyup="igmenu_kbNav(this,event);" onfocus="igmenu_kbFocus(this,event);" title="QRCode(下載APP)" class="ctl00ultFunMenuItem"> <div style="margin-top:2;margin-left:25px" igtxt="1">QRCode(下載APP)</div> </td></tr></tbody></table> </span> </div> </div></span></td><td align="right" valign="middle"><span id="ctl00_FullTextLabel" class="MasterPageMenuFont" style="color:Black;">常見問題全文檢索：</span>
+                            <label for="ctl00_FullText_EditText" style="display: none">
+                                FAQ查詢:</label>
+                            <span id="ctl00_FullText"><input name="ctl00$FullText$EditText" type="text" value="**請輸入查詢條件**" id="ctl00_FullText_EditText" class="CTextBox120PX" onfocus="javascript: if(this.value=='**請輸入查詢條件**'){ this.value='';}"></span><input type="image" name="ctl00$FullTextSearchButton" id="ctl00_FullTextSearchButton" title="查詢FAQ" onkeypress="this.click();" src="../App_Themes/Default/images/FullTextSearch.gif" alt="常見問題全文檢索：" onclick="javascript:document.getElementById('ctl00_FullText_EditText').onfocus();__FullTextSearch('ctl00_FullText_EditText');return false;" style="border-width:0px;"></td><td id="ctl00_TableCell3"><img id="ctl00_Image3" src="../App_Themes/Default/images/MenuRight.jpg" alt="標題背景" style="border-width:0px;"></td>
+	</tr>
+</tbody></table>
+                
+                <noscript>
+                    &lt;div&gt;
+                        &lt;ul class="parent"&gt;
+                            &lt;li&gt;1.網站導覽
+                                &lt;ul class="child"&gt;
+                                    &lt;li&gt;&lt;a href="SWSF01012.aspx" id="ctl00_A16" title="1.網站導覽"&gt;1.網站導覽&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;2.常見問題
+                                &lt;ul class="child"&gt;
+                                    &lt;li&gt;&lt;a href="../FAQF/FAQF01002.aspx" id="ctl00_A17" title="2.常見問題"&gt;2.常見問題&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;3.案件申訴
+                                &lt;ul class="child"&gt;
+                                    &lt;li&gt;&lt;a href="SWSF01009.aspx?FunId=SWSF01009_1" id="ctl00_A1" title="1.陳情有線電視問題"&gt;1.陳情有線電視問題&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="SWSF01018.aspx?FunId=SWSF01018" id="ctl00_A2" title="2.陳情電信類問題"&gt;2.陳情電信類問題&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="SWSF01013.aspx?FunId=SWSF01013" id="ctl00_A18" title="3.申訴傳播內容"&gt;3.申訴傳播內容&lt;/a&gt;&lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="SWSF01014.aspx?FunId=SWSF01014" id="ctl00_A19" title="4.意見信箱"&gt;
+                                        4.意見信箱&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;4.案件查詢
+                                &lt;ul class="child"&gt;
+                                    &lt;li&gt;&lt;a href="SWSF01008.aspx" id="ctl00_A8" title="4.案件查詢"&gt;4.案件查詢&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;5.密碼查詢
+                                &lt;ul class="child"&gt;
+                                    &lt;li&gt;&lt;a href="SWSF01010.aspx" id="ctl00_A3" title="5.密碼查詢"&gt;5.密碼查詢&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;6.未確認信查詢
+                                &lt;ul class="child"&gt;
+                                    &lt;li&gt;&lt;a href="SWSF01011.aspx" id="ctl00_A9" title="6.服務單登錄"&gt;6.未確認信件查詢&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;7.公佈欄
+                                &lt;ul class="child"&gt;
+                                    &lt;li&gt;&lt;a href="../FAQF/FAQF01002.aspx" id="ctl00_A10" title="7.公佈欄"&gt;7.公佈欄&lt;/a&gt;&lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                            &lt;li&gt;8.APP會員中心
+                                &lt;ul class="child"&gt;
+                                    &lt;li&gt;&lt;a href="../MEMBER/MEMBER01001.aspx?FunId=MEMBER01001" id="ctl00_A11" title="1.加入會員"&gt;1.加入會員&lt;/a&gt; &lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="../MEMBER/MEMBER01000.ASPX?MDP=d012892b4db8af85" id="ctl00_A20" title="2.會員密碼修改"&gt;2.會員密碼修改&lt;/a&gt; &lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="../MEMBER/MEMBER01000.aspx" id="ctl00_A21" title="3.會員資料修改"&gt;3.會員資料修改&lt;/a&gt;
+                                    &lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="../MEMBER/MEMBER01002.aspx?FunId=MEMBER01002" id="ctl00_A22" title="4.帳號密碼查詢"&gt;4.帳號密碼查詢&lt;/a&gt; &lt;/li&gt;
+                                    &lt;li&gt;&lt;a href="../MEMBER/MEMBER01005.aspx?FunId=MEMBER01005" id="ctl00_A23" title="5.QRCode(下載APP)"&gt;5.QRCode(下載APP)&lt;/a&gt; &lt;/li&gt;
+                                &lt;/ul&gt;
+                            &lt;/li&gt;
+                        &lt;/ul&gt;
+                    &lt;/div&gt;
+                </noscript>
+                <table width="100%" height="100%" cellspacing="0" id="MasterPageContentTb" summary="網站內容" style="height: 0px; ">
+                    <tbody><tr>
+                        <td valign="top">
+                            
+	<table width="80%" align="center">
+		<tbody><tr>
+			<td>
+	<div id="ctl00_ContentPlaceHolder1_UpdatePanelQ">
+	
+			<div id="ctl00_ContentPlaceHolder1_PanelQ">
+		
+				<table id="TablePQ" class="Table_Panel" align="center">
+					<tbody><tr class="TR_Panel_Header">
+						<td>
+							<a name="__Q"></a><a id="__TQ" href="#__Q"></a>
+							
+<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" summary="">
+	<tbody><tr>
+	    <td width="1%" align="center" valign="middle">
+	        <img id="ctl00_ContentPlaceHolder1_UcPanelHeaderQ_imgBefore" alt="標題圖案標記圖片" src="../App_Themes/Default/images/move.gif" style="border-width:0px;">
+	    </td>
+		<td align="left" valign="middle">
+		    <span id="ctl00_ContentPlaceHolder1_UcPanelHeaderQ_lblQuery" class="titlebar">查詢條件</span>
+		</td>
+		<td align="right">
+            
+		    <img id="ctl00_ContentPlaceHolder1_UcPanelHeaderQ_imgPanelHeader" onmouseout="javascript:__PanelHeaderImgOnMouseOut('ctl00_ContentPlaceHolder1_UcPanelHeaderQ_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderQ_txtShowUcCommon');" minoutimg="../App_Themes/Default/images/min.jpg" onmouseover="javascript:__PanelHeaderImgOnMouseOver('ctl00_ContentPlaceHolder1_UcPanelHeaderQ_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderQ_txtShowUcCommon');" onclick="javascript:__PanelHeaderImgOnClick('ctl00_ContentPlaceHolder1_UcPanelHeaderQ_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderQ_txtShowUcCommon','TablePQ','0');" minoverimg="../App_Themes/Default/images/min_o.jpg" onblur="javascript:__PanelHeaderImgOnMouseOut('ctl00_ContentPlaceHolder1_UcPanelHeaderQ_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderQ_txtShowUcCommon');" maxoverimg="../App_Themes/Default/images/max_o.jpg" onfocus="javascript:__PanelHeaderImgOnMouseOver('ctl00_ContentPlaceHolder1_UcPanelHeaderQ_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderQ_txtShowUcCommon');" onkeypress="javascript:__PanelHeaderImgOnClick('ctl00_ContentPlaceHolder1_UcPanelHeaderQ_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderQ_txtShowUcCommon','TablePQ','0');" maxoutimg="../App_Themes/Default/images/max.jpg" src="../App_Themes/Default/images/min.jpg" alt="縮放按鈕" style="height:13px;width:13px;border-width:0px;">
+		    <input name="ctl00$ContentPlaceHolder1$UcPanelHeaderQ$txtShowUcCommon" type="text" value="1" id="ctl00_ContentPlaceHolder1_UcPanelHeaderQ_txtShowUcCommon" class="Hidden">
+		    
+		</td>
+		<td width="1%"></td>
+	</tr>
+</tbody></table>
+
+						</td>
+					</tr>
+					<tr class="TR_Panel_Top">
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							
+							<table id="TableQ" class="Table_01" align="center">
+							    <tbody><tr>
+  										        
+							        <td class="TD_04_Caption">
+							            <span id="ctl00_ContentPlaceHolder1_Label18" class="LabelFont"><font color="red">＊</font>申訴種類</span>
+							        </td>
+							        <td class="TD_04_Data" colspan="3">
+							            <span id="ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1" onclick="javascript: Page_BlockSubmit = false;" onkeypress="javascript: Page_BlockSubmit = false;"><table id="ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_mrdobtnlist" onkeypress="this.onclick" onchange="return __NBaseValidatorOnTextChanged(event);" border="0">
+	<tbody><tr>
+		<td><input id="ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_mrdobtnlist_0" type="radio" name="ctl00$ContentPlaceHolder1$Q_SOURCE_CODE$ValidationRadioButtonList1$mrdobtnlist" value="TV" checked="checked"><label for="ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_mrdobtnlist_0">電視</label></td><td><input id="ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_mrdobtnlist_1" type="radio" name="ctl00$ContentPlaceHolder1$Q_SOURCE_CODE$ValidationRadioButtonList1$mrdobtnlist" value="RADIO" onclick="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$Q_SOURCE_CODE$ValidationRadioButtonList1$mrdobtnlist$1\',\'\')', 0)" onkeypress="javascript:setTimeout('__doPostBack(\'ctl00$ContentPlaceHolder1$Q_SOURCE_CODE$ValidationRadioButtonList1$mrdobtnlist$1\',\'\')', 0)"><label for="ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_mrdobtnlist_1">廣播</label></td>
+	</tr>
+</tbody></table><span id="ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00" style="color:Red;display:none;"></span></span>
+
+                                    </td>
+							    </tr>
+							    <tr>
+							        <td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label10" class="LabelFont">陳情案號</span></td>
+									<td class="TD_04_Data">
+										<span id="ctl00_ContentPlaceHolder1_Q_SERVICE_SERIL_NO"><input name="ctl00$ContentPlaceHolder1$Q_SERVICE_SERIL_NO$EditText" type="text" maxlength="20" id="ctl00_ContentPlaceHolder1_Q_SERVICE_SERIL_NO_EditText" class="CTextBox4Col"></span>
+									</td>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label19" class="LabelFont"><font color="red">＊</font>申訴日期</span></td>
+									<td class="TD_04_Data">
+										<span id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate"><input name="ctl00$ContentPlaceHolder1$Q_APPLY_DTE$ucDateTime1$dpkDate$txtDate" type="text" value="103/05/08" id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_txtDate" class="CDateTextBox" enablesetbytextboxvalue="False" style="width:75px;"><a id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate__btnDate" onkeypress="this.onclick" onclick="__NBaseShowDatePickerPopup('DynaCal',event);" style="cursor:hand;"><img src="/aspnet_client/GSSNBase20/Images/icon-calendar.gif" alt="選取日曆" style="border-width:0px;"></a><span id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00" style="color:Red;display:none;"></span><span id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01" style="color:Red;display:none;"></span></span> 
+<span id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_lblDateTime" class="LabelFont"></span><span id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_Label1" class="LabelFont"> ~ </span><span id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate"><input name="ctl00$ContentPlaceHolder1$Q_APPLY_DTE$ucDateTime2$dpkDate$txtDate" type="text" value="103/05/08" id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_txtDate" class="CDateTextBox" enablesetbytextboxvalue="False" style="width:75px;"><a id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate__btnDate" onkeypress="this.onclick" onclick="__NBaseShowDatePickerPopup('DynaCal',event);" style="cursor:hand;"><img src="/aspnet_client/GSSNBase20/Images/icon-calendar.gif" alt="選取日曆" style="border-width:0px;"></a><span id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00" style="color:Red;display:none;"></span><span id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01" style="color:Red;display:none;"></span></span> 
+<span id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_lblDateTime" class="LabelFont"></span>
+<span id="ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1" style="color:Red;display:none;"></span>
+									</td>
+							    </tr>
+							     <tr>
+							        <td class="TD_04_Caption">
+							            <span id="ctl00_ContentPlaceHolder1_Caption_CATEGORY_TYPE" class="LabelFont">申訴人認為不妥類別</span>
+							        </td>
+							        <td class="TD_04_Data_M3" colspan="3">
+							            <span id="ctl00_ContentPlaceHolder1_Q_CATEGORY_TYPE_CodeDropDownList"><input name="ctl00$ContentPlaceHolder1$Q_CATEGORY_TYPE$CodeDropDownList$txtCodeID" type="text" size="5" id="ctl00_ContentPlaceHolder1_Q_CATEGORY_TYPE_CodeDropDownList_txtCodeID" class="CTextBox120PX22PX" onchange="__NBaseSetCodeID2Ctl(event); __NBaseSetCodeID2Ctl(event);" style="display:none;display:none;"><select name="ctl00$ContentPlaceHolder1$Q_CATEGORY_TYPE$CodeDropDownList$drpCodeName" id="ctl00_ContentPlaceHolder1_Q_CATEGORY_TYPE_CodeDropDownList_drpCodeName" class="CDropDownList300PX" predisabled="false" onchange="__NBaseSetCodeID2Ctl(event); __NBaseSetCodeID2Ctl(event);">
+			<option selected="selected" value=""> </option>
+			<option value="J1">節目分級不妥</option>
+			<option value="J2">妨害兒少身心</option>
+			<option value="J3">妨害公序良俗</option>
+			<option value="J4">針對特定頻道/節目/廣告內容、語言用字表達個人想法</option>
+			<option value="J5">針對整體傳播環境、監理政策/法規或本會施政提供個人想法</option>
+			<option value="J6">內容不實、不公</option>
+			<option value="J7">違反新聞製播倫理</option>
+			<option value="J8">節目與廣告未區分</option>
+			<option value="J9">法規/資訊查詢</option>
+			<option value="J10">廣告超秒</option>
+			<option value="J11">異動未事先告知</option>
+			<option value="J12">違規使用插播式字幕</option>
+			<option value="J13">廣告內容或排播不妥</option>
+			<option value="J15">廣電收訊、畫質或音量等技術性問題</option>
+			<option value="J16">重播次數過於頻繁</option>
+			<option value="J14">其他</option>
+
+		</select></span>
+
+							        </td>
+							    </tr>
+							     <tr>
+							        <td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Caption_Channel_Name" class="LabelFont">頻道名稱</span></td>
+									<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_Q_CHANNEL_NAME"><input name="ctl00$ContentPlaceHolder1$Q_CHANNEL_NAME$EditText" type="text" maxlength="300" id="ctl00_ContentPlaceHolder1_Q_CHANNEL_NAME_EditText" class="CTextBox4Col"></span>
+										<span id="ctl00_ContentPlaceHolder1_Label25" class="LabelFont">(關鍵字查詢)</span>
+									</td>
+							    </tr>
+							    <tr>
+							        
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label26" class="LabelFont">播出日期</span></td>
+									<td class="TD_04_Data">
+										<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate"><input name="ctl00$ContentPlaceHolder1$Q_BROADCAST_DTE$ucDateTime1$dpkDate$txtDate" type="text" id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_txtDate" class="CDateTextBox" enablesetbytextboxvalue="False" style="width:75px;"><a id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate__btnDate" onkeypress="this.onclick" onclick="__NBaseShowDatePickerPopup('DynaCal',event);" style="cursor:hand;"><img src="/aspnet_client/GSSNBase20/Images/icon-calendar.gif" alt="選取日曆" style="border-width:0px;"></a><span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00" style="color:Red;display:none;"></span></span> 
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_lblDateTime" class="LabelFont"></span><span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_Label1" class="LabelFont"> ~ </span><span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate"><input name="ctl00$ContentPlaceHolder1$Q_BROADCAST_DTE$ucDateTime2$dpkDate$txtDate" type="text" id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_txtDate" class="CDateTextBox" enablesetbytextboxvalue="False" style="width:75px;"><a id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate__btnDate" onkeypress="this.onclick" onclick="__NBaseShowDatePickerPopup('DynaCal',event);" style="cursor:hand;"><img src="/aspnet_client/GSSNBase20/Images/icon-calendar.gif" alt="選取日曆" style="border-width:0px;"></a><span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00" style="color:Red;display:none;"></span></span> 
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_lblDateTime" class="LabelFont"></span>
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1" style="color:Red;display:none;"></span>
+									</td>
+							        <td class="TD_04_Caption">
+							            <span id="ctl00_ContentPlaceHolder1_Label29" class="LabelFont">播出時段</span>
+							        </td>
+							        <td class="TD_04_Data">
+							            <span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_StartHourDrop_CodeDropDownList"><input name="ctl00$ContentPlaceHolder1$Q_BROADCAST$StartHourDrop$CodeDropDownList$txtCodeID" type="text" value="00" size="5" id="ctl00_ContentPlaceHolder1_Q_BROADCAST_StartHourDrop_CodeDropDownList_txtCodeID" class="CTextBox120PX22PX" onchange="__NBaseSetCodeID2Ctl(event); __NBaseSetCodeID2Ctl(event);" style="display:none;display:none;"><select name="ctl00$ContentPlaceHolder1$Q_BROADCAST$StartHourDrop$CodeDropDownList$drpCodeName" id="ctl00_ContentPlaceHolder1_Q_BROADCAST_StartHourDrop_CodeDropDownList_drpCodeName" class="CDropDownList40PX" predisabled="false" onchange="__NBaseSetCodeID2Ctl(event); __NBaseSetCodeID2Ctl(event);">
+			<option selected="selected" value="00">00</option>
+			<option value="01">01</option>
+			<option value="02">02</option>
+			<option value="03">03</option>
+			<option value="04">04</option>
+			<option value="05">05</option>
+			<option value="06">06</option>
+			<option value="07">07</option>
+			<option value="08">08</option>
+			<option value="09">09</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="22">22</option>
+			<option value="23">23</option>
+
+		</select></span>
+
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_Label1" class="LabelFont">時</span> 
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_StartMinDrop_CodeDropDownList"><input name="ctl00$ContentPlaceHolder1$Q_BROADCAST$StartMinDrop$CodeDropDownList$txtCodeID" type="text" value="00" size="5" id="ctl00_ContentPlaceHolder1_Q_BROADCAST_StartMinDrop_CodeDropDownList_txtCodeID" class="CTextBox120PX22PX" onchange="__NBaseSetCodeID2Ctl(event); __NBaseSetCodeID2Ctl(event);" style="display:none;display:none;"><select name="ctl00$ContentPlaceHolder1$Q_BROADCAST$StartMinDrop$CodeDropDownList$drpCodeName" id="ctl00_ContentPlaceHolder1_Q_BROADCAST_StartMinDrop_CodeDropDownList_drpCodeName" class="CDropDownList40PX" predisabled="false" onchange="__NBaseSetCodeID2Ctl(event); __NBaseSetCodeID2Ctl(event);">
+			<option selected="selected" value="00">00</option>
+			<option value="10">10</option>
+			<option value="20">20</option>
+			<option value="30">30</option>
+			<option value="40">40</option>
+			<option value="50">50</option>
+
+		</select></span>
+
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_Label2" class="LabelFont">分</span> 
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_Label5" class="LabelFont">~</span> 
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_EndHourDrop_CodeDropDownList"><input name="ctl00$ContentPlaceHolder1$Q_BROADCAST$EndHourDrop$CodeDropDownList$txtCodeID" type="text" value="23" size="5" id="ctl00_ContentPlaceHolder1_Q_BROADCAST_EndHourDrop_CodeDropDownList_txtCodeID" class="CTextBox120PX22PX" onchange="__NBaseSetCodeID2Ctl(event); __NBaseSetCodeID2Ctl(event);" style="display:none;display:none;"><select name="ctl00$ContentPlaceHolder1$Q_BROADCAST$EndHourDrop$CodeDropDownList$drpCodeName" id="ctl00_ContentPlaceHolder1_Q_BROADCAST_EndHourDrop_CodeDropDownList_drpCodeName" class="CDropDownList40PX" predisabled="false" onchange="__NBaseSetCodeID2Ctl(event); __NBaseSetCodeID2Ctl(event);">
+			<option value="00">00</option>
+			<option value="01">01</option>
+			<option value="02">02</option>
+			<option value="03">03</option>
+			<option value="04">04</option>
+			<option value="05">05</option>
+			<option value="06">06</option>
+			<option value="07">07</option>
+			<option value="08">08</option>
+			<option value="09">09</option>
+			<option value="10">10</option>
+			<option value="11">11</option>
+			<option value="12">12</option>
+			<option value="13">13</option>
+			<option value="14">14</option>
+			<option value="15">15</option>
+			<option value="16">16</option>
+			<option value="17">17</option>
+			<option value="18">18</option>
+			<option value="19">19</option>
+			<option value="20">20</option>
+			<option value="21">21</option>
+			<option value="22">22</option>
+			<option selected="selected" value="23">23</option>
+
+		</select></span>
+
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_Label3" class="LabelFont">時</span> 
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_EndMinDrop_CodeDropDownList"><input name="ctl00$ContentPlaceHolder1$Q_BROADCAST$EndMinDrop$CodeDropDownList$txtCodeID" type="text" value="50" size="5" id="ctl00_ContentPlaceHolder1_Q_BROADCAST_EndMinDrop_CodeDropDownList_txtCodeID" class="CTextBox120PX22PX" onchange="__NBaseSetCodeID2Ctl(event); __NBaseSetCodeID2Ctl(event);" style="display:none;display:none;"><select name="ctl00$ContentPlaceHolder1$Q_BROADCAST$EndMinDrop$CodeDropDownList$drpCodeName" id="ctl00_ContentPlaceHolder1_Q_BROADCAST_EndMinDrop_CodeDropDownList_drpCodeName" class="CDropDownList40PX" predisabled="false" onchange="__NBaseSetCodeID2Ctl(event); __NBaseSetCodeID2Ctl(event);">
+			<option value="00">00</option>
+			<option value="10">10</option>
+			<option value="20">20</option>
+			<option value="30">30</option>
+			<option value="40">40</option>
+			<option selected="selected" value="50">50</option>
+
+		</select></span>
+
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_Label4" class="LabelFont">分</span> 
+ 
+<span id="ctl00_ContentPlaceHolder1_Q_BROADCAST_lblHourMin" class="LabelFont"></span> 
+							        </td>
+							    </tr>
+							    <tr>
+							        <td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label23" class="LabelFont">節目(廣告)名稱</span>
+									</td>
+									<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_Q_SHOW_NAME"><input name="ctl00$ContentPlaceHolder1$Q_SHOW_NAME$EditText" type="text" maxlength="300" id="ctl00_ContentPlaceHolder1_Q_SHOW_NAME_EditText" class="CTextBox4Col"></span>
+										<span id="ctl00_ContentPlaceHolder1_Label27" class="LabelFont">(關鍵字查詢)</span>
+									</td>
+							    </tr>
+								<tr>
+								    <td colspan="4">
+								        <span id="ctl00_ContentPlaceHolder1_Label3" class="LabelFont"><font color="red">＊</font></span>
+								         <span id="ctl00_ContentPlaceHolder1_Q_Remark" class="LabelFont">申訴日期：起迄最大限制為一年，例099/10/10~100/10/10</span>
+								    </td>
+								</tr>
+							</tbody></table>
+							
+						</td>
+					</tr>
+					<tr class="TR_Panel_Botton">
+						<td>
+						</td>
+					</tr>
+				</tbody></table>
+			
+	</div>
+		
+</div>
+			</td>
+		</tr>
+		<tr align="center">
+			<td>
+				<input type="submit" name="ctl00$ContentPlaceHolder1$Search" value="查詢" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolder1$Search&quot;, &quot;&quot;, true, &quot;Q&quot;, &quot;&quot;, false, false))" id="ctl00_ContentPlaceHolder1_Search" class="Button" onkeypress="this.onclickthis.onclick">
+				<input type="submit" name="ctl00$ContentPlaceHolder1$Reset" value="重設" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;ctl00$ContentPlaceHolder1$Reset&quot;, &quot;&quot;, true, &quot;Q&quot;, &quot;&quot;, false, false))" id="ctl00_ContentPlaceHolder1_Reset" class="Button" onkeypress="this.onclickthis.onclick">
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="ctl00_ContentPlaceHolder1_UpdatePanelA">
+			<div id="ctl00_ContentPlaceHolder1_PanelA">
+	
+				<table id="TablePA" class="Table_Panel" align="center">
+					<tbody><tr class="TR_Panel_Header">
+						<td>
+							<a name="__A"></a><a id="__TA" href="#__A"></a>
+							
+<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" summary="">
+	<tbody><tr>
+	    <td width="1%" align="center" valign="middle">
+	        <img id="ctl00_ContentPlaceHolder1_UcPanelHeaderA_imgBefore" alt="標題圖案標記圖片" src="../App_Themes/Default/images/move.gif" style="border-width:0px;">
+	    </td>
+		<td align="left" valign="middle">
+		    <span id="ctl00_ContentPlaceHolder1_UcPanelHeaderA_lblQuery" class="titlebar">查詢結果</span>
+		</td>
+		<td align="right">
+            
+		    <img id="ctl00_ContentPlaceHolder1_UcPanelHeaderA_imgPanelHeader" onmouseout="javascript:__PanelHeaderImgOnMouseOut('ctl00_ContentPlaceHolder1_UcPanelHeaderA_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderA_txtShowUcCommon');" minoutimg="../App_Themes/Default/images/min.jpg" onmouseover="javascript:__PanelHeaderImgOnMouseOver('ctl00_ContentPlaceHolder1_UcPanelHeaderA_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderA_txtShowUcCommon');" onclick="javascript:__PanelHeaderImgOnClick('ctl00_ContentPlaceHolder1_UcPanelHeaderA_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderA_txtShowUcCommon','TablePA','0');" minoverimg="../App_Themes/Default/images/min_o.jpg" onblur="javascript:__PanelHeaderImgOnMouseOut('ctl00_ContentPlaceHolder1_UcPanelHeaderA_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderA_txtShowUcCommon');" maxoverimg="../App_Themes/Default/images/max_o.jpg" onfocus="javascript:__PanelHeaderImgOnMouseOver('ctl00_ContentPlaceHolder1_UcPanelHeaderA_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderA_txtShowUcCommon');" onkeypress="javascript:__PanelHeaderImgOnClick('ctl00_ContentPlaceHolder1_UcPanelHeaderA_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderA_txtShowUcCommon','TablePA','0');" maxoutimg="../App_Themes/Default/images/max.jpg" src="../App_Themes/Default/images/min.jpg" alt="縮放按鈕" style="height:13px;width:13px;border-width:0px;">
+		    <input name="ctl00$ContentPlaceHolder1$UcPanelHeaderA$txtShowUcCommon" type="text" value="1" id="ctl00_ContentPlaceHolder1_UcPanelHeaderA_txtShowUcCommon" class="Hidden">
+		    
+		</td>
+		<td width="1%"></td>
+	</tr>
+</tbody></table>
+
+						</td>
+					</tr>
+					<tr class="TR_Panel_Top">
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							
+							<table id="TableA" class="Table_01" align="center">
+								<tbody><tr>
+									<td>
+										<div>
+		<table cellspacing="0" rules="all" highlightrowclassname="MasterGridViewHighlightRow" selectedrowclassname="MasterGridViewSelectedItemStyle" rowclassname="MasterGridViewItemStyle" selectedrowbackcolor="0" headerrows="1" selectedindex="2" border="1" id="ctl00_ContentPlaceHolder1_dvMaster" style="width:100%;border-collapse:collapse;">
+			<tbody><tr class="MasterGridViewHeader" valign="middle" style="height:26px;">
+				<td align="center" valign="middle" style="width:5%;white-space:nowrap;">序號</td><td align="center" valign="middle" style="width:10%;white-space:nowrap;"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$dvMaster','Sort$SERVICE_SERIL_NO')">陳情案號</a></td><td align="center" valign="middle" style="width:8%;white-space:nowrap;"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$dvMaster','Sort$APPLY_DTE')">申訴日期</a></td><td align="center" valign="middle" style="width:33%;white-space:nowrap;"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$dvMaster','Sort$CHANNEL_NAME')">頻道名稱</a></td><td align="center" valign="middle" style="width:10%;white-space:nowrap;"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$dvMaster','Sort$SHOW_NAME')">節目(廣告)名稱</a></td><td align="center" valign="middle" style="width:8%;white-space:nowrap;"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$dvMaster','Sort$BROADCAST_DTE')">播出日期</a></td><td align="center" valign="middle" style="width:5%;white-space:nowrap;"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$dvMaster','Sort$BROADCAST_FROM_TO')">播出時段</a></td><td align="center" valign="middle" style="width:5%;white-space:nowrap;"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$dvMaster','Sort$CATEGORY_NAME')">申訴人認為不妥類別</a></td><td align="center" valign="middle" style="width:5%;white-space:nowrap;"><a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$dvMaster','Sort$STATUS_NAME')">處理進度</a></td><td align="center" valign="middle" style="white-space:nowrap;">檢視</td>
+			</tr><tr class="MasterGridViewItemStyle" onmouseover="javascript:__HighlightGridRow(this, true);" onmouseout="javascript:__HighlightGridRow(this, false);" onfocus="javascript:__HighlightGridRow(this, true);" onblur="javascript:__HighlightGridRow(this, false);" onclick="javascript:__SelectGridRow(event);" onkeypress="javascript:__SelectGridRow(event);" ondblclick="" style="height:26px;">
+				<td align="center" valign="middle" style="white-space:nowrap;">
+														<span id="ctl00_ContentPlaceHolder1_dvMaster_ctl02_lblSN">6</span>
+													</td><td align="center">20140508T00002</td><td align="center">
+                                                        <span id="ctl00_ContentPlaceHolder1_dvMaster_ctl02_G_APPLY_DTE" class="LabelFont">103/05/08</span>
+                                                    </td><td>東森新聞台</td><td>新聞報導</td><td align="center">
+                                                        <span id="ctl00_ContentPlaceHolder1_dvMaster_ctl02_G_BROADCAST_DTE" class="LabelFont">103/05/08</span>
+                                                    </td><td>00:00~23:50</td><td>
+														<span id="ctl00_ContentPlaceHolder1_dvMaster_ctl02_G_CATEGORY_NAME" title="妨害公序良俗" class="LabelFont">妨害公序良俗</span>
+													</td><td>處理中</td><td align="center" style="width:5%;white-space:nowrap;">
+                                                       <input type="submit" name="ctl00$ContentPlaceHolder1$dvMaster$ctl02$G_View" value="檢視" id="ctl00_ContentPlaceHolder1_dvMaster_ctl02_G_View" class="Button" onkeypress="this.onclickthis.onclick">
+                                                    </td>
+			</tr><tr class="MasterGridViewSelectedItemStyle" onmouseover="javascript:__HighlightGridRow(this, true);" onmouseout="javascript:__HighlightGridRow(this, false);" onfocus="javascript:__HighlightGridRow(this, true);" onblur="javascript:__HighlightGridRow(this, false);" onclick="javascript:__SelectGridRow(event);" onkeypress="javascript:__SelectGridRow(event);" ondblclick="" __iclassname="MasterGridViewAlternatingItemStyle" style="height:26px;">
+				<td align="center" valign="middle" style="white-space:nowrap;">
+														<span id="ctl00_ContentPlaceHolder1_dvMaster_ctl03_lblSN">7</span>
+													</td><td align="center">20140508T00001</td><td align="center">
+                                                        <span id="ctl00_ContentPlaceHolder1_dvMaster_ctl03_G_APPLY_DTE" class="LabelFont">103/05/08</span>
+                                                    </td><td>非凡新聞台</td><td>設計家</td><td align="center">
+                                                        <span id="ctl00_ContentPlaceHolder1_dvMaster_ctl03_G_BROADCAST_DTE" class="LabelFont">103/05/04</span>
+                                                    </td><td>10:00~11:00</td><td>
+														<span id="ctl00_ContentPlaceHolder1_dvMaster_ctl03_G_CATEGORY_NAME" title="廣告超秒" class="LabelFont">廣告超秒</span>
+													</td><td>處理中</td><td align="center" style="width:5%;white-space:nowrap;">
+                                                       <input type="submit" name="ctl00$ContentPlaceHolder1$dvMaster$ctl03$G_View" value="檢視" id="ctl00_ContentPlaceHolder1_dvMaster_ctl03_G_View" class="Button" onkeypress="this.onclickthis.onclick">
+                                                    </td>
+			</tr><tr class="MasterGridViewPager" align="center" valign="middle">
+				<td colspan="10"><table summary="" border="0">
+					<tbody><tr>
+						<td><a id="ctl00_ContentPlaceHolder1_dvMaster_ctl05_dvMaster_lnkFirstPage" class="LinkButton" href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$dvMaster$ctl05$dvMaster_lnkFirstPage','')">第一頁</a>&nbsp;|&nbsp;<a href="javascript:__doPostBack('ctl00$ContentPlaceHolder1$dvMaster','Page$1')">1</a><span id="ctl00_ContentPlaceHolder1_dvMaster_ctl05_dvMaster_labSplit0" class="LabelFont"> | </span></td><td><span>2</span><span id="ctl00_ContentPlaceHolder1_dvMaster_ctl05_dvMaster_labSplit1" class="LabelFont"> | </span><span id="ctl00_ContentPlaceHolder1_dvMaster_ctl05_dvMaster_labLastPage" class="LabelFont">最後一頁</span>&nbsp;(共7筆 / 計2頁)&nbsp;目前頁數</td><td><select name="ctl00$ContentPlaceHolder1$dvMaster$ctl05$dvMaster_drpPageCount" id="ctl00_ContentPlaceHolder1_dvMaster_ctl05_dvMaster_drpPageCount" predisabled="false" onchange="javascript:__PagerOnChange('ctl00$ContentPlaceHolder1$dvMaster',event)">
+							<option value="1">1</option>
+							<option selected="selected" value="2">2</option>
+
+						</select></td><td></td>
+					</tr>
+				</tbody></table></td>
+			</tr>
+		</tbody></table>
+	</div>
+									</td>
+								</tr>
+							</tbody></table>
+							
+						</td>
+					</tr>
+					<tr class="TR_Panel_Botton">
+						<td>
+						</td>
+					</tr>
+				</tbody></table>
+				<br>
+			
+</div>
+			<div id="ctl00_ContentPlaceHolder1_PanelV">
+	
+				<table id="TablePV" class="Table_Panel" align="center">
+					<tbody><tr class="TR_Panel_Header">
+						<td>
+							<a name="__V"></a><a id="__TV" href="#__V"></a>
+							
+<table width="100%" align="center" cellspacing="0" cellpadding="0" border="0" summary="">
+	<tbody><tr>
+	    <td width="1%" align="center" valign="middle">
+	        <img id="ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgBefore" alt="標題圖案標記圖片" src="../App_Themes/Default/images/move.gif" style="border-width:0px;">
+	    </td>
+		<td align="left" valign="middle">
+		    <span id="ctl00_ContentPlaceHolder1_UcPanelHeaderV_lblQuery" class="titlebar">檢視畫面</span>
+		</td>
+		<td align="right">
+            
+		    <img id="ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeader" onmouseout="javascript:__PanelHeaderImgOnMouseOut('ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderV_txtShowUcCommon');" minoutimg="../App_Themes/Default/images/min.jpg" onmouseover="javascript:__PanelHeaderImgOnMouseOver('ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderV_txtShowUcCommon');" onclick="javascript:__PanelHeaderImgOnClick('ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderV_txtShowUcCommon','TablePV','0');" minoverimg="../App_Themes/Default/images/min_o.jpg" onblur="javascript:__PanelHeaderImgOnMouseOut('ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderV_txtShowUcCommon');" maxoverimg="../App_Themes/Default/images/max_o.jpg" onfocus="javascript:__PanelHeaderImgOnMouseOver('ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderV_txtShowUcCommon');" onkeypress="javascript:__PanelHeaderImgOnClick('ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderV_txtShowUcCommon','TablePV','0');" maxoutimg="../App_Themes/Default/images/max.jpg" src="../App_Themes/Default/images/min.jpg" alt="縮放按鈕" style="height:13px;width:13px;border-width:0px;">
+		    <input name="ctl00$ContentPlaceHolder1$UcPanelHeaderV$txtShowUcCommon" type="text" value="1" id="ctl00_ContentPlaceHolder1_UcPanelHeaderV_txtShowUcCommon" class="Hidden">
+		    <img id="ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeaderClose" onclick="javascript:__PanelHeaderCloseOnClick('TablePV');return false;" onmouseover="javascript:__PanelHeaderCloseImgOnMouseOver('ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeaderClose');" onmouseout="javascript:__PanelHeaderCloseImgOnMouseOut('ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeaderClose');" overimg="../App_Themes/Default/images/close_o.jpg" outimg="../App_Themes/Default/images/close.jpg" onfocus="javascript:__PanelHeaderCloseImgOnMouseOver('ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeaderClose');" onblur="javascript:__PanelHeaderCloseImgOnMouseOut('ctl00_ContentPlaceHolder1_UcPanelHeaderV_imgPanelHeaderClose');" src="../App_Themes/Default/images/close.jpg" style="height:13px;width:13px;border-width:0px;">
+		</td>
+		<td width="1%"></td>
+	</tr>
+</tbody></table>
+
+						</td>
+					</tr>
+					<tr class="TR_Panel_Top">
+						<td>
+						</td>
+					</tr>
+					<tr>
+						<td> 
+							<table id="TableV" class="Table_01" align="center">
+								<tbody><tr>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label20" class="LabelFont">陳情案號</span>
+									</td>
+									<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_SERVICE_SERIL_NO" class="LabelFont">20140508T00001</span>
+									</td>
+									
+								</tr>
+								<tr>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label1" class="LabelFont">申訴日期</span>
+									</td>
+									<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_APPLY_DTE" class="LabelFont">103/05/08</span>
+									</td>
+									
+								</tr>
+								
+								<tr id="ctl00_ContentPlaceHolder1_trR2">
+		<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Caption_Channel_Radio_Type" class="LabelFont">頻道類別</span>
+									</td>
+		<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_CHANNAL_RADIO_TYPE" class="LabelFont">新聞頻道</span>
+									</td>
+	</tr>
+	
+								<tr>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Caption_Channel_Radio_Name" class="LabelFont">頻道名稱</span>
+									</td>
+									<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_CHANNEL_RADIO_NAME" class="LabelFont">非凡新聞台</span>
+									</td>
+									
+								</tr>
+								<tr>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label8" class="LabelFont">節目(廣告)名稱</span>
+									</td>
+									<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_SHOW_NAME" class="LabelFont">設計家</span>
+									</td>
+									
+								</tr>
+								<tr>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label2" class="LabelFont">播出日期</span>
+									</td>
+									<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_BROADCAST_DTE" class="LabelFont">103/05/04</span>
+									</td>
+									
+								</tr>
+								<tr>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label4" class="LabelFont">播出時段</span>
+									</td>
+									<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_BROADCAST" class="LabelFont">10:00~11:00</span>
+									</td>
+									
+								</tr>
+								
+								<tr>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label5" class="LabelFont">內容類型</span>
+									</td>
+									<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_CONTENT_KIND" class="LabelFont">消費資訊型節目</span>
+									</td>
+									
+								</tr>
+								
+								<tr>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label7" class="LabelFont">申訴人認為不妥類別</span>
+									</td>
+									<td class="TD_04_Data" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_CATEGORY_ID" class="LabelFont">廣告超秒</span>
+									</td>
+									
+								</tr>
+								
+								<tr>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label12" class="LabelFont">申訴主旨</span></td>
+									<td class="TD_04_Data_S3" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_APPLY_SUBJECT" class="LabelFont">節目露出qrcode很久，影響收看品質</span>
+									</td>
+								</tr>
+								<tr>
+									<td class="TD_04_Caption">
+										<span id="ctl00_ContentPlaceHolder1_Label13" class="LabelFont">申訴內容</span></td>
+									<td class="TD_04_Data_S3" colspan="3">
+										<span id="ctl00_ContentPlaceHolder1_V_APPLY_CONTENT" class="LabelFont"><div style="word-break:break-all; overflow:auto;">您好，於5/4觀看非凡電視設計家節目時，節目中畫面右下角一直露出qrcode二維條碼，灰灰一塊佔著畫面很久的時間，觀看起來很不舒服，這是在幫設計師打廣告嗎???如果是，也廣告太久了吧</div></span>
+									</td>
+								</tr>
+								
+								
+								
+								
+								
+							</tbody></table>
+							
+						</td>
+					</tr>
+					<tr class="TR_Panel_Botton">
+						<td style="height: 21px">
+						</td>
+					</tr>
+				</tbody></table>
+				<br>
+			
+</div>
+		</div>
+	</td>
+		</tr>
+		<tr>
+			<td>
+				<div id="ctl00_ContentPlaceHolder1_UpdatePanelAlways">
+						<input type="hidden" name="ctl00$ContentPlaceHolder1$AjaxPostBackJs" id="ctl00_ContentPlaceHolder1_AjaxPostBackJs">
+					</div>
+				
+			</td>
+		</tr>		
+	</tbody></table> 
+		<div id="ctl00_ContentPlaceHolder1_vsSummaryQ" style="color:Red;display:none;">
+
+</div>
+
+                        </td>
+                    </tr>
+                </tbody></table>
+            </td>
+        </tr>
+    </tbody></table>
+    <table id="ctl00_tbPageBlockerControl" class="PageBlocker" summary="擺放凍結頁面" border="0" style="z-index: 99991; display: none; ">
+	<tbody><tr>
+		<td valign="middle"><img id="ctl00_imgPageBlockImg" src="../App_Themes/Default/images/busy.gif" alt="請稍候" style="border-width:0px;">&nbsp;&nbsp;
+                <span id="ctl00_clblPageBlockMessage" style="font-weight:bold;">請稍候...</span></td>
+	</tr>
+</tbody></table>
+    <input name="ctl00$IsEnableJS" type="text" id="ctl00_IsEnableJS" value="1" style="display:none">
+    
+<script type="text/javascript">
+//<![CDATA[
+var Page_ValidationSummaries =  new Array(document.getElementById("ctl00_ContentPlaceHolder1_vsSummaryQ"));
+var Page_Validators =  new Array(document.getElementById("ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00"), document.getElementById("ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00"), document.getElementById("ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01"), document.getElementById("ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00"), document.getElementById("ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01"), document.getElementById("ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1"), document.getElementById("ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00"), document.getElementById("ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00"), document.getElementById("ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1"));
+//]]>
+</script>
+
+<script type="text/javascript">
+//<![CDATA[
+var ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00 = document.all ? document.all["ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00"] : document.getElementById("ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00");
+ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00.controltovalidate = "ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_mrdobtnlist";
+ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00.errormessage = "申訴種類欄位不能空白";
+ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00.display = "None";
+ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00.validationGroup = "Q";
+ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00.initialvalue = "";
+var ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00 = document.all ? document.all["ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00"] : document.getElementById("ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00");
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00.controltovalidate = "ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_txtDate";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00.errormessage = "申訴日期(起)欄位不能空白";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00.display = "None";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00.validationGroup = "Q";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00.initialvalue = "";
+var ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01 = document.all ? document.all["ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01"] : document.getElementById("ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01");
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01.controltovalidate = "ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_txtDate";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01.errormessage = "申訴日期(起)欄位輸入錯誤";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01.display = "None";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01.validationGroup = "Q";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01.evaluationfunction = "CustomValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01.clientvalidationfunction = "__NBaseValidateDate";
+var ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00 = document.all ? document.all["ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00"] : document.getElementById("ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00");
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00.controltovalidate = "ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_txtDate";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00.errormessage = "申訴日期(迄)欄位不能空白";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00.display = "None";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00.validationGroup = "Q";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00.evaluationfunction = "RequiredFieldValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00.initialvalue = "";
+var ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01 = document.all ? document.all["ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01"] : document.getElementById("ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01");
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01.controltovalidate = "ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_txtDate";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01.errormessage = "申訴日期(迄)欄位輸入錯誤";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01.display = "None";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01.validationGroup = "Q";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01.evaluationfunction = "CustomValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01.clientvalidationfunction = "__NBaseValidateDate";
+var ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1 = document.all ? document.all["ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1"] : document.getElementById("ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1");
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1.errormessage = "30106";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1.display = "None";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1.enabled = "False";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1.validationGroup = "Q";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1.evaluationfunction = "CustomValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1.clientvalidationfunction = "ValidateText";
+var ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00 = document.all ? document.all["ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00"] : document.getElementById("ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00");
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00.controltovalidate = "ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_txtDate";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00.errormessage = "播出日期(起)欄位輸入錯誤";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00.display = "None";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00.validationGroup = "Q";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00.evaluationfunction = "CustomValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00.clientvalidationfunction = "__NBaseValidateDate";
+var ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00 = document.all ? document.all["ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00"] : document.getElementById("ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00");
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00.controltovalidate = "ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_txtDate";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00.errormessage = "播出日期(迄)欄位輸入錯誤";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00.display = "None";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00.validationGroup = "Q";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00.evaluationfunction = "CustomValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00.clientvalidationfunction = "__NBaseValidateDate";
+var ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1 = document.all ? document.all["ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1"] : document.getElementById("ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1");
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1.errormessage = "30106";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1.display = "None";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1.enabled = "False";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1.validationGroup = "Q";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1.evaluationfunction = "CustomValidatorEvaluateIsValid";
+ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1.clientvalidationfunction = "ValidateText";
+var ctl00_ContentPlaceHolder1_vsSummaryQ = document.all ? document.all["ctl00_ContentPlaceHolder1_vsSummaryQ"] : document.getElementById("ctl00_ContentPlaceHolder1_vsSummaryQ");
+ctl00_ContentPlaceHolder1_vsSummaryQ.showmessagebox = "True";
+ctl00_ContentPlaceHolder1_vsSummaryQ.showsummary = "False";
+ctl00_ContentPlaceHolder1_vsSummaryQ.validationGroup = "Q";
+//]]>
+</script>
+
+<div>
+
+	
+	
+	
+</div>
+
+<div id="__NBasePageBlocker" style="z-index: 99999; left: 0px; cursor: wait; position: absolute; top: 0px; background-color: gray; opacity: 0.2; height: 700px; width: 709px; display: none; "></div>
+<script language="JavaScript">
+window.onbeforeunload=__NBase_PageBlocker;
+var __NBase_PageBlockerIdleTime=100;
+var __NBase_PageBlockNoteControl=document.getElementById("ctl00_tbPageBlockerControl");;
+var __NBase_PageBlockerPeriod=0;
+</script>
+<noscript>
+&lt;P&gt;NBase20 Common Script&lt;/P&gt;
+</noscript>
+
+<script type="text/javascript">
+//<![CDATA[
+document.getElementById('ctl00_IsEnableJS').value='1';//]]>
+</script>
+<script type="text/javascript">Sys.WebForms.PageRequestManager.getInstance().add_initializeRequest(BeforeUpdatePanelLoad);</script><script type="text/javascript">Sys.WebForms.PageRequestManager.getInstance().add_endRequest(AfterUpdatePanelLoad);</script><script type="text/javascript"><!--
+igmenu_ctl00ultFunMenu_Menu=[ 'ctl00$ultFunMenu',1,1,'','ctl00ultFunMenuHover','','/SWSFront35/WebResource.axd?d=R3nBjbo-L5ZlbvZTeUtP0TFAMlZNS6-6ofOelvSDvd2A1WzL3oUJOE0xNqxEhJnfebr9rM0cwWCL-amyqhng4u7FojNE0eoogy5wwaCTyRyhmGvm2HYRwOyYRXatcVPWFoxw4qAn-1LCZa3zQxSOdiA9S_y5qSIcN8V8zfeUEcfBl7F86lWTiAnS-Hp6TIIWWxZrHF42yi746IJttv07msKezPCQSR1myqoyBlYGEHn8lzVH0&t=634255492005625000',false,'300','100','GradientWipe','#D3D3D3','5','200','1000','','','','ctl00ultFunMenuItem','/SWSFront35/WebResource.axd?d=qWbyV_aHD9nkUsaFHMmYASo78jGtVH_b8eUTc7yMAm7YHS2uBsqiTfvE2NbuR4pGOVeh9TWveTUCRoiJ8Mu9PX-6k_M9G4bwBAmXiFN1mQbKDNvmDed4LBGlXjdqdCCe7Ca26kfvT0ZqyIeFiMieLDQJrfP2cQY-2lgi6hDQBlwy5MOpnRYnqqxcJPPObScx2IfY4BBfNwc6nanrKQRJk-TiRvRQLOSgDnbFoSNB4RZUXJO8Zr8UFdpudXu9tefVK4-oOQ2&t=634255492005625000','/SWSFront35/WebResource.axd?d=fxA6G2hKPG8jA44S99WsvTkl15x_QGgAV8CH0Cefq_yYHxgZIqUfOsIqYy1mZ_rOP-0ZXuPHmfkNt1aLMd1kvVlwj6A15MRbibIO4BylPH_lcHFcEIKexQYbmruCG4SYNwHRKue9Sfc-V5jgX_KlysXq64JJ0lioUxYXQgscvDM950FLioCB8cY4oZ1Ta4o-ViiKvGGMsvxximiQGmWKpnS5Fx92m5f3-Y3Atpgmr4fvuQDPEUhaaUCJZEpMJnLh8_bmmA2&t=634255492005625000','/SWSFront35/WebResource.axd?d=pteB3mS1Su1at6SQwkoItLAgM8xXtEsvcn5cQBmXp_F0hyZ2_bItr1M2SEuno6So31_o_sOsr1Y8swPDthqSUHym65NAkjNJleEJ3vVx0VzekqDuOiOLhUJHkGHXGmSRNsDmKjpoM5hJb5WIyfcQe8-tHtoiu0vTeizwGtVxoEqNWaz79r5CYk1tAeyG1dMnJY1F6yhKFHTgclyyJDUNxQEq1FsqiIq3F98cJDeVoJGfNTQz5qb9NpYmJs-jY45MozVdcw2&t=634255492005625000','/SWSFront35/WebResource.axd?d=CQQ5d9XuT6ysRt-Dr2JnkPLultnbkBuEQ4TREbtLv2oAbk7CTYW62pSKafBp9NylvzBPZPi3NqKJCjNgTKqd_Yp7UZV2AIHL3VGw0rOIDlF0IfiYOLVqBJShvgyQ_kG1jqNMUZhUCeZwHigTBEuHkeD6woT-QTAlbGK_tG4lanT_yiESUlw4T0Yck831An56WIbw20TLy27z3EASdqiZ3tEl8fI75o0xf_gbLE8fAy0de9n9IKldAZAeHWUUcFj0Bnh4wQ2&t=634255492005625000',false,true,'','',true,false];igmenu_ctl00ultFunMenu_Events = [ ["",0],["",0],["",0],["",0],["",0]];igmenu_initMenu('ctl00ultFunMenu');
+//--></script>
+<script type="text/javascript">
+//<![CDATA[
+__PanelHeaderImgOnClick('ctl00_ContentPlaceHolder1_UcPanelHeaderQ_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderQ_txtShowUcCommon','TablePQ','1');
+var Page_ValidationActive = false;
+if (typeof(ValidatorOnLoad) == "function") {
+    ValidatorOnLoad();
+}
+
+function ValidatorOnSubmit() {
+    if (Page_ValidationActive) {
+        return ValidatorCommonOnSubmit();
+    }
+    else {
+        return true;
+    }
+}
+        __PanelHeaderImgOnClick('ctl00_ContentPlaceHolder1_UcPanelHeaderA_imgPanelHeader','ctl00_ContentPlaceHolder1_UcPanelHeaderA_txtShowUcCommon','TablePA','1');
+document.getElementById('ctl00_ContentPlaceHolder1_vsSummaryQ').dispose = function() {
+    Array.remove(Page_ValidationSummaries, document.getElementById('ctl00_ContentPlaceHolder1_vsSummaryQ'));
+}
+Sys.Application.initialize();
+
+document.getElementById('ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_Q_SOURCE_CODE_ValidationRadioButtonList1_ctl00'));
+}
+
+document.getElementById('ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl00'));
+}
+
+document.getElementById('ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime1_dpkDate_ctl01'));
+}
+
+document.getElementById('ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl00'));
+}
+
+document.getElementById('ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_Q_APPLY_DTE_ucDateTime2_dpkDate_ctl01'));
+}
+
+document.getElementById('ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_Q_APPLY_DTE_CustomValidator1'));
+}
+
+document.getElementById('ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime1_dpkDate_ctl00'));
+}
+
+document.getElementById('ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_ucDateTime2_dpkDate_ctl00'));
+}
+
+document.getElementById('ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1').dispose = function() {
+    Array.remove(Page_Validators, document.getElementById('ctl00_ContentPlaceHolder1_Q_BROADCAST_DTE_CustomValidator1'));
+}
+//]]>
+</script>
+<span style="display: none !important; "><input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""></span><span style="display: none !important; "><input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""></span><span style="display: none !important; "><input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value=""></span><span style="display: none !important; "><input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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"></span><span style="display: none !important; "><input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="sy231r24nqEvzlRg55RkWrTMEL58WmlC5IRjQz4Xxb0u54n1oLV+IbdyV7Sx/Yk3ZzDsKxyeERXS90LKxaxKzqpcBCtF2Ehrt5hoiZdw/UDbo7gpfOLZCz03hzrfCtC5omYuqgepD+GeSaR7DhDk2L+uZDyijCK1yc9hii0+mcAcWeWRL5DYKI/un8vJTpBH7V/IjKeZVDnrUbwJgWZqSUv6NlpsgHcApbtCmHVgD8Afb+eQMPn7c3pdKCVYnXFa0dWeKSOwxP7t1SI+EhIaDLY7Mu2ZSNvhjQ82IC32Ga0a+HRaKdf20SVT3gckATDGNPQgSRzIASzckiqaV3LEuXAFh2EIINjNd3cLZykscB7QQUVrIkU7YNsSUWOec5X3Xs8DmjN6TsEyLUsHdsuoIl/ncm7WXanasI7D9KEkRVmLQ24lCe1G8qhl2DCjhL/YD3JYq4x2sBnxShKBm2jaU6zmx9+MEmx7fv6F8RAdmiihCMR+9nn6MU1ARSBbqXXAePsgfuHP8TZpFRuolSJ6s/XXLRWabrIzg6pdmvBVYp1Gg8r0F7J0Ygl696NLEmyRzTI1efl/yE4Lq2nqKgD7jbergED7IRJW+jp9xealU7S41XEYiSCiHK3JlCX6JqH2DluHW3rPx0PtsOXGVT9zE2psfqWhKnh3RrjLmoEIPRlBLKHJm/spuG4aMcBsVT+6d1Ed5bozzlwYi08ZtRO9ZafdtwcIs2WYz2NxA8x4+1IPTHuDAzI6DnJUEumTSq76H3nCauukP2+zCNcpl5hj2qtdm6gwQODqfZsLn8k7+L4Fl4u1JdN7+wfcup+ookqCiJARZLPF3JF3nB9unu2ooqcde5uVuQ633YC4BJTDdH8adspapoaDiQi3gx7qJqFP6ZLNdp50A5BIC2IwTtegzOykD/pfWIWFwBBi7IriifmMTEYJ7HXVvC1TBz1bNLH6sxWu3femkfO8XAK8Mkq6/dv7tNQ="></span><span style="display: none !important; "><input type="hidden" name="ctl00_ContentPlaceHolder1_dvMaster_SelectedIndex" id="ctl00_ContentPlaceHolder1_dvMaster_SelectedIndex" value="1"></span><span style="display: none !important; "><input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value=""></span></form>
+
+
+
+<script type="text/javascript">
+    //Sys.WebForms.PageRequestManager.getInstance().add_initializeRequest(BeforeUpdatePanelLoad);
+    //Sys.WebForms.PageRequestManager.getInstance().add_endRequest(AfterUpdatePanelLoad);
+</script>
+
+</body>

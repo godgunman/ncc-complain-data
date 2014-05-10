@@ -37,6 +37,7 @@ npm-debug.log
 .netbeans
 nbproject
 .idea
+.*.sw[a-z]
 
 
 ########################

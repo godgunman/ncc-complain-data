@@ -12,7 +12,8 @@
         "request": "*",
         "cheerio": "*",
         "q":"*",
-        "underscore":"*"
+        "underscore":"*",
+        "phantomjs": "*"
     },
     "scripts": {
         "start": "node app.js",
