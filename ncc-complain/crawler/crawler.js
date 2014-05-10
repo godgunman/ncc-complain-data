@@ -15,8 +15,10 @@ function getItemCountWithDate(date, callback) {
         item_count = parseInt(stdout);
         console.log('exec get item count done, count: ' + item_count);
         // loop
-        for (var i = 0; i < item_count; i++) {
-            getPageWithDateItem(date, i, callback);
+        if (item_count < 50) {
+            for (var i = 0; i < item_count; i++) {
+                getPageWithDateItem(date, i, callback);
+            }
         }
     })
 }
