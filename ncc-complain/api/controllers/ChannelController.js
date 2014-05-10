@@ -23,7 +23,9 @@ module.exports = {
         Complain.find().exec(function(err, results) {
             results.forEach(function(e) {
                 if (!channels[e.channelName]) {
-                    channels[e.channelName] = {size:0};
+                    channels[e.channelName] = {
+                        size:0,
+                    };
                 }
                 if (!channels[e.channelName][e.complainCategory]) {
                     channels[e.channelName][e.complainCategory] = [];
@@ -31,7 +33,26 @@ module.exports = {
                 channels[e.channelName][e.complainCategory].push(e);
                 channels[e.channelName].size ++;
             });
-            channels = _.sortBy(channels, function(channel) {return -channel.size});
+            channelArray = [];
+            for (key in channels) {
+                var category = [];
+                for (var categoryKey in channels[key]) {
+                    if (categoryKey=='size') continue;
+                    category.push({
+                        categoryName: categoryKey,
+                        data: channels[key][categoryKey],
+                    });
+                }
+                category = _.sortBy(category, function(e) {
+                    return e.data.length;
+                });
+                channelArray.push({
+                    channelName: key,
+                    category: category,
+                    size: channels[key].size,
+                });
+            }
+            channels = _.sortBy(channelArray, function(channel) {return -channel.size});
             res.json(channels);
         });
     },
