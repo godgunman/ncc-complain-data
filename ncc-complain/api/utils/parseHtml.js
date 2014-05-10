@@ -65,6 +65,20 @@ function parseByURL(url, callback) {
     });
 }
 
+function parseByText(text, callback) {
+    $ = cheerio.load(text);
+    var result = {};
+    fieldMap.forEach(function(e) {
+        result[e.key] = {
+            title: $("#" + e.title).text(),
+            value: $("#" + e.value).text(),
+        };
+    });
+    if (callback) {
+        callback(result);
+    }
+}
+
 function test(callback) {
     var urls = [
         'http://w.csie.org/~b97115/file/ncc/page1.html',
@@ -101,4 +115,5 @@ function test(callback) {
 module.exports = {
     'parseByURL' : parseByURL,
     'test': test,
+    'parseByText': parseByText,
 }
