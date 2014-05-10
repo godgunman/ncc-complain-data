@@ -1,10 +1,11 @@
 var request = require('request');
 var cheerio = require('cheerio');
+var Q = require('q');
 
 var fieldMap = [{
         title: 'ctl00_ContentPlaceHolder1_Label20',
         value: 'ctl00_ContentPlaceHolder1_V_SERVICE_SERIL_NO',
-        key:  'id',
+        key:  'cid',
     }, {
         title: 'ctl00_ContentPlaceHolder1_Label1',
         value: 'ctl00_ContentPlaceHolder1_V_APPLY_DTE',
@@ -64,7 +65,7 @@ function parseByURL(url, callback) {
     });
 }
 
-function test() {
+function test(callback) {
     var urls = [
         'http://w.csie.org/~b97115/file/ncc/page1.html',
         'http://w.csie.org/~b97115/file/ncc/page2.html',
@@ -77,11 +78,28 @@ function test() {
         'http://w.csie.org/~b97115/file/ncc/page9.html',
         'http://w.csie.org/~b97115/file/ncc/page10.html',
     ];
+    var results = [];
+    var promises = [];
+
     urls.forEach(function(e) {
-        parseByURL(e, function(result) {
-            console.log(result);
-        });
+        promises.push(function(){
+            var deferred = Q.defer();
+            parseByURL(e, function(result) {
+                results.push(result);
+                deferred.resolve(result);
+          //      console.log(result);
+            });
+            return deferred.promise;
+        }());
     });
+    if (callback) {
+        Q.all(promises).then(function() {
+            callback(results);
+        });
+    }
 }
 
-test();
+module.exports = {
+    'parseByURL' : parseByURL,
+    'test': test,
+}
