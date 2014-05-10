@@ -9,10 +9,10 @@
 
 ## Screenshots
 
-![](http://imgur.com/WKbzzDC)
+![](http://i.imgur.com/WKbzzDC.png)
 
-![](http://imgur.com/u5rXnU6)
+![](http://i.imgur.com/u5rXnU6.png)
 
-![](http://imgur.com/TuDJMBc)
+![](http://i.imgur.com/TuDJMBc.png)
 
-![](http://imgur.com/oyv9VLe)
+![](http://i.imgur.com/oyv9VLe.png)
