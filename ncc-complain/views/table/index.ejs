@@ -22,6 +22,8 @@
 </style>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/0.16.1/javascript/semantic.min.js"></script>
+
 <script>
     $(function() {
         $.get('/channel', function(res){
@@ -34,7 +36,10 @@
 
                 var categoryPrefix = $('<div class="ui large labels">');
                 for (var j = 0; j < res[i].category.length && j < 8;j++) {
-                    categoryPrefix.append($('<div class="ui label">').text(res[i].category[j].categoryName));
+                    var label = $('<div class="ui label">');
+                    label.text(res[i].category[j].categoryName.slice(0, 4));
+                    label.attr('data-content', res[i].category[j].categoryName);
+                    categoryPrefix.append(label);
                 }
                 var category = $('<td>').append(categoryPrefix);
 
@@ -44,6 +49,11 @@
                 tr.append(size);
                 $('#tableContent').append(tr);
             }
+
+            $('.ui .label')
+            .popup({
+                on: 'hover'
+            });
         });
     });
 </script>
