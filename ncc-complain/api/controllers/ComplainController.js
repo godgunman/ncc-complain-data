@@ -16,13 +16,30 @@
  */
 
 var parseHtml = require('../utils/parseHtml');
+var _ = require('underscore');
 
 module.exports = {
 
     test: function(req, res) {
         parseHtml.test(function(results) {
+            var resultsClone = [];
+            results.forEach(function(e) {
+                resultsClone.push(_.clone(e));
+                var wrapElement = {};
+                for (key in e) {
+                    if (key == 'date')
+                        wrapElement[key] = new Date(e[key].value);
+                    else 
+                        wrapElement[key] = e[key].value;
+                }
+                Complain.create(wrapElement).done(function(err, complain) {
+                    console.log(err, complain);
+                });
+            });
+            //            console.log(results);
+
             res.json({
-                data:results
+                data:resultsClone
             });
         });
     }, 

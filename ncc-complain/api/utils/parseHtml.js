@@ -87,7 +87,6 @@ function test(callback) {
             parseByURL(e, function(result) {
                 results.push(result);
                 deferred.resolve(result);
-          //      console.log(result);
             });
             return deferred.promise;
         }());

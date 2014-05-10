@@ -14,7 +14,7 @@ module.exports = {
     channelCategory: 'STRING',
     channelName: 'STRING',
     programName: 'STRING',
-    broadcastDate: 'date',
+    broadcastDate: 'STRING',
     broadcastTime: 'STRING',
     contentCategory: 'STRING',
     complainCategory: 'STRING',

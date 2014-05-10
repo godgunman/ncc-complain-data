@@ -11,7 +11,8 @@
         "optimist": "0.3.4",
         "request": "*",
         "cheerio": "*",
-        "q":"*"
+        "q":"*",
+        "underscore":"*"
     },
     "scripts": {
         "start": "node app.js",
