@@ -1,0 +1,16 @@
+{
+    "name": "ncc-complain-crawler",
+    "private": true,
+    "version": "0.0.0",
+    "description": "a crawler for ncc",
+    "dependencies": {
+        "underscore":"*",
+        "phantomjs": "*"
+    },
+    "scripts": {
+    },
+    "main": "",
+    "repository": "",
+    "author": "",
+    "license": ""
+}
