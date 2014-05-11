@@ -1,1 +1,1 @@
-web: node main.js
+clock: node main.js
