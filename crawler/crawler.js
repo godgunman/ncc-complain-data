@@ -1,6 +1,7 @@
 var path = require('path')
 var childProcess = require('child_process')
 var phantomjs = require('phantomjs')
+var parseHtml = require('./parseHtml');
 var binPath = phantomjs.path
 
 function getItemCountWithDate(date, callback) {
@@ -43,7 +44,12 @@ function getPageWithDateItem(date, item, callback) {
 }
 
 function crawlWithDate(date, callback) {
-    getItemCountWithDate(date, callback);
+    getItemCountWithDate(date, function(html) {
+        var jsonData = parseHtml.parseByText(html);
+        if (callback) {
+            callback(jsonData);
+        }
+    });
 }
 
 module.exports = {

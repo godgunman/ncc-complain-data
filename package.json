@@ -5,7 +5,10 @@
     "description": "a crawler for ncc",
     "dependencies": {
         "underscore":"*",
-        "phantomjs": "*"
+        "phantomjs": "*",
+        "request": "*",
+        "cheerio": "*",
+        "q":"*"
     },
     "scripts": {
     },
