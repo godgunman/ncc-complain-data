@@ -24,6 +24,15 @@ complainSchema.pre('save', function(next) {
     next();
 });
 
+var taskSchema = mongoose.Schema({
+    year: Number,
+    month: Number,
+    day: Number,
+    status: String,
+});
+
+
 module.exports = {
     Complain: mongoose.model('Complain', complainSchema),
+    Task: mongoose.model('Task', taskSchema),
 };
