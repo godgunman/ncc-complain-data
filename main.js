@@ -1,4 +1,4 @@
-require('./config/local');
+require('./config/mongoose');
 var crawler = require('./crawler/crawler');
 var Complain = require('./models').Complain;
 
