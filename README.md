@@ -11,7 +11,7 @@
 
 - [API doc](http://docs.ncccomplain.apiary.io/)
 
-## Screenshots
+## Mockups
 
 ![](http://i.imgur.com/WKbzzDC.png)
 
