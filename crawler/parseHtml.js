@@ -69,10 +69,7 @@ function parseByText(text) {
     $ = cheerio.load(text);
     var result = {};
     fieldMap.forEach(function(e) {
-        result[e.key] = {
-            title: $("#" + e.title).text(),
-            value: $("#" + e.value).text(),
-        };
+        result[e.key] = $("#" + e.value).text();
     });
     return result;
 }
