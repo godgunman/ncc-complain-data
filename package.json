@@ -12,6 +12,7 @@
         "mongoose": "*"
     },
     "scripts": {
+        "start": "node main.js"
     },
     "main": "main.js",
     "repository": "",
