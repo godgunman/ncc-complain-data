@@ -16,7 +16,6 @@
  */
 
 var parseHtml = require('../utils/parseHtml');
-var crawler = require('../../crawler/crawler');
 var _ = require('underscore');
 var Q = require('q');
 
@@ -46,41 +45,6 @@ module.exports = {
         });
     }, 
 
-    crawl: function(req, res) {
-        var results = [];
-        var promises = [];
-
-        promises.push(function() {
-            var outterDeferred = Q.defer();
-            crawler.crawlWithDate(req.query.date, function(html) {
-                parseHtml.parseByText(html, function(e){
-                    promises.push(function(){
-                        results.push(_.clone(e));
-                        var deferred = Q.defer();
-                        var wrapElement = {};
-                        for (key in e) {
-                            if (key == 'date')
-                                wrapElement[key] = new Date(e[key].value);
-                            else 
-                                wrapElement[key] = e[key].value;
-                        }
-                        Complain.create(wrapElement).done(function(err, complain) {
-                            console.log(err, complain);
-                            results.push(complain);
-                            deferred.resolve(e);
-                        });
-
-                        return deferred.promise;
-                    }());
-                    outterDeferred.resolve(e);
-                });
-            });
-            return outterDeferred.promise;
-        }());
-        Q.all(promises).then(function() {
-            res.json(results);
-        });
-    },
     /**
      * Overrides for the settings in `config/controllers.js`
      * (specific to ComplainController)
