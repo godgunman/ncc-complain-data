@@ -10,9 +10,12 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.google.gson.Gson;
+
 import tw.fakenews.android.Constants;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class Complain {
 
@@ -70,7 +73,14 @@ public class Complain {
 					String content = httpClient
 							.execute(target, responseHandler);
 					JSONObject object = new JSONObject(content);
-					// TODO json -> object
+					if (object.has("error")) {
+						Log.e("models.Complain._find()", object.get("error")
+								.toString());
+					} else {
+						Gson gson = new Gson();
+						return gson.fromJson(object.getJSONArray("result")
+								.toString(), Complain[].class);
+					}
 				} catch (ClientProtocolException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
