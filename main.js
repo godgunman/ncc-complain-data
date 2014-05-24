@@ -43,7 +43,13 @@ function updateItems() {
         console.log('jumi2');
         console.log(complains);
         for (var i = 0; i < complains.length; ++i) {
-            crawler.updateItem(complains[i].cid);
+            crawler.updateItem(complains[i].cid, function(jsondata) {
+		Complain.findByIdAndUpdate(complains[i].cid, jsondata, { upsert: true},
+		    function(err, complain) {
+		    	console.log(err, complain);
+		    }
+		)
+	    });
         }
     });//where("status").ne('done');
     
