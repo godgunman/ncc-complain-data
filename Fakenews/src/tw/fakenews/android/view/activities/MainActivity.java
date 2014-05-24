@@ -10,6 +10,7 @@ import tw.fakenews.android.test.ApiTest;
 import tw.fakenews.android.view.adapter.ChannelListAdapter;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v4.app.ListFragment;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,6 +18,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
 
@@ -98,8 +100,13 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		private void setListViewHeader() {
+			Typeface engFace = Typeface.createFromAsset(getActivity()
+					.getAssets(), "fonts/BebasNeue.otf");
+
 			LayoutInflater layoutInfalter = getActivity().getLayoutInflater();
 			View view = layoutInfalter.inflate(R.layout.rank_header, null);
+			((TextView) view.findViewById(R.id.pendingCaseText))
+					.setTypeface(engFace);
 			this.getListView().addHeaderView(view);
 		}
 
