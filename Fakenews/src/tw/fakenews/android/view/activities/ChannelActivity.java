@@ -3,11 +3,13 @@ package tw.fakenews.android.view.activities;
 
 import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
+import tw.fakenews.android.models.Channel.Category;
 import tw.fakenews.android.view.fragment.CategoryListFragment;
 import tw.fakenews.android.view.fragment.ComplainListFragment;
 import tw.fakenews.android.view.fragment.CategoryListFragment.OnCategorySelectedListener;
 import tw.fakenews.android.view.fragment.ComplainListFragment.OnComplainSelectedListener;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 public class ChannelActivity extends ActionBarActivity 
     implements OnCategorySelectedListener, OnComplainSelectedListener {
 
+    private Category[] mCategories;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,8 @@ public class ChannelActivity extends ActionBarActivity
         
         View view = getHeaderView(b);
         layout.addView(view);
+        
+        setMyCategories();
         
         Fragment f = new CategoryListFragment();
         f.setArguments(b);
@@ -67,6 +72,16 @@ public class ChannelActivity extends ActionBarActivity
         
         return channelView;
     }
+    
+    private void setMyCategories() {
+        Bundle b = this.getIntent().getExtras();
+        Parcelable[] parcels = b.getParcelableArray(Constants.KEY_CHANNEL_CATEGORIES);
+        
+        mCategories = new Category[parcels.length];
+        for (int i = 0; i < parcels.length; i++) {
+            mCategories[i] = (Category) parcels[i];
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -91,14 +106,19 @@ public class ChannelActivity extends ActionBarActivity
     @Override
     public void onCategorySelected(int position) {
         Fragment f = new ComplainListFragment();
-        Bundle b = new Bundle();
-        b.putString(Constants.KEY_CATEGORIES_NAME, "FOOOOO");
-        b.putString(Constants.KEY_CATEGORIES_COUNT, Integer.toString(position));
-        f.setArguments(b);
         
-        getSupportFragmentManager().beginTransaction()
-        .replace(R.id.container, f)
-        .commit();
+        if (mCategories != null) {
+            Category c = mCategories[position];
+            
+            Bundle b = new Bundle();
+            b.putString(Constants.KEY_CATEGORIES_NAME, c.categoryName);
+            b.putString(Constants.KEY_CATEGORIES_COUNT, Integer.toString(c.size));
+            f.setArguments(b);
+            
+            getSupportFragmentManager().beginTransaction()
+            .replace(R.id.container, f)
+            .commit();
+        }
     }
 
     @Override
@@ -109,8 +129,11 @@ public class ChannelActivity extends ActionBarActivity
 
     @Override
     public void onBackToChannel() {
+        Fragment f = new CategoryListFragment();
+        f.setArguments(this.getIntent().getExtras());
+        
         getSupportFragmentManager().beginTransaction()
-        .replace(R.id.container, new CategoryListFragment())
+        .replace(R.id.container, f)
         .commit();
     }
 

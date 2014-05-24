@@ -22,7 +22,6 @@ public class ChannelListAdapter extends ArrayAdapter<Channel> {
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     
-    
     public ChannelListAdapter(Context context, LinkedList<Channel> channelList) {
         super(context, 0, channelList);
         mContext = context;
@@ -89,5 +88,4 @@ public class ChannelListAdapter extends ArrayAdapter<Channel> {
         TextView textViewChannelName;
         TextView textViewCount;
     }
-
 }
