@@ -102,7 +102,7 @@ public class ComplainListFragment extends ListFragment {
         categoriesList.add("3");
         /* dumb channel list for testing*/              
             
-        adapter = new CategoriesListAdapter(getActivity(), categoriesList);
-        setListAdapter(adapter);
+//        adapter = new CategoriesListAdapter(getActivity(), categoriesList);
+//        setListAdapter(adapter);
     }
 }

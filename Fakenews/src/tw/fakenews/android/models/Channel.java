@@ -16,6 +16,8 @@ import com.google.gson.Gson;
 import tw.fakenews.android.Constants;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
 public class Channel {
@@ -24,10 +26,39 @@ public class Channel {
 	public Category[] category;
 	public int size;
 
-	public class Category {
+	public static class Category implements Parcelable {
+	    
+	    public static final Parcelable.Creator<Category> CREATOR = new Creator();
+	    
 		public String categoryName;
 		public Complain[] data;
 		public int size;
+		
+        @Override
+        public int describeContents() {
+            return 0;
+        }
+        
+        @Override
+        public void writeToParcel(Parcel parcel, int flags) {
+            parcel.writeString(categoryName);
+            parcel.writeInt(size);
+        }
+        
+        public static class Creator implements Parcelable.Creator<Category> {
+            public Category createFromParcel(Parcel in) {
+                return new Category(in);
+            }
+
+            public Category[] newArray(int size) {
+                return new Category[size];
+            }
+        }
+        
+        private Category (Parcel parcel) {
+            categoryName = parcel.readString();
+            size = parcel.readInt();
+        }
 
 	}
 

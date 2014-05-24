@@ -10,7 +10,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="3"
+        android:ellipsize="end"
         android:padding="@dimen/textview_padding"
+        android:singleLine="true"
         android:textSize="30sp" />
 
     <TextView
@@ -20,6 +22,7 @@
         android:layout_weight="1"
         android:gravity="center"
         android:padding="@dimen/textview_padding"
+        android:singleLine="true"
         android:textSize="30sp" />
 
 </LinearLayout>

@@ -1,11 +1,18 @@
 package tw.fakenews.android.view.fragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 
+import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
+import tw.fakenews.android.models.Channel;
+import tw.fakenews.android.models.Channel.Category;
 import tw.fakenews.android.view.adapter.CategoriesListAdapter;
+import tw.fakenews.android.view.adapter.ChannelListAdapter;
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -35,10 +42,15 @@ public class CategoryListFragment extends ListFragment {
         headerLayout = (LinearLayout) rootView.findViewById(R.id.headerLayout);
         
         setHeaderLayout();
-        setListViewHeader();
-        setAdapter();
         
         return rootView;
+    }
+    
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        setListViewHeader();
+        setAdapter();
     }
     
     @Override
@@ -63,19 +75,19 @@ public class CategoryListFragment extends ListFragment {
     }
     
     private void setListViewHeader() {
-
+        // No listview header in categoryListFragment
     }
     
-    private void setAdapter() {
-            
-        /* dumb channel list for testing*/ 
-        ArrayList<String> categoriesList = new ArrayList<String>();
-        categoriesList.add("節目與廣告未區分");
-        categoriesList.add("節目分級不妥");
-        categoriesList.add("妨害兒少身心");
-        /* dumb channel list for testing*/              
-            
-        adapter = new CategoriesListAdapter(getActivity(), categoriesList);
+    private void setAdapter() {                       
+        Bundle b = getArguments();
+        Parcelable[] parcels = b.getParcelableArray(Constants.KEY_CHANNEL_CATEGORIES);
+        
+        Category[] categories = new Category[parcels.length];
+        for (int i = 0; i < parcels.length; i++) {
+            categories[i] = (Category) parcels[i];
+        }
+        
+        adapter = new CategoriesListAdapter(getActivity(), categories);
         setListAdapter(adapter);
     }
 }

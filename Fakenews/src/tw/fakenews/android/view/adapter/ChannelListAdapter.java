@@ -6,6 +6,7 @@ import java.util.List;
 import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
 import tw.fakenews.android.models.Channel;
+import tw.fakenews.android.models.Channel.Category;
 import tw.fakenews.android.view.activities.ChannelActivity;
 import android.content.Context;
 import android.content.Intent;
@@ -57,6 +58,7 @@ public class ChannelListAdapter extends ArrayAdapter<Channel> {
         final String channelRank = Integer.toString(position + 1);
         final String channelName = c.channelName;
         final String channelCount = Integer.toString(c.size);
+        final Category[] channelCategories = c.category;
         
         holder.textViewRank.setText(channelRank);
         holder.textViewChannelName.setText(channelName);
@@ -72,6 +74,7 @@ public class ChannelListAdapter extends ArrayAdapter<Channel> {
                 b.putString(Constants.KEY_CHANNEL_RANK, channelRank);
                 b.putString(Constants.KEY_CHANNEL_NAME, channelName);
                 b.putString(Constants.KEY_CHANNEL_COUNT, channelCount);
+                b.putParcelableArray(Constants.KEY_CHANNEL_CATEGORIES, channelCategories);
                 intent.putExtras(b);
                 
                 mContext.startActivity(intent);

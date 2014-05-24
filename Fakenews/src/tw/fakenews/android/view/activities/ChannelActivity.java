@@ -28,12 +28,16 @@ public class ChannelActivity extends ActionBarActivity
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.container);
 
-        View view = getHeaderView(this.getIntent().getExtras());
+        Bundle b = this.getIntent().getExtras();
+        
+        View view = getHeaderView(b);
         layout.addView(view);
         
+        Fragment f = new CategoryListFragment();
+        f.setArguments(b);
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new CategoryListFragment())
+                    .add(R.id.container, f)
                     .commit();
         }
     }
