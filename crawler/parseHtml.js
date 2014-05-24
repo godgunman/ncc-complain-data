@@ -47,6 +47,11 @@ var fieldMap = [{
         value: 'ctl00_ContentPlaceHolder1_V_APPLY_CONTENT',
         key: 'complainContent',
     },
+     {
+        title: 'ctl00_ContentPlaceHolder1_Label14',
+        value: 'ctl00_ContentPlaceHolder1_V_REPLY_CONTENT',
+        key: 'complainContent',
+    },
 ]
 
 function parseByURL(url, callback) {

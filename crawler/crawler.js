@@ -4,113 +4,100 @@ var phantomjs = require('phantomjs')
 var parseHtml = require('./parseHtml');
 var binPath = phantomjs.path
 
-function getItemCountWithDate(date, callback) {
-    console.log('prepare get item count');
-    // prepare
-    var childArgs = [
-        '--ignore-ssl-errors=true',
-        path.join(__dirname, 'get_item_count_with_date.js'), date
-    ]
-
-    // run
-    childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
-        item_count = parseInt(stdout);
-        console.log('exec get item count done, count: ' + item_count);
-        // loop
-        if (item_count < 50) {
-            for (var i = 0; i < item_count; i++) {
-                getPageWithDateItem(date, i, callback);
-            }
-        }
-    })
-}
-
-function getPageWithDateItem(date, item, callback) {
-    console.log('get page with date item');
-    // prepare
-    var childArgs = [
-        '--ignore-ssl-errors=true',
-        path.join(__dirname, 'get_page_with_date_item.js'), date, item
-    ]
-
-    // run
-    childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
-        console.log('exec get page done');
-        if (callback) {
-            console.log('try callback');
-            callback(stdout);
-        }
-    })
-}
-
-function getPageWithSerial(serial, callback) {
-    console.log('get page with serial ' + serial);
-    // prepare
-    var childArgs = [
-        '--ignore-ssl-errors=true',
-        path.join(__dirname, 'get_page_with_serial.js'), serial
-    ]
-
-    // run
-    childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
-        console.log('exec get page done');
-        if (callback) {
-            console.log('try callback');
-            callback(stdout);
-        }
-    })
-}
-
 function fillZero(value, digit) {
-    var cnt = 0;
-    var tmp = value;
-    
-    while (tmp > 0) {
-        tmp = Math.floor(tmp/10);
-        ++cnt;
-    }
-
+    var valueStr = value.toString();
+    var cnt = valueStr.length;
     var str = '';
     while (cnt < digit) {
         str += '0';
         ++cnt;
     }
-    //console.log('cnt = ' + cnt.toString());
-    str += value.toString();
+    str += valueStr;
     return str;
 }
 
-function getFormattedSerial(year, month, day, id) {
+function getFormattedDate(year, month, date) {
     var yearStr = year.toString();
     var monthStr = fillZero(month, 2);
-    var dayStr = fillZero(day, 2);
-    var idStr = 'T' + fillZero(id, 5);
-    return yearStr + monthStr + dayStr + idStr;
+    var dayStr = fillZero(date, 2);
+    //var serialStr = yearStr + monthStr + dayStr + 'T' + fillZero(id, 5);
+    return yearStr + '/' + monthStr + '/' + dayStr;
 }
 
+function getItemListWithDate(date, callback) {
+    console.log('prepare get item count');
+    // prepare
+    var dateStr = getFormattedDate(date.getFullYear(),
+                                   date.getMonth() + 1,
+                                   date.getDate());
+    var childArgs = [
+        '--ignore-ssl-errors=true',
+        path.join(__dirname, 'get_item_list_with_date.js'), dateStr
+    ]
 
-function crawlWithDate(year, month, day, callback) {
-    var id = 1;
+    // run
+    childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
+        console.log('get item list done');
+        
+        var itemList = stdout.split('\n');
+        callback(itemList);
+        //for (var i = 0; i < itemList.length; ++i)
+        //    console.log(itemList[i]);
+        //item_count = parseInt(stdout);
+        //console.log('exec get item count done, count: ' + item_count);
+        //for (var i = 0; i < item_count; i++) {
+        //    callback();
+        //}
+        // loop
+        /*if (item_count < 50) {
+            for (var i = 0; i < item_count; i++) {
+                getPageWithDateItem(date, i, callback);
+            }
+        }*/
+    })
+}
+
+//function getSerial
+
+function getPageByDateAndId(date, id, callback) {
+    // prepare
+    console.log('get page by date & id');
+    var childArgs = [
+        '--ignore-ssl-errors=true',
+        path.join(__dirname, 'get_page_by_date_and_id.js'),
+        date.getFullYear(),
+        date.getMonth() + 1,
+        date.getDate(),
+        id
+    ]
+    console.log(path.join(__dirname, 'get_page_by_date_and_id.js'));
+    // run
+    childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
+        console.log('exec get page done');
+        if (callback) {
+            console.log('try callback');
+            callback(stdout);
+        }
+    })
+}
+
+function crawlWithDate(date, callback) {
+    getItemListWithDate(date, callback);
+    /*var id = 1;
     while (true) {
-        var serial = getFormattedSerial(year, month, day, id);
-        var result = getPageWithSerial(serial, function(html) {
+        //var serial = getFormattedSerial(date, id);
+        console.log('fetching ' + id.toString() + '...');
+        var result = getPageByDateAndId(date, id, function(html) {
             var jsonData = parseHtml.parseByText(html);
             if (callback) {
                 callback(jsonData);
             }
         });
+        console.log('gala get get');
         if (!result) break;
         ++id;    
-    }
-    /*getItemCountWithDate(date, function(html) {
-        var jsonData = parseHtml.parseByText(html);
-                    if (callback) {var jsonData = parseHtml.parseByText(html);
-        if (callback) {
-            callback(jsonData);
-        }
-            callback(jsonData);
-        }
-    });*/
+    } */
+    console.log('QQ');
 }
 
 

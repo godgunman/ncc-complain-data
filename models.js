@@ -3,6 +3,7 @@ var complainSchema = mongoose.Schema({
     _id: String,
     cid: String,
     date: Date,
+    status: String,
     channelCategory: String,
     channelName: String,
     programName: String,
