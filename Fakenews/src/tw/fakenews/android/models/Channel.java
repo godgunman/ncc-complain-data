@@ -27,38 +27,38 @@ public class Channel {
 	public int size;
 
 	public static class Category implements Parcelable {
-	    
-	    public static final Parcelable.Creator<Category> CREATOR = new Creator();
-	    
+
+		public static final Parcelable.Creator<Category> CREATOR = new Creator();
+
 		public String categoryName;
 		public Complain[] data;
 		public int size;
-		
-        @Override
-        public int describeContents() {
-            return 0;
-        }
-        
-        @Override
-        public void writeToParcel(Parcel parcel, int flags) {
-            parcel.writeString(categoryName);
-            parcel.writeInt(size);
-        }
-        
-        public static class Creator implements Parcelable.Creator<Category> {
-            public Category createFromParcel(Parcel in) {
-                return new Category(in);
-            }
 
-            public Category[] newArray(int size) {
-                return new Category[size];
-            }
-        }
-        
-        private Category (Parcel parcel) {
-            categoryName = parcel.readString();
-            size = parcel.readInt();
-        }
+		@Override
+		public int describeContents() {
+			return 0;
+		}
+
+		@Override
+		public void writeToParcel(Parcel parcel, int flags) {
+			parcel.writeString(categoryName);
+			parcel.writeInt(size);
+		}
+
+		public static class Creator implements Parcelable.Creator<Category> {
+			public Category createFromParcel(Parcel in) {
+				return new Category(in);
+			}
+
+			public Category[] newArray(int size) {
+				return new Category[size];
+			}
+		}
+
+		private Category(Parcel parcel) {
+			categoryName = parcel.readString();
+			size = parcel.readInt();
+		}
 
 	}
 
@@ -84,18 +84,13 @@ public class Channel {
 					String content = httpClient
 							.execute(target, responseHandler);
 					JSONObject object = new JSONObject(content);
-					if (object.has("error")) {
-						Log.e("models.Channel._find()", object.get("error")
-								.toString());
+					if (object.has("error") && object.get("error") != null) {
+						Log.e("[models.Channel]",
+								"error: " + object.get("error").toString());
 					} else {
 						Gson gson = new Gson();
 						JSONArray array = object.getJSONArray("result");
-						Channel[] channels = new Channel[array.length()];
-						for (int i = 0; i < channels.length; i++) {
-							channels[i] = gson.fromJson(array.getJSONObject(i)
-									.toString(), Channel.class);
-						}
-						return channels;
+						return gson.fromJson(array.toString(), Channel[].class);
 					}
 				} catch (ClientProtocolException e) {
 					e.printStackTrace();

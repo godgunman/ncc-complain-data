@@ -7,6 +7,7 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -21,8 +22,6 @@ public class Complain {
 
 	public String cid;
 	public String date;
-	public String ComplainCategory;
-	public String ComplainName;
 	public String programName;
 	public String broadcastDate;
 
@@ -37,9 +36,9 @@ public class Complain {
 		_find(new String[0], skip, limit, callback);
 	}
 
-	public static void findByChannel(String channelName, int skip, int limit,
+	public static void findBycomplain(String complainName, int skip, int limit,
 			final ComplainCallback callback) {
-		_find(new String[] { "channelName", channelName }, skip, limit,
+		_find(new String[] { "complainName", complainName }, skip, limit,
 				callback);
 	}
 
@@ -66,6 +65,8 @@ public class Complain {
 						.appendQueryParameter("skip", String.valueOf(skip));
 
 				HttpGet target = new HttpGet(builder.build().toString());
+				Log.d("Complain._find", "api url = "
+						+ builder.build().toString());
 
 				DefaultHttpClient httpClient = new DefaultHttpClient();
 				try {
@@ -73,13 +74,15 @@ public class Complain {
 					String content = httpClient
 							.execute(target, responseHandler);
 					JSONObject object = new JSONObject(content);
-					if (object.has("error")) {
-						Log.e("models.Complain._find()", object.get("error")
-								.toString());
+					if (object.has("error") && object.get("error") != null
+							&& object.get("result") == null) {
+						Log.e("[models.Complain]",
+								"error: " + object.get("error").toString());
 					} else {
 						Gson gson = new Gson();
-						return gson.fromJson(object.getJSONArray("result")
-								.toString(), Complain[].class);
+						JSONArray array = object.getJSONArray("result");
+						return gson
+								.fromJson(array.toString(), Complain[].class);
 					}
 				} catch (ClientProtocolException e) {
 					e.printStackTrace();
