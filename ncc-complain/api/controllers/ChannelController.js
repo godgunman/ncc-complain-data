@@ -22,7 +22,11 @@ module.exports = {
 
     find: function(req, res) {
         var channels = {};
-        Complain.find(function(err, results) {
+        Complain.find('channelName complainCategory', function(error, results) {
+            if (error) {
+                res.json({error: error});
+                return;
+            }
             results.forEach(function(e) {
                 if (!channels[e.channelName]) {
                     channels[e.channelName] = {
@@ -42,11 +46,12 @@ module.exports = {
                     if (categoryKey=='size') continue;
                     category.push({
                         categoryName: categoryKey,
-                        data: channels[key][categoryKey],
+                        size: channels[key][categoryKey].length,
+//                        data: channels[key][categoryKey],
                     });
                 }
                 category = _.sortBy(category, function(e) {
-                    return e.data.length;
+                    return -e.size;
                 });
                 channelArray.push({
                     channelName: key,
@@ -55,7 +60,7 @@ module.exports = {
                 });
             }
             channels = _.sortBy(channelArray, function(channel) {return -channel.size});
-            res.json(channels);
+            res.json({result: channels});
         });
     },
 
