@@ -14,11 +14,17 @@ import org.json.JSONObject;
 import com.google.gson.Gson;
 
 import tw.fakenews.android.Constants;
+import tw.fakenews.android.models.Channel.Category;
+import tw.fakenews.android.models.Channel.Category.Creator;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.util.Log;
 
-public class Complain {
+public class Complain implements Parcelable {
+    
+    public static final Parcelable.Creator<Complain> CREATOR = new Creator();
 
 	public String cid;
 	public String date;
@@ -36,6 +42,58 @@ public class Complain {
 	public String replyContent;
 	public String status;
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int flags) {
+        parcel.writeString(cid);
+        parcel.writeString(date);
+        parcel.writeString(channelName);
+        parcel.writeString(programName);
+
+        parcel.writeString(broadcastDate);
+        parcel.writeString(broadcastTime);
+
+        parcel.writeString(channelCategory);
+        parcel.writeString(complainCategory);
+
+        parcel.writeString(complainTitle);
+        parcel.writeString(complainContent);
+        parcel.writeString(replyContent);
+        parcel.writeString(status);
+    }
+
+    public static class Creator implements Parcelable.Creator<Complain> {
+        public Complain createFromParcel(Parcel in) {
+            return new Complain(in);
+        }
+
+        public Complain[] newArray(int size) {
+            return new Complain[size];
+        }
+    }
+
+    private Complain(Parcel parcel) {
+        cid = parcel.readString();
+        date = parcel.readString();
+        channelName = parcel.readString();
+        programName = parcel.readString();
+
+        broadcastDate = parcel.readString();
+        broadcastTime = parcel.readString();
+
+        channelCategory = parcel.readString();
+        complainCategory = parcel.readString();
+
+        complainTitle = parcel.readString();
+        complainContent = parcel.readString();
+        replyContent = parcel.readString();
+        status = parcel.readString();
+}
+	
 	public static void find(int skip, int limit, final ComplainCallback callback) {
 		_find(new String[0], skip, limit, callback);
 	}
