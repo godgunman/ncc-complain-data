@@ -33,7 +33,7 @@ if ('development' == app.get('env')) {
   app.use(express.errorHandler());
 }
 
-app.get('/api/compalain/:id?', ComplainController.find);
+app.get('/api/complain/:id?', ComplainController.find);
 app.get('/api/channel', ChannelController.find);
 
 http.createServer(app).listen(app.get('port'), function(){
