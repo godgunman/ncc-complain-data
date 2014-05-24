@@ -1,29 +1,18 @@
 package tw.fakenews.android.view.fragment;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-
 import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
-import tw.fakenews.android.models.Channel;
 import tw.fakenews.android.models.Channel.Category;
-import tw.fakenews.android.view.adapter.CategoriesListAdapter;
-import tw.fakenews.android.view.adapter.ChannelListAdapter;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.ListFragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 public class CategoryListFragment extends Fragment {
@@ -66,11 +55,6 @@ public class CategoryListFragment extends Fragment {
         }
     }
     
-//    @Override
-//    public void onListItemClick (ListView l, View v, int position, long id) {
-//        mCallback.onCategorySelected(position);
-//    }
-    
     private void setCategoryList() {
         
         Category[] categories = getCategories();
@@ -84,20 +68,18 @@ public class CategoryListFragment extends Fragment {
             View rowView = inflater.inflate(R.layout.row_categories, null);
             
             int[] catId = { R.id.category1, R.id.category2, R.id.category3};
-            int[] imgId = { R.id.categoryImg1, R.id.categoryImg2, R.id.categoryImg3};
-            int[] coundId = { R.id.categoryCount1, R.id.categoryCount2, R.id.categoryCount3};
             
             for (int j = 0; j < 3; j++) {
-                RelativeLayout rowContainer = (RelativeLayout) rowView.findViewById(catId[j]);
+                View rowContainer = (View) rowView.findViewById(catId[j]);
                 if (i == rowNum && residualElementNum < j + 1) {
                     rowContainer.setVisibility(View.INVISIBLE);
                 } else {
                     final int position = i * 3 + j;
                     Category c = categories[position];
-                    ImageView imgView = (ImageView) rowView.findViewById(imgId[j]);
+                    ImageView imgView = (ImageView) rowContainer.findViewById(R.id.categoryImg);
                     imgView.setImageResource(findCategoryRes(c.categoryName));
                     
-                    TextView textView = (TextView) rowView.findViewById(coundId[j]);
+                    TextView textView = (TextView) rowContainer.findViewById(R.id.categoryCount);
                     textView.setText(Integer.toString(c.size));
                     textView.setTypeface(engFace);
                     

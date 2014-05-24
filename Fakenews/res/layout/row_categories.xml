@@ -2,83 +2,30 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:orientation="horizontal"
     android:paddingBottom="5dp" >
 
-    <RelativeLayout
+    <include
         android:id="@+id/category1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        layout="@layout/element_category" />
 
-        <ImageView
-            android:id="@+id/categoryImg1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/category_ads" />
-
-        <TextView
-            android:id="@+id/categoryCount1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/categoryImg1"
-            android:layout_centerVertical="true"
-            android:paddingRight="5dp"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
+    <include
         android:id="@+id/category2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginRight="5dp"
-        android:layout_weight="1" >
+        android:layout_weight="1"
+        layout="@layout/element_category" />
 
-        <ImageView
-            android:id="@+id/categoryImg2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/category_ads" />
-
-        <TextView
-            android:id="@+id/categoryCount2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/categoryImg2"
-            android:layout_centerVertical="true"
-            android:paddingRight="5dp"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
-    </RelativeLayout>
-
-    <RelativeLayout
+    <include
         android:id="@+id/category3"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="1" >
-
-        <ImageView
-            android:id="@+id/categoryImg3"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:scaleType="fitXY"
-            android:src="@drawable/category_ads" />
-
-        <TextView
-            android:id="@+id/categoryCount3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/categoryImg3"
-            android:layout_centerVertical="true"
-            android:paddingRight="5dp"
-            android:textColor="@android:color/white"
-            android:textSize="30sp" />
-    </RelativeLayout>
+        android:layout_weight="1"
+        layout="@layout/element_category" />
 
 </LinearLayout>

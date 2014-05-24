@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
-import tw.fakenews.android.view.adapter.CategoriesListAdapter;
+import tw.fakenews.android.view.adapter.ComplainListAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
@@ -20,7 +20,7 @@ public class ComplainListFragment extends ListFragment {
     private OnComplainSelectedListener mCallback;
     
     private LinearLayout headerLayout;
-    private CategoriesListAdapter adapter;
+    private ComplainListAdapter adapter;
     
     public interface OnComplainSelectedListener {
         public void onComplainSelected(int position);
