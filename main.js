@@ -7,6 +7,7 @@ var Task = require('./models').Task;
 
 var single_delay = 8000;
 var delay = 1000 * 60 * 10;
+var taskDelay = 1000 * 5;
 //var time_diff  = 1000 * 60 * 5;
 
 function buildList () {
@@ -65,6 +66,6 @@ function updateItems() {
 }
 
 buildList();
-setInterval(buildList, delay);
+setInterval(buildList, taskDelay);
 updateItems();
 setInterval(updateItems, delay * 2);
