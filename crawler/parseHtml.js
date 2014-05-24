@@ -50,7 +50,12 @@ var fieldMap = [{
      {
         title: 'ctl00_ContentPlaceHolder1_Label14',
         value: 'ctl00_ContentPlaceHolder1_V_REPLY_CONTENT',
-        key: 'complainContent',
+        key: 'replyContent',
+    },
+	{
+        title: 'jizzjizzjizz',
+        value: 'jizzjizzjizz',
+        key: 'status',
     },
 ]
 
@@ -76,6 +81,7 @@ function parseByText(text) {
     fieldMap.forEach(function(e) {
         result[e.key] = $("#" + e.value).text();
     });
+
     return result;
 }
 

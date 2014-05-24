@@ -5,6 +5,7 @@ var crawler = require('./crawler/crawler');
 var Complain = require('./models').Complain;
 var Task = require('./models').Task;
 
+var single_delay = 8000;
 var delay = 1000 * 60 * 10;
 //var time_diff  = 1000 * 60 * 5;
 
@@ -37,25 +38,31 @@ function buildList () {
     });
 }
 
+var complain_idx = 0;
+
 function updateItems() {
-    console.log('jumi');
     Complain.where('status').ne('done').exec(function(err, complains) {
-        console.log('jumi2');
         console.log(complains);
-        for (var i = 0; i < complains.length; ++i) {
-            crawler.updateItem(complains[i].cid, function(jsondata) {
-		Complain.findByIdAndUpdate(complains[i].cid, jsondata, { upsert: true},
-		    function(err, complain) {
-		    	console.log(err, complain);
-		    }
-		)
-	    });
-        }
-    });//where("status").ne('done');
+        var loop = setInterval(function() {
+			if (complain_idx == complains.length) {
+				clearInterval(loop);
+				return;
+			}
+
+			crawler.updateItem(complains[complain_idx].cid, function(jsondata) {
+				Complain.findByIdAndUpdate(complains[complain_idx].cid, jsondata, { upsert: true},
+					function(err, complain) {
+						console.log(err, complain);
+					}
+				)
+			});
+			++complain_idx;
+        }, single_delay);
+    });
     
 }
 
-//buildList();
-//setInterval(buildList, delay);
+buildList();
+setInterval(buildList, delay);
 updateItems();
 setInterval(updateItems, delay * 2);

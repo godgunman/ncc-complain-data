@@ -13,6 +13,7 @@ var complainSchema = mongoose.Schema({
     complainCategory: String,
     complainTitle: String,
     complainContent: String,
+	replyContent: String,
 });
 
 complainSchema.path('cid').set(function(v) {

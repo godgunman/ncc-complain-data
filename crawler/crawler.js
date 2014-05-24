@@ -47,23 +47,26 @@ function getItemListWithDate(date, callback) {
 
 function getPageById(id, callback) {
     // prepare
-    console.log('get page by date & id');
+    console.log('get page by id = ' + id);
     var childArgs = [
         '--ignore-ssl-errors=true',
         path.join(__dirname, 'get_page_by_id.js'),
         id
     ]
-    console.log(path.join(__dirname, 'get_page_by_id.js'));
+    //console.log(path.join(__dirname, 'get_page_by_id.js'));
     // run
     childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
         console.log('exec get page done');
-        if (callback) {
+         
+		if (callback) {
             console.log('try callback');
             var jsondata = parseHtml.parseByText(stdout);
-	    console.log(jsondata);
-	    callback(jsondata);
+			if (stdout[0] == 'd') jsondata['status'] = 'done';
+			else jsondata['status'] = 'pending';  
+			console.log(jsondata);
+			callback(jsondata);
         }
-    })
+    });
 }
 
 function crawlWithDate(date, callback) {
@@ -72,7 +75,7 @@ function crawlWithDate(date, callback) {
 
 
 function updateItem(cid, callback) {
-    getPageById(cid, callback);
+	getPageById(cid, callback);
 }
 
 module.exports = {

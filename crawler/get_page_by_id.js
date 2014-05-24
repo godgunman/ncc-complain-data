@@ -33,7 +33,10 @@ page.settings.userAgent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_2) AppleW
 page.settings.resourceTimeout = 5000;
 var ncc_url = 'https://cabletvweb.ncc.gov.tw/SWSFront35/SWSF/SWSF01017.aspx';
 page.open(ncc_url, function(status) {
-    // error handle
+    page.includeJs("http://code.jquery.com/jquery-1.9.1.min.js", function() {
+       
+    });
+	// error handle
     if (status !== 'success') {
         console.log('Unable to access network');
         phantom.exit();
@@ -51,18 +54,27 @@ page.open(ncc_url, function(status) {
         document.getElementById(dateEndColumnId).value = date;
         document.getElementsByName(clickButtonId)[0].click();
     }, target_cid, target_date);
+	//console.log(target_date);
     
-    console.log(target_cid);
+    //console.log(target_cid);
 
     setTimeout(function() {
         setTimeout(function() {
             // query detail
 	    console.log('jumi');
-            page.evaluate(function() {
-                document.getElementById('ctl00_ContentPlaceHolder1_dvMaster_ctl02_G_View').click();
-            });
+            var stat = page.evaluate(function() {
+                var st = $('.MasterGridViewItemStyle').map(
+                        function(i, v) { return $(v).children()[8]; }).map(
+                        function(i, v) { return $(v).text(); });
 
-            setTimeout(function() {
+				document.getElementById('ctl00_ContentPlaceHolder1_dvMaster_ctl02_G_View').click();
+				return st;
+			});
+			//console.log(stat.length);
+			//console.log(stat[0]);
+            if (stat[0] == '處理中') console.log('pending');
+			else console.log('done');
+			setTimeout(function() {
                 var html = page.evaluate(function() {
                     return document.documentElement.innerHTML;
                 });
