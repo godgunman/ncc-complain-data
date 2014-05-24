@@ -46,16 +46,21 @@ function updateItems() {
     Complain.where('status').equals('new').exec(function(err, complains) {
 	    console.log(complains);
         var loop = setInterval(function() {
-			console.log('jizz' + complain_idx);
+			console.log('complain_idx', complain_idx);
 			if (complain_idx == complains.length) {
 				clearInterval(loop);
 				return;
 			}
 			console.log('spirit breaker ' + complains[complain_idx]);
-			crawler.updateItem(complains[complain_idx].cid, function(jsondata) {
-				Complain.findByIdAndUpdate(complains[complain_idx].cid, jsondata, { upsert: true},
+            var cid = complains[complain_idx].cid;
+			crawler.updateItem(cid, function(jsondata) {
+				Complain.findByIdAndUpdate(cid, jsondata, { upsert: true},
 					function(err, complain) {
-						console.log(err, complain);
+                        if (err) {
+    						console.log('error:', err);
+                        } else {
+                            console.log('saved: id=', complain.id);
+                        }
 					}
 				)
 			});
