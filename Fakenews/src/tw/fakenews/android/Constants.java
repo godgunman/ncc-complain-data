@@ -2,7 +2,7 @@ package tw.fakenews.android;
 
 public interface Constants {
 	public final static String API_HOST = "fakenews.tw";
-	public final static String API_HOST_DEV = "localhost:1337i";
+	public final static String API_HOST_DEV = "localhost:1337";
 	
 	
     public final static String KEY_CHANNEL_NAME = "KEY_CHANNEL_NAME";
