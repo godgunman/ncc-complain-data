@@ -90,7 +90,7 @@
 
         <script>
             $(function() {
-                $.get('/api/channel/testData', function(res){
+                $.get('/api/channel', function(res){
                     res = res.result;
                     for (var i = 0; i < res.length; i++) {
                         var tr = $('<tr>');
