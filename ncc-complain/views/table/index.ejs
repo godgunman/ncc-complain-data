@@ -13,12 +13,14 @@
     #header {
         background-image:url(/images/bg.png); 
         background-repeat: repeat;
-        height: 20%;
+        padding: 20px 0px;
         -webkit-box-shadow: 0 0 2px 0;
         box-shadow: 0 0 2px 0;
     }
 
-
+    .container {
+        padding: 10px 25px;
+    }
 </style>
 
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -26,16 +28,17 @@
 
 <script>
     $(function() {
-        $.get('/api/channel', function(res){
-            res = res.result;
+        $.get('/api/channel/testData', function(res){
+            //res = res.result;
             for (var i = 0; i < res.length; i++) {
                 var tr = $('<tr>');
-                var rank = $('<td>').text(i+1);
+                var rankLabel = $('<div class="ui teal circular label" style="width: 26px;">').text(i+1);
+                var rank = $('<td>').append(rankLabel);
                 var channelName = $('<td>').text(res[i].channelName);
                 var size = $('<td>').text(res[i].size);
 
                 var categoryPrefix = $('<div class="ui large labels">');
-                for (var j = 0; j < res[i].category.length && j < 8;j++) {
+                for (var j = 0; j < res[i].category.length && j < 8; j++) {
                     var label = $('<div class="ui label">');
                     label.text(res[i].category[j].categoryName.slice(0, 4));
                     label.attr('data-content', res[i].category[j].categoryName);
@@ -50,8 +53,7 @@
                 $('#tableContent').append(tr);
             }
 
-            $('.ui .label')
-            .popup({
+            $('.ui .label').popup({
                 on: 'hover'
             });
         });
@@ -61,7 +63,7 @@
 <div id="header">
     <div class="ui column stackable center aligned page grid">
         <a href="/">
-            <img class="column eight wide" src="/images/table_head.png">
+            <img class="column eight wide" src="/images/table_head.png" width="50%">
         </a>
     </div>
 </div>

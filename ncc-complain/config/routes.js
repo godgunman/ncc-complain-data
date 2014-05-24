@@ -44,17 +44,24 @@ module.exports.routes = {
         controller : 'ComplainController',
         action: 'find', 
     },
-    
+
     'get /api/channel' : {
         controller : 'ChannelController',
         action: 'find', 
-    }
+    },
+    'get /api/channel/testData' : { 
+        controller : 'ChannelController',
+        action: 'testData', 
+    },  
+
+
+
     /*
     // But what if you want your home page to display
     // a signup form located at `views/user/signup.ejs`?
     '/': {
-view: 'user/signup'
-}
+    view: 'user/signup'
+    }
 
 
     // Let's say you're building an email client, like Gmail
@@ -66,9 +73,9 @@ view: 'user/signup'
 
     // Alternatively, you can use the more verbose syntax:
     '/': {
-controller: 'MessageController',
-action: 'inbox'
-}
+    controller: 'MessageController',
+    action: 'inbox'
+    }
 
 
     // If you decided to call your action `index` instead of `inbox`,
@@ -106,7 +113,7 @@ action: 'inbox'
     'get /*(^.*)': 'UserController.profile'
 
 */
-    };
+};
 
 
 
