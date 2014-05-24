@@ -51,7 +51,7 @@ public class Channel {
 							.execute(target, responseHandler);
 					JSONObject object = new JSONObject(content);
 					if (object.has("error")) {
-						Log.e("models.Complain._find()", object.get("error")
+						Log.e("models.Channel._find()", object.get("error")
 								.toString());
 					} else {
 						Gson gson = new Gson();
