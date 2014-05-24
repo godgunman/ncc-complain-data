@@ -6,7 +6,14 @@ module.exports = {
 
     find: function(req, res) {
         var channels = {};
-        Complain.find('channelName complainCategory', function(error, results) {
+        Complain.find({
+            status: {
+                $ne: 'new',
+            },
+            channelName: {
+                $ne: '',
+            }
+        }, 'channelName complainCategory', function(error, results) {
             if (error) {
                 res.json({error: error});
                 return;
