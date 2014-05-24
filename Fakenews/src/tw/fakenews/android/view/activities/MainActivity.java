@@ -16,8 +16,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 
 public class MainActivity extends ActionBarActivity {
@@ -34,6 +32,7 @@ public class MainActivity extends ActionBarActivity {
 
 		// ApiTest.chennalTest();
 		// ApiTest.complainTest();
+		// ApiTest.complainTest2();
 	}
 
 	@Override

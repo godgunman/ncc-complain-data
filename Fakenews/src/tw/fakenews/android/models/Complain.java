@@ -22,24 +22,29 @@ public class Complain {
 
 	public String cid;
 	public String date;
+	public String channelName;
 	public String programName;
-	public String broadcastDate;
 
+	public String broadcastDate;
 	public String broadcastTime;
-	public String contentCategory;
+
+	public String channelCategory;
 	public String complainCategory;
 
 	public String complainTitle;
 	public String complainContent;
+	public String replyContent;
+	public String status;
 
 	public static void find(int skip, int limit, final ComplainCallback callback) {
 		_find(new String[0], skip, limit, callback);
 	}
 
-	public static void findBycomplain(String complainName, int skip, int limit,
+	public static void findByChannelNameAndComplainCategory(String channelName,
+			String complainCategory, int skip, int limit,
 			final ComplainCallback callback) {
-		_find(new String[] { "complainName", complainName }, skip, limit,
-				callback);
+		_find(new String[] { "channelName", channelName, "complainCategory",
+				complainCategory }, skip, limit, callback);
 	}
 
 	public static void findByProgram(String programName, int skip, int limit,

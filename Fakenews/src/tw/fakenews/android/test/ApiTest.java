@@ -11,7 +11,7 @@ public class ApiTest {
 	public static void complainTest() {
 
 		Log.i("[complainTest]", "test starts");
-		Complain.find(0, 1000, new ComplainCallback() {
+		Complain.find(0, 10, new ComplainCallback() {
 			@Override
 			public void done(Complain[] complains) {
 				Log.i("[complainTest]", "complains.length" + complains.length);
@@ -28,6 +28,29 @@ public class ApiTest {
 
 			}
 		});
+	}
+
+	public static void complainTest2() {
+		Complain.findByChannelNameAndComplainCategory("中天新聞台", "內容不實、不公", 0,
+				10, new ComplainCallback() {
+					@Override
+					public void done(Complain[] complains) {
+						Log.i("[complainTest]", "complains.length"
+								+ complains.length);
+						for (Complain complain : complains) {
+							Log.i("[complainTest]", "cid: " + complain.cid);
+							Log.i("[complainTest]", "complainTitle: "
+									+ complain.complainTitle);
+							Log.i("[complainTest]", "complainCategory: "
+									+ complain.complainCategory);
+							Log.i("[complainTest]", "complainContent: "
+									+ complain.complainContent);
+						}
+						Log.i("[complainTest]", "test done");
+
+					}
+				});
+
 	}
 
 	public static void chennalTest() {
