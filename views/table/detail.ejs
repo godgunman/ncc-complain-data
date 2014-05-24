@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Standard Meta -->
+
+        <% include ../header %>
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700|Open+Sans:300italic,400,300,700' rel='stylesheet' type='text/css'>
+
+        <link rel="stylesheet" type="text/css" href="/stylesheets/detail.css">
+        <script src="/javascripts/utils.js"></script>
+
+        <script> 
+            var currentPage = 1;
+            var maxPage = 15;
+            var result;
+
+            function updatePagination(page) {
+                if (page) currentPage = page;
+                currentPage = Math.max(1, currentPage);
+                currentPage = Math.min(currentPage, maxPage);
+                setData((currentPage - 1) * 7, 7);
+                $('#currentPage').text(currentPage);
+                $('.ui.basic.table tbody').children().eq(0).click();
+                var items = $('div.ui.pagination.menu').children();
+                if (currentPage == 1 || currentPage == 2) {
+                    for (var i = 1;i <= 5; i++) {
+                        items.eq(i).attr('class', 'item').text(i);
+                    }
+                    items.eq(currentPage).attr('class', 'active item').text(currentPage);
+                    items.eq(6).attr('class', 'disable item').text('...');
+                } else if (currentPage == maxPage || currentPage == maxPage - 1) {
+                    for (var i = 2;i <= 6; i++) {
+                        items.eq(i).attr('class', 'item').text(maxPage - (5 - i + 1));
+                    }
+                    items.eq(6-(maxPage-currentPage)).attr('class', 'active item').text(currentPage);
+                    items.eq(1).attr('class', 'disable item').text('...');
+                } else {
+                    items.eq(1).attr('class', 'item').text(1);
+                    items.eq(2).attr('class', 'disable item').text('...');
+                    items.eq(3).attr('class', 'active item').text(currentPage);
+                    items.eq(4).attr('class', 'item').text(currentPage + 1);
+                    items.eq(5).attr('class', 'disable item').text('...');
+                    items.eq(6).attr('class', 'item').text(maxPage);
+                }
+            }
+            
+            function updateDetail(sn) {
+                result.forEach(function(d) {
+                    if (d.cid === sn) {
+                        $('#complainTitle').text(d.complainTitle)
+                        $('#complainContent').text(d.complainContent);
+                    }
+                });
+            }
+
+            function genItem(sn, program, broadcastDate) {
+                var sn = $('<td>').text(sn)
+                var broadcastDate = $('<td>').text(broadcastDate);
+                var program = $('<td>').text(program.slice(0, 20));
+                var tr = $('<tr>').append(sn).append(broadcastDate).append(program);
+                tr.click(function(e) {
+                    updateDetail($(this).children().eq(0).text()); 
+                });
+               return tr;
+            }
+            /*
+               <tr>
+               <td>John</td>
+               <td>Approved</td>
+               <td>None</td>
+               </tr>
+             */
+
+            function setData(offset, size) {
+                var tbody = $('.ui.basic.table tbody'); 
+                tbody.children().remove();
+                for (var i = 0;i < size; i++) {
+                    if (offset + i >= result.length) return;
+                    var d = result[offset + i];
+                    var item = genItem(d.cid, d.programName, d.broadcastDate);
+                    tbody.append(item);
+                }
+            }
+
+            $(function(){
+                $('#pagePrev').click(function() {
+                    updatePagination(currentPage - 1);
+                });
+                $('#pageNext').click(function() {
+                    updatePagination(currentPage + 1);
+                });
+                $('.ui.pagination.menu .item').click(function(){
+                    var num = $(this).text();
+                    if (isNaN(num) == false) {
+                        updatePagination(num); 
+                    }
+                });
+
+                var channelName = getParameterByName('channelName');
+                $('#channelName').text(channelName);
+                $.get('/api/complain?channelName=' + channelName, function(data) {
+                    result = data.result;
+                    maxPage = 1 + Math.floor(result.length/7);
+                    $('#maxPage').text(maxPage);
+                    updatePagination(1);
+                });
+            });
+
+        </script>
+    </head>
+    <body id="feed">
+        <div class="ui celled grid">
+            <div class="nine wide middle column" style="overflow-y: auto; height:400px;">
+                <h2 class="ui header" id="channelName">
+                    <i class="inbox icon"></i>
+                    Inbox
+                </h2>
+                <table class="ui basic table" style="height:60%">
+                    <thead>
+                        <tr><td width="20%">案件標號</td>
+                            <td width="20%">申訴日期</td>
+                            <td width="60%">節目名稱</td>
+                    </tr></thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div class="ui divider"></div>
+
+                <div class="page">Showing <b id="currentPage">6</b> of <span id="maxPage">213</span></div>
+                <div class="ui pagination menu ">
+                    <a class="icon item" id="pagePrev"><i class="icon left arrow"></i></a>
+                    <a class="active item">1</a>
+                    <a class="item">2</a>
+                    <a class="item">3</a>
+                    <a class="item">4</a>
+                    <a class="item">5</a>
+                    <div class="disabled item">...</div>
+                    <a class="icon item" id="pageNext"><i class="icon right arrow"></i></a>
+                </div>
+            </div>
+            <div class="seven wide right column">
+                <h1 class="ui header">案件詳細資料</h1>
+                <a class="ui teal label">申訴主旨</a>
+                <p id="complainTitle"></p>
+                <div class="ui divider"></div>
+                <a class="ui teal label">申訴內容</a>
+                <p id="complainContent"></p>
+                <div class="ui divider"></div>
+            </div>
+        </div>
+    </body>
+
+</html>
