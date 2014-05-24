@@ -90,6 +90,7 @@
 
         <script>
             $(function() {
+                $('#loadingDimmer').dimmer('show');
                 $.get('/api/channel', function(res){
                     res = res.result;
                     for (var i = 0; i < res.length; i++) {
@@ -106,7 +107,7 @@
                                 mytag.click(function(){
                                     console.log('/table/detail?channelName=' + channelName + '&categoryName=' + categoryName);
                                     $('#myiframe').attr('src', '/table/detail?channelName=' + channelName + '&categoryName=' + categoryName);
-                                    $('.ui.page.dimmer').dimmer('show');
+                                    $('#categoryPage').dimmer('show');
                                 });
                             })(res[i].category[j].categoryName, res[i].channelName);
                             var label = $('<div class="data">');
@@ -142,6 +143,8 @@
                     $('.mytag').popup({
                         on: 'hover'
                     });
+
+                    $('#loadingDimmer').dimmer('hide');
                 });
             });
         </script>
@@ -166,10 +169,16 @@
                 <tbody id="tableContent">
                 </tbody>
             </table>
+            <div id="loadingDimmer" class="ui page dimmer">
+                <div class="content">
+                    <div class="center"><i class="massive loading icon"></i> Loading...</div>
+                </div>
+            </div>
 
-            <div class="ui page dimmer">
+            <div id="categoryPage" class="ui page dimmer">
                 <div class="content center">
                     <iframe id="myiframe" style="margin-top: 50px;" frameborder="0" width="100%" height="80%" src="/table/detail"/>
+                    </div>
                 </div>
             </div>
         </div>
