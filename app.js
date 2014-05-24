@@ -21,6 +21,7 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
+
 app.use(express.favicon(__dirname + '/public/images/favicon.ico')); 
 app.use(express.logger('dev'));
 app.use(express.json());
@@ -35,12 +36,19 @@ if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
 
+app.all('/', function(req, res, next) {
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "X-Requested-With");
+    next();
+});
+
 app.get('/', HomeController.index);
 
 app.get('/api/complain/:id?', ComplainController.find);
 app.get('/api/channel', ChannelController.find);
 app.get('/table', TableController.index);
 app.get('/table/detail', TableController.detail);
+app.get('/api/channel/testData', ChannelController.testData);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));

@@ -90,7 +90,7 @@
 
         <script>
             $(function() {
-                $.get('/api/channel', function(res){
+                $.get('/api/channel/testData', function(res){
                     res = res.result;
                     for (var i = 0; i < res.length; i++) {
                         var tr = $('<tr>');
@@ -102,10 +102,13 @@
                         var categoryPrefix = $('<div>');
                         for (var j = 0; j < res[i].category.length && j < 8; j++) {
                             var mytag = $('<div class="mytag">');
-                            mytag.click(function(){
-                                console.log('click');
-                                $('.ui.page.dimmer').dimmer('show');
-                            });
+                            (function(categoryName, channelName) {
+                                mytag.click(function(){
+                                    console.log('/table/detail?channelName=' + channelName + '&categoryName=' + categoryName);
+                                    $('#myiframe').attr('src', '/table/detail?channelName=' + channelName + '&categoryName=' + categoryName);
+                                    $('.ui.page.dimmer').dimmer('show');
+                                });
+                            })(res[i].category[j].categoryName, res[i].channelName);
                             var label = $('<div class="data">');
                             var temp = res[i].category[j].categoryName;
                             temp = temp.replace(/、/g, '或');
@@ -166,7 +169,7 @@
 
             <div class="ui page dimmer">
                 <div class="content center">
-                    <iframe style="margin-top: 50px;" frameborder="0" width="100%" height="80%" src="/table/detail"/>
+                    <iframe id="myiframe" style="margin-top: 50px;" frameborder="0" width="100%" height="80%" src="/table/detail"/>
                 </div>
             </div>
         </div>

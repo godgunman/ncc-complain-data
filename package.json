@@ -11,6 +11,7 @@
         "stylus": "*",
         "q":"*",
         "underscore":"*",
-        "mongoose": "*"
+        "mongoose": "*",
+        "request": "*"
     }
 }

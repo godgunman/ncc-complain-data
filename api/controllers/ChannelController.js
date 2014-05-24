@@ -3,6 +3,14 @@ var mongoose = require("mongoose");
 var Complain = mongoose.model('Complain');
 
 module.exports = {
+    testData: function(req, res) {
+        var request = require('request');
+        request('http://fakenews.tw/api/channel', function (error, response, body) {
+            if (!error && response.statusCode == 200) {
+                res.json(JSON.parse(body));
+            }
+        });
+    },
 
     find: function(req, res) {
         var channels = {};
