@@ -6,12 +6,11 @@ import java.util.LinkedList;
 import tw.fakenews.android.R;
 import tw.fakenews.android.models.Channel;
 import tw.fakenews.android.models.Channel.ChannelCallback;
-import tw.fakenews.android.test.ApiTest;
 import tw.fakenews.android.view.adapter.ChannelListAdapter;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v4.app.ListFragment;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.support.v4.app.ListFragment;
+import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,10 +30,6 @@ public class MainActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
-
-		// ApiTest.chennalTest();
-		// ApiTest.complainTest();
-		// ApiTest.complainTest2();
 	}
 
 	@Override
