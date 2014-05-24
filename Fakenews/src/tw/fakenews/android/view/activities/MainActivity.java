@@ -30,6 +30,7 @@ public class MainActivity extends ActionBarActivity {
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		getSupportActionBar().setIcon(R.drawable.action_bar_title);
 	}
 
 	@Override
