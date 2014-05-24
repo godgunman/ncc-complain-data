@@ -49,24 +49,33 @@ public class ChannelListAdapter extends ArrayAdapter<Channel> {
 		if (convertView == null) {
 			convertView = mLayoutInflater.inflate(R.layout.listitem_channel,
 					parent, false);
-
 			holder = new ViewHolder();
-			holder.textViewRank = (TextView) convertView
-					.findViewById(R.id.textview_channel_rank);
-			holder.textViewRank.setTypeface(engFace);
-
-			holder.textViewChannelName = (TextView) convertView
-					.findViewById(R.id.textview_channel_name);
-			holder.textViewChannelName.setTypeface(chnFace);
-
-			holder.textViewCount = (TextView) convertView
-					.findViewById(R.id.textview_channel_count);
-			holder.textViewCount.setTypeface(engFace);
-
-			convertView.setTag(holder);
 		} else {
 			holder = (ViewHolder) convertView.getTag();
 		}
+		holder.textViewRank = (TextView) convertView
+				.findViewById(R.id.textview_channel_rank);
+		holder.textViewRank.setTypeface(engFace);
+		holder.textViewRank.setText(Integer.toString(position + 1));
+
+		if (position == 0) {
+			holder.textViewRank.setBackgroundResource(R.drawable.rank_no_1);
+			holder.textViewRank.setText("");
+		} else if (position <= 4) {
+			holder.textViewRank.setBackgroundResource(R.drawable.rank_no);
+		} else {
+			holder.textViewRank.setBackgroundResource(R.drawable.rank_nogray);
+		}
+
+		holder.textViewChannelName = (TextView) convertView
+				.findViewById(R.id.textview_channel_name);
+		holder.textViewChannelName.setTypeface(chnFace);
+
+		holder.textViewCount = (TextView) convertView
+				.findViewById(R.id.textview_channel_count);
+		holder.textViewCount.setTypeface(engFace);
+
+		convertView.setTag(holder);
 
 		Channel c = getItem(position);
 
@@ -75,7 +84,6 @@ public class ChannelListAdapter extends ArrayAdapter<Channel> {
 		final String channelCount = Integer.toString(c.size);
 		final Category[] channelCategories = c.category;
 
-		holder.textViewRank.setText(channelRank);
 		holder.textViewChannelName.setText(channelName);
 		holder.textViewCount.setText(channelCount);
 

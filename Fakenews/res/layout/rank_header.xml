@@ -14,26 +14,26 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
         android:layout_marginLeft="@dimen/activity_horizontal_margin"
-        android:layout_marginRight="@dimen/activity_horizontal_margin"
         android:background="@drawable/rank_ncc_cases"
         android:orientation="horizontal" >
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_weight="9" />
+            android:layout_weight="12" />
 
         <TextView
             android:id="@+id/pendingCaseText"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="2"
+            android:layout_weight="1"
             android:gravity="center"
             android:text="150"
             android:textColor="@android:color/white"
-            android:textSize="30dp" />
+            android:textSize="50dp" />
     </LinearLayout>
 
 </LinearLayout>
