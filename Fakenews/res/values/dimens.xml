@@ -5,6 +5,6 @@
     <dimen name="activity_vertical_margin">10dp</dimen>
 
     <!-- User defined dimens -->
-    <dimen name="textview_padding">3dp</dimen>
+    <dimen name="textview_padding">5dp</dimen>
 
 </resources>

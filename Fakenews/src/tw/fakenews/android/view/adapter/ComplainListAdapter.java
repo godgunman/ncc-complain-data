@@ -8,6 +8,7 @@ import tw.fakenews.android.models.Complain;
 import tw.fakenews.android.view.activities.ChannelActivity;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,30 +52,29 @@ public class ComplainListAdapter extends ArrayAdapter<Complain> {
         
         Complain c = getItem(position);
         
+        Typeface chnFace = Typeface.createFromAsset(mContext.getAssets(),
+                "fonts/DFHeiStd-W5.otf");
+        
         final String complainId = c.cid;
         final String complainName = c.complainTitle;
-        final String complainProgress = c.programName;
+        final String complainProgress = c.status;
         
-        holder.textViewComplainId.setText(complainId);
-        holder.textViewComplainName.setText(complainName);
-        holder.textViewComplainProgress.setText(complainProgress);
+        holder.textViewComplainId.setText("案號" + complainId);
+        holder.textViewComplainName.setText(complainName);        
         
-        convertView.setOnClickListener(new View.OnClickListener() {
-            
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(mContext, ChannelActivity.class);
-                
-                Bundle b = new Bundle();
-//                b.putString(Constants.KEY_CHANNEL_RANK, channelRank);
-//                b.putString(Constants.KEY_CHANNEL_NAME, channelName);
-//                b.putString(Constants.KEY_CHANNEL_COUNT, channelCount);
-//                b.putParcelableArray(Constants.KEY_CHANNEL_CATEGORIES, channelCategories);
-                intent.putExtras(b);
-                
-                mContext.startActivity(intent);
+        if (complainProgress != null) {
+            if (complainProgress.equals("pending")) {
+                holder.textViewComplainProgress.setText("處理中");
+                holder.textViewComplainProgress.setBackgroundResource(R.color.bg_gray);
+            } else {
+                holder.textViewComplainProgress.setText("已結案");
+                holder.textViewComplainProgress.setBackgroundResource(R.color.bg_aqua);
             }
-        });
+        }
+        
+        holder.textViewComplainId.setTypeface(chnFace);
+        holder.textViewComplainName.setTypeface(chnFace);
+        holder.textViewComplainProgress.setTypeface(chnFace);
         
         return convertView;
     }

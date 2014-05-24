@@ -1,14 +1,21 @@
 package tw.fakenews.android.view.fragment;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 
 import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
+import tw.fakenews.android.models.Channel;
+import tw.fakenews.android.models.Complain;
+import tw.fakenews.android.models.Complain.ComplainCallback;
+import tw.fakenews.android.view.adapter.ChannelListAdapter;
 import tw.fakenews.android.view.adapter.ComplainListAdapter;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,12 +23,12 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class ComplainListFragment extends ListFragment {
+public class ComplainListFragment extends ListFragment implements ComplainCallback {
     
     private OnComplainSelectedListener mCallback;
     
     private LinearLayout headerLayout;
-    private ComplainListAdapter adapter;
+    private ComplainListAdapter mAdapter;
         
     public interface OnComplainSelectedListener {
         public void onComplainSelected(int position);
@@ -40,7 +47,6 @@ public class ComplainListFragment extends ListFragment {
         headerLayout = (LinearLayout) rootView.findViewById(R.id.headerLayout);
         
         setHeaderLayout(getArguments());
-        setListViewHeader();
         setAdapter();
         
         return rootView;
@@ -98,20 +104,23 @@ public class ComplainListFragment extends ListFragment {
         });
     }
     
-    private void setListViewHeader() {
-
-    }
-    
     private void setAdapter() {
-            
-        /* dumb channel list for testing*/ 
-        ArrayList<String> categoriesList = new ArrayList<String>();
-        categoriesList.add("1");
-        categoriesList.add("2");
-        categoriesList.add("3");
-        /* dumb channel list for testing*/              
-            
-//        adapter = new CategoriesListAdapter(getActivity(), categoriesList);
-//        setListAdapter(adapter);
+        mAdapter = new ComplainListAdapter(getActivity(),new LinkedList<Complain>());
+        setListAdapter(mAdapter);
+
+        Bundle b = getArguments();
+        String channelName = b.getString(Constants.KEY_CHANNEL_NAME);
+        String categoryName = b.getString(Constants.KEY_CATEGORIES_NAME);
+        
+        Log.d("[Complain list frag]", "channel name " + channelName + " category name " + categoryName);
+        
+        Complain.findByChannelNameAndComplainCategory(channelName, categoryName, 0, 100, this);
+    }
+
+    @Override
+    public void done(Complain[] complains) {
+        if (complains != null) {
+            mAdapter.setComplainList(Arrays.asList(complains));
+        }
     }
 }
