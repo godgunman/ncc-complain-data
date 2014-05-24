@@ -43,14 +43,76 @@ function getPageWithDateItem(date, item, callback) {
     })
 }
 
-function crawlWithDate(date, callback) {
-    getItemCountWithDate(date, function(html) {
+function getPageWithSerial(serial, callback) {
+    console.log('get page with serial ' + serial);
+    // prepare
+    var childArgs = [
+        '--ignore-ssl-errors=true',
+        path.join(__dirname, 'get_page_with_serial.js'), serial
+    ]
+
+    // run
+    childProcess.execFile(binPath, childArgs, function(err, stdout, stderr) {
+        console.log('exec get page done');
+        if (callback) {
+            console.log('try callback');
+            callback(stdout);
+        }
+    })
+}
+
+function fillZero(value, digit) {
+    var cnt = 0;
+    var tmp = value;
+    
+    while (tmp > 0) {
+        tmp = Math.floor(tmp/10);
+        ++cnt;
+    }
+
+    var str = '';
+    while (cnt < digit) {
+        str += '0';
+        ++cnt;
+    }
+    //console.log('cnt = ' + cnt.toString());
+    str += value.toString();
+    return str;
+}
+
+function getFormattedSerial(year, month, day, id) {
+    var yearStr = year.toString();
+    var monthStr = fillZero(month, 2);
+    var dayStr = fillZero(day, 2);
+    var idStr = 'T' + fillZero(id, 5);
+    return yearStr + monthStr + dayStr + idStr;
+}
+
+
+function crawlWithDate(year, month, day, callback) {
+    var id = 1;
+    while (true) {
+        var serial = getFormattedSerial(year, month, day, id);
+        var result = getPageWithSerial(serial, function(html) {
+            var jsonData = parseHtml.parseByText(html);
+            if (callback) {
+                callback(jsonData);
+            }
+        });
+        if (!result) break;
+        ++id;    
+    }
+    /*getItemCountWithDate(date, function(html) {
         var jsonData = parseHtml.parseByText(html);
+                    if (callback) {var jsonData = parseHtml.parseByText(html);
         if (callback) {
             callback(jsonData);
         }
-    });
+            callback(jsonData);
+        }
+    });*/
 }
+
 
 module.exports = {
     'crawlWithDate': crawlWithDate
