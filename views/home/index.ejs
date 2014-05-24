@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <% include ../header %>
+    </head>
+    <style>
+        html, body { height: 100%; width: 100%; margin: 0; }
+
+        body {
+            font-family: 'Oswald', serif;
+        }
+
+        #main {
+            background-image:url(/images/bg.png); 
+            background-repeat: repeat;
+            height: 85%;
+        }
+
+        .ui.raised.segment {
+            -webkit-box-shadow: 2px 2px 1px 1px;
+            box-shadow: 2px 2px 1px 1px;
+            padding: 0px;
+        }
+
+        .countblack {
+            background: #36bac1;
+            width:20%;
+            height:65px;
+            float: right;
+            display:table-cell;
+            vertical-align:middle;
+            font-size:2em;
+            border-radius:0 5px 5px 0;
+        }
+
+        #checkButton {
+            margin-top:-50px;
+        }
+    </style>
+    <script>
+
+        $.get('/api/channel', function(res){
+            var champion = res.result[0];
+            $('#channelName').text(champion.channelName);
+            $('#size').text(champion.size);
+        });
+
+    </script>
+    <body>
+        <div id="main" class="container">
+            <div class="ui column stackable center aligned page grid">
+                <img class="column four wide" src="/images/face.png">
+            </div>
+            <div class="ui column stackable center aligned page grid">
+                <img class="column twelven wide" src="/images/home_title.png">
+            </div>
+
+            <div class="ui six column stackable center aligned page grid">
+                <div class="column five wide"> 
+                    <div class="ui raised segment">
+                        <i class="text huge file icon"></i>
+                        <b>
+                            NCC 待處理案件</b>
+                        <div id="pedding" class="countblack">
+                            277
+                        </div>
+                    </div>
+                </div>
+                <div class="column five wide">
+                    <div class="ui raised segment">
+                        <i class="trophy huge icon"></i>
+                        <b id="channelName">Pretty nice animals.</b>
+                        <div class="countblack" id="size">
+                            ?
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="/table">
+            <div id="checkButton" class="ui column stackable center aligned page grid">
+                <img class="column four wide" src="/images/home_check.png">
+            </div>
+        </a>
+    </body>
+</html>

@@ -12,6 +12,7 @@ var mongoose = require('./config/mongoose');
 
 var ComplainController = require('./api/controllers/ComplainController');
 var ChannelController = require('./api/controllers/ChannelController');
+var HomeController = require('./api/controllers/HomeController');
 
 var app = express();
 
@@ -19,7 +20,7 @@ var app = express();
 app.set('port', process.env.PORT || 3000);
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.use(express.favicon());
+app.use(express.favicon(__dirname + '/public/images/favicon.ico')); 
 app.use(express.logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded());
@@ -32,6 +33,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 if ('development' == app.get('env')) {
     app.use(express.errorHandler());
 }
+
+app.get('/', HomeController.index);
 
 app.get('/api/complain/:id?', ComplainController.find);
 app.get('/api/channel', ChannelController.find);
