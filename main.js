@@ -41,14 +41,16 @@ function buildList () {
 var complain_idx = 0;
 
 function updateItems() {
-    Complain.where('status').ne('done').exec(function(err, complains) {
-        console.log(complains);
+    //Complain.where('status').ne('done').exec(function(err, complains) {
+    Complain.where('status').equals('new').exec(function(err, complains) {
+	    console.log(complains);
         var loop = setInterval(function() {
+			console.log('jizz' + complain_idx);
 			if (complain_idx == complains.length) {
 				clearInterval(loop);
 				return;
 			}
-
+			console.log('spirit breaker ' + complains[complain_idx]);
 			crawler.updateItem(complains[complain_idx].cid, function(jsondata) {
 				Complain.findByIdAndUpdate(complains[complain_idx].cid, jsondata, { upsert: true},
 					function(err, complain) {
