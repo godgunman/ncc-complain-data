@@ -1,6 +1,7 @@
 package tw.fakenews.android.view.activities;
 
-import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.LinkedList;
 
 import tw.fakenews.android.R;
 import tw.fakenews.android.models.Channel;
@@ -61,7 +62,7 @@ public class MainActivity extends ActionBarActivity {
 			ChannelCallback {
 
 		private LinearLayout headerLayout;
-		private ChannelListAdapter adapter;
+		private ChannelListAdapter mAdapter;
 
 		public PlaceholderFragment() {
 		}
@@ -76,9 +77,6 @@ public class MainActivity extends ActionBarActivity {
 					.findViewById(R.id.headerLayout);
 			setHeaderLayout();
 
-			setAdapter();
-
-			Channel.find(this);
 			return rootView;
 		}
 
@@ -86,6 +84,10 @@ public class MainActivity extends ActionBarActivity {
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
 			setListViewHeader();
+			mAdapter = new ChannelListAdapter(getActivity(), new LinkedList<Channel>());
+            setListAdapter(mAdapter);
+            
+	        Channel.find(this);
 		}
 
 		private void setHeaderLayout() {
@@ -102,30 +104,10 @@ public class MainActivity extends ActionBarActivity {
 
 			this.getListView().addHeaderView(imgView);
 		}
-
-		private void setAdapter() {
-
-			/* dumb channel list for testing */
-			ArrayList<String> channelList = new ArrayList<String>();
-			channelList.add("中天新聞台");
-			channelList.add("TVBS新聞台");
-			channelList.add("東森新聞台");
-			channelList.add("三立新聞台");
-			channelList.add("era news年代新聞");
-			channelList.add("民視");
-			/* dumb channel list for testing */
-
-			// for (Channel c: channels) {
-			// channelList.add(c.categoryName);
-			// }
-
-			adapter = new ChannelListAdapter(getActivity(), channelList);
-			setListAdapter(adapter);
-		}
-
+		
 		@Override
 		public void done(Channel[] channels) {
-			// setAdapter(channels);
+		    mAdapter.setChannelList(Arrays.asList(channels));
 		}
 	}
 }

@@ -22,12 +22,12 @@ public class Channel {
 
 	public String channelName;
 	public Category[] category;
-	int size;
+	public int size;
 
 	public class Category {
 		public String categoryName;
 		public Complain[] data;
-		int size;
+		public int size;
 
 	}
 
