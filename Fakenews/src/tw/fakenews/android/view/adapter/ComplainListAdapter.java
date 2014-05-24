@@ -3,9 +3,11 @@ package tw.fakenews.android.view.adapter;
 import java.util.LinkedList;
 import java.util.List;
 
+import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
 import tw.fakenews.android.models.Complain;
 import tw.fakenews.android.view.activities.ChannelActivity;
+import tw.fakenews.android.view.activities.ComplainActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
@@ -50,7 +52,7 @@ public class ComplainListAdapter extends ArrayAdapter<Complain> {
             holder = (ViewHolder) convertView.getTag();
         }
         
-        Complain c = getItem(position);
+        final Complain c = getItem(position);
         
         Typeface chnFace = Typeface.createFromAsset(mContext.getAssets(),
                 "fonts/DFHeiStd-W5.otf");
@@ -75,6 +77,20 @@ public class ComplainListAdapter extends ArrayAdapter<Complain> {
         holder.textViewComplainId.setTypeface(chnFace);
         holder.textViewComplainName.setTypeface(chnFace);
         holder.textViewComplainProgress.setTypeface(chnFace);
+        
+        convertView.setOnClickListener(new View.OnClickListener() {
+            
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ComplainActivity.class);
+                
+                Bundle b = new Bundle();
+                b.putParcelable(Constants.KEY_COMPLAIN, c);
+                intent.putExtras(b);
+                
+                mContext.startActivity(intent);
+            }
+        });
         
         return convertView;
     }

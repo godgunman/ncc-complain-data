@@ -13,4 +13,6 @@ public interface Constants {
     public final static String KEY_CATEGORIES_NAME = "KEY_CATEGORIES_NAME";
     public final static String KEY_CATEGORIES_COUNT = "KEY_CATEGORIES_COUNT";
 
+    public final static String KEY_COMPLAIN = "KEY_COMPLAIN";
+
 }

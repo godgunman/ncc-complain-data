@@ -5,6 +5,7 @@ import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
 import tw.fakenews.android.models.Channel.Category;
 import tw.fakenews.android.view.fragment.CategoryListFragment;
+import tw.fakenews.android.view.fragment.ComplainDetailFragment;
 import tw.fakenews.android.view.fragment.ComplainListFragment;
 import tw.fakenews.android.view.fragment.CategoryListFragment.OnCategorySelectedListener;
 import tw.fakenews.android.view.fragment.ComplainListFragment.OnComplainSelectedListener;
@@ -24,6 +25,8 @@ public class ChannelActivity extends ActionBarActivity
     implements OnCategorySelectedListener, OnComplainSelectedListener {
 
     private Category[] mCategories;
+    
+    private static final String TAG_COMPLAIN_DEATAIL_FRAGMENT = "TAG_COMPLAIN_DEATAIL_FRAGMENT";
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +94,7 @@ public class ChannelActivity extends ActionBarActivity
         mCategories = new Category[parcels.length];
         for (int i = 0; i < parcels.length; i++) {
             mCategories[i] = (Category) parcels[i];
-        }
+        }   
     }
 
     @Override
@@ -121,7 +124,7 @@ public class ChannelActivity extends ActionBarActivity
         if (mCategories != null) {
             Category c = mCategories[position];
             
-            Bundle b = new Bundle();
+            Bundle b = this.getIntent().getExtras();
             b.putString(Constants.KEY_CATEGORIES_NAME, c.categoryName);
             b.putString(Constants.KEY_CATEGORIES_COUNT, Integer.toString(c.size));
             f.setArguments(b);
@@ -134,8 +137,12 @@ public class ChannelActivity extends ActionBarActivity
 
     @Override
     public void onComplainSelected(int position) {
-        // TODO Auto-generated method stub
-        
+        Fragment f = new ComplainDetailFragment();
+        f.setArguments(this.getIntent().getExtras());
+
+        getSupportFragmentManager().beginTransaction()
+        .replace(R.id.container, f, TAG_COMPLAIN_DEATAIL_FRAGMENT)
+        .commit();
     }
 
     @Override

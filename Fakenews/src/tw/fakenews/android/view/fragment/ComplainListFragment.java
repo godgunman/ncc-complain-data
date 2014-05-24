@@ -1,15 +1,12 @@
 package tw.fakenews.android.view.fragment;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 
 import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
-import tw.fakenews.android.models.Channel;
 import tw.fakenews.android.models.Complain;
 import tw.fakenews.android.models.Complain.ComplainCallback;
-import tw.fakenews.android.view.adapter.ChannelListAdapter;
 import tw.fakenews.android.view.adapter.ComplainListAdapter;
 import android.app.Activity;
 import android.graphics.Typeface;
@@ -20,7 +17,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
 
 public class ComplainListFragment extends ListFragment implements ComplainCallback {
@@ -31,7 +27,6 @@ public class ComplainListFragment extends ListFragment implements ComplainCallba
     private ComplainListAdapter mAdapter;
         
     public interface OnComplainSelectedListener {
-        public void onComplainSelected(int position);
         public void onBackToChannel();
     }
     
@@ -62,11 +57,6 @@ public class ComplainListFragment extends ListFragment implements ComplainCallba
             throw new ClassCastException(activity.toString()
                     + " must implement OnHeadlineSelectedListener");
         }
-    }
-    
-    @Override
-    public void onListItemClick (ListView l, View v, int position, long id) {
-        mCallback.onComplainSelected(position);
     }
 
     private void setHeaderLayout(Bundle b) {        
