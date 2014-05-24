@@ -44,8 +44,9 @@
 <script>
 
     $.get('/channel', function(res){
-        $('#channelName').text(res[0].channelName);
-        $('#size').text(res[0].size);
+        var champion = res.result[0];
+        $('#channelName').text(champion.channelName);
+        $('#size').text(champion.size);
     });
 
 </script>
