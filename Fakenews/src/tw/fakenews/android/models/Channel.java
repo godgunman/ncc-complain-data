@@ -7,6 +7,7 @@ import org.apache.http.client.ResponseHandler;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.BasicResponseHandler;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,13 +20,15 @@ import android.util.Log;
 
 public class Channel {
 
-	public String categoryName;
+	public String channelName;
 	public Category[] category;
 	int size;
 
 	public class Category {
 		public String categoryName;
 		public Complain[] data;
+		int size;
+
 	}
 
 	public static void find(final ChannelCallback callback) {
@@ -55,8 +58,13 @@ public class Channel {
 								.toString());
 					} else {
 						Gson gson = new Gson();
-						return gson.fromJson(object.getJSONArray("result")
-								.toString(), Channel[].class);
+						JSONArray array = object.getJSONArray("result");
+						Channel[] channels = new Channel[array.length()];
+						for (int i = 0; i < channels.length; i++) {
+							channels[i] = gson.fromJson(array.getJSONObject(i)
+									.toString(), Channel.class);
+						}
+						return channels;
 					}
 				} catch (ClientProtocolException e) {
 					e.printStackTrace();
@@ -69,9 +77,9 @@ public class Channel {
 			}
 
 			protected void onPostExecute(Channel[] channels) {
-			    if (channels != null) {
-		             callback.done(channels);
-			    }
+				if (channels != null) {
+					callback.done(channels);
+				}
 			};
 
 		}.execute();
