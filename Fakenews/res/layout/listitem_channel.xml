@@ -29,7 +29,8 @@
         android:singleLine="true"
         android:text="中天"
         android:textColor="#525252"
-        android:textSize="20sp" />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/textview_channel_count"

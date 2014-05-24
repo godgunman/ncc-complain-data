@@ -7,6 +7,7 @@ import tw.fakenews.android.view.fragment.CategoryListFragment;
 import tw.fakenews.android.view.fragment.ComplainListFragment;
 import tw.fakenews.android.view.fragment.CategoryListFragment.OnCategorySelectedListener;
 import tw.fakenews.android.view.fragment.ComplainListFragment.OnComplainSelectedListener;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
@@ -43,10 +44,18 @@ public class ChannelActivity extends ActionBarActivity implements
 			getSupportFragmentManager().beginTransaction()
 					.add(R.id.container, f).commit();
 		}
+
 		getSupportActionBar().setIcon(R.drawable.action_bar_title);
+		getSupportActionBar().setTitle("");
 	}
 
 	private View getHeaderView(Bundle b) {
+		Typeface engFace = Typeface.createFromAsset(this.getAssets(),
+				"fonts/BebasNeue.otf");
+
+		Typeface chnFace = Typeface.createFromAsset(this.getAssets(),
+				"fonts/DFHeiStd-W5.otf");
+
 		String channelName = b.getString(Constants.KEY_CHANNEL_NAME);
 		String channelRank = b.getString(Constants.KEY_CHANNEL_RANK);
 		String channelCount = b.getString(Constants.KEY_CHANNEL_COUNT);
@@ -58,6 +67,7 @@ public class ChannelActivity extends ActionBarActivity implements
 				.findViewById(R.id.textview_channel_name);
 		if (channelName != null) {
 			textviewChannelName.setText(channelName);
+			textviewChannelName.setTypeface(chnFace);
 		}
 
 		TextView textviewChannelRank = (TextView) channelView
@@ -70,7 +80,10 @@ public class ChannelActivity extends ActionBarActivity implements
 				.findViewById(R.id.textview_channel_count);
 		if (channelCount != null) {
 			textviewChannelCount.setText(channelCount);
+			textviewChannelCount.setTypeface(engFace);
 		}
+
+		channelView.setPadding(0, 0, 0, 20);
 
 		return channelView;
 	}

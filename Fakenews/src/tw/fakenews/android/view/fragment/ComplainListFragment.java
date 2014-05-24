@@ -6,6 +6,7 @@ import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
 import tw.fakenews.android.view.adapter.ComplainListAdapter;
 import android.app.Activity;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
@@ -21,7 +22,7 @@ public class ComplainListFragment extends ListFragment {
     
     private LinearLayout headerLayout;
     private ComplainListAdapter adapter;
-    
+        
     public interface OnComplainSelectedListener {
         public void onComplainSelected(int position);
         public void onBackToChannel();
@@ -34,6 +35,7 @@ public class ComplainListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
             Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+        rootView.setBackgroundResource(R.color.bg_gray);
         
         headerLayout = (LinearLayout) rootView.findViewById(R.id.headerLayout);
         
@@ -63,19 +65,26 @@ public class ComplainListFragment extends ListFragment {
 
     private void setHeaderLayout(Bundle b) {        
         LayoutInflater inflater = LayoutInflater.from(getActivity());
-        View categoriesView = inflater.inflate(R.layout.listitem_categories, null);
+        View categoriesView = inflater.inflate(R.layout.listheader_categories, null);
         
         String categoriesName = b.getString(Constants.KEY_CATEGORIES_NAME);
         String categoriesCount = b.getString(Constants.KEY_CATEGORIES_COUNT);
         
         TextView textviewChannelName = (TextView) categoriesView.findViewById(R.id.textview_categories_name);
         if (categoriesName != null) {
+            Typeface chnFace = Typeface.createFromAsset(getActivity().getAssets(),
+                    "fonts/DFHeiStd-W5.otf");
             textviewChannelName.setText(categoriesName);
+            textviewChannelName.setTypeface(chnFace);
         }
         
         TextView textviewChannelCount = (TextView) categoriesView.findViewById(R.id.textview_categories_count);
         if (categoriesCount != null) {
             textviewChannelCount.setText(categoriesCount);
+            
+            Typeface engFace = Typeface.createFromAsset(getActivity()
+                    .getAssets(), "fonts/BebasNeue.otf");
+            textviewChannelCount.setTypeface(engFace);
         }
         
         headerLayout.addView(categoriesView);
