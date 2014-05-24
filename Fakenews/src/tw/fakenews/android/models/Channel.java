@@ -41,8 +41,9 @@ public class Channel {
 				DefaultHttpClient httpClient = new DefaultHttpClient();
 				Uri.Builder builder = new Uri.Builder();
 				builder.scheme("http").authority(Constants.API_HOST)
-						.appendPath("channel");
+						.appendPath("api").appendPath("channel");
 
+				Log.d("Channel api", builder.build().toString());
 				HttpGet target = new HttpGet(builder.build().toString());
 				try {
 					ResponseHandler<String> responseHandler = new BasicResponseHandler();
@@ -68,7 +69,9 @@ public class Channel {
 			}
 
 			protected void onPostExecute(Channel[] channels) {
-				callback.done(channels);
+			    if (channels != null) {
+		             callback.done(channels);
+			    }
 			};
 
 		}.execute();
