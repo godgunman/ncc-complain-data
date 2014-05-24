@@ -14,6 +14,7 @@ var ComplainController = require('./api/controllers/ComplainController');
 var ChannelController = require('./api/controllers/ChannelController');
 var HomeController = require('./api/controllers/HomeController');
 var TableController = require('./api/controllers/TableController');
+var ChartController = require('./api/controllers/ChartController');
 
 var app = express();
 
@@ -46,9 +47,12 @@ app.get('/', HomeController.index);
 
 app.get('/api/complain/:id?', ComplainController.find);
 app.get('/api/channel', ChannelController.find);
+app.get('/api/channel/testData', ChannelController.testData);
+
 app.get('/table', TableController.index);
 app.get('/table/detail', TableController.detail);
-app.get('/api/channel/testData', ChannelController.testData);
+
+app.get('/chart/basic', ChartController.basic);
 
 http.createServer(app).listen(app.get('port'), function(){
     console.log('Express server listening on port ' + app.get('port'));
