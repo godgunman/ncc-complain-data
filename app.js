@@ -39,6 +39,7 @@ app.get('/', HomeController.index);
 
 app.get('/api/complain/:id?', ComplainController.find);
 app.get('/api/channel', ChannelController.find);
+app.get('/table', TableController.index);
 app.get('/table/detail', TableController.detail);
 
 http.createServer(app).listen(app.get('port'), function(){
