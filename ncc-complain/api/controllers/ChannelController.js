@@ -15,12 +15,14 @@
  * @docs        :: http://sailsjs.org/#!documentation/controllers
  */
 var _ = require('underscore');
+var mongoose = require("mongoose");
+var Complain = mongoose.model('Complain');
 
 module.exports = {
 
-    index: function(req, res) {
+    find: function(req, res) {
         var channels = {};
-        Complain.find().exec(function(err, results) {
+        Complain.find(function(err, results) {
             results.forEach(function(e) {
                 if (!channels[e.channelName]) {
                     channels[e.channelName] = {

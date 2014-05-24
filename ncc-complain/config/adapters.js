@@ -16,7 +16,7 @@ module.exports.adapters = {
 
   // If you leave the adapter config unspecified 
   // in a model definition, 'default' will be used.
-  'default': 'mongo',
+  'default': 'disk',
 
   // Persistent adapter for DEVELOPMENT ONLY
   // (data is preserved when the server shuts down)
@@ -40,7 +40,7 @@ module.exports.adapters = {
   mongo: {
       module   : 'sails-mongo',
       host     : 'oceanic.mongohq.com',
-      port     : 10079,
+      port     : 10094,
       user     : 'readonly_user',
       password : '5566number1',
       database : 'ncc-complain',
