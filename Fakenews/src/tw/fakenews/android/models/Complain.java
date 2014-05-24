@@ -58,7 +58,7 @@ public class Complain {
 
 				Uri.Builder builder = new Uri.Builder();
 				builder.scheme("http").authority(Constants.API_HOST)
-						.appendPath("complain");
+						.appendPath("api").appendPath("complain");
 				for (int i = 0; i < params.length; i += 2) {
 					builder.appendQueryParameter(params[i], params[i + 1]);
 				}
