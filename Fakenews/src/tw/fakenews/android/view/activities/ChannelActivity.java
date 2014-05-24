@@ -1,6 +1,5 @@
 package tw.fakenews.android.view.activities;
 
-
 import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
 import tw.fakenews.android.models.Channel.Category;
@@ -49,6 +48,9 @@ public class ChannelActivity extends ActionBarActivity
                     .add(R.id.container, f)
                     .commit();
         }
+        
+        getSupportActionBar().setIcon(R.drawable.action_bar_title);
+        getSupportActionBar().setTitle("");
     }
 
     private View getHeaderView(Bundle b) {
@@ -99,7 +101,6 @@ public class ChannelActivity extends ActionBarActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -133,16 +134,6 @@ public class ChannelActivity extends ActionBarActivity
             .replace(R.id.container, f)
             .commit();
         }
-    }
-
-    @Override
-    public void onComplainSelected(int position) {
-        Fragment f = new ComplainDetailFragment();
-        f.setArguments(this.getIntent().getExtras());
-
-        getSupportFragmentManager().beginTransaction()
-        .replace(R.id.container, f, TAG_COMPLAIN_DEATAIL_FRAGMENT)
-        .commit();
     }
 
     @Override
