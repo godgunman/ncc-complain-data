@@ -32,7 +32,7 @@ public class MainActivity extends ActionBarActivity {
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
 
-		ApiTest.chennalTest();
+		// ApiTest.chennalTest();
 	}
 
 	@Override
@@ -84,10 +84,11 @@ public class MainActivity extends ActionBarActivity {
 		public void onActivityCreated(Bundle savedInstanceState) {
 			super.onActivityCreated(savedInstanceState);
 			setListViewHeader();
-			mAdapter = new ChannelListAdapter(getActivity(), new LinkedList<Channel>());
-            setListAdapter(mAdapter);
-            
-	        Channel.find(this);
+			mAdapter = new ChannelListAdapter(getActivity(),
+					new LinkedList<Channel>());
+			setListAdapter(mAdapter);
+
+			Channel.find(this);
 		}
 
 		private void setHeaderLayout() {
@@ -97,17 +98,14 @@ public class MainActivity extends ActionBarActivity {
 		}
 
 		private void setListViewHeader() {
-			ImageView imgView = new ImageView(getActivity());
-			imgView.setImageResource(R.drawable.ic_launcher);
-			imgView.setScaleType(ScaleType.FIT_XY);
-			imgView.setAdjustViewBounds(true);
-
-			this.getListView().addHeaderView(imgView);
+			LayoutInflater layoutInfalter = getActivity().getLayoutInflater();
+			View view = layoutInfalter.inflate(R.layout.rank_header, null);
+			this.getListView().addHeaderView(view);
 		}
-		
+
 		@Override
 		public void done(Channel[] channels) {
-		    mAdapter.setChannelList(Arrays.asList(channels));
+			mAdapter.setChannelList(Arrays.asList(channels));
 		}
 	}
 }
