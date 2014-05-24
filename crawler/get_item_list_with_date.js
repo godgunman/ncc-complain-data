@@ -52,9 +52,12 @@ page.open('https://cabletvweb.ncc.gov.tw/SWSFront35/SWSF/SWSF01017.aspx', functi
             }
 
             page.evaluate(function(page_id) {
-                var href = document.getElementById('ctl00_ContentPlaceHolder1_dvMaster_ctl08_dvMaster_labSplit' 
-                    + page_id).parentNode.childNodes[0].href;
-                eval(href);
+                var drop = $('#ctl00_ContentPlaceHolder1_dvMaster_ctl08_dvMaster_drpPageCount');
+                drop.val(page_id + 1);
+                drop.change();
+                //var href = document.getElementById('ctl00_ContentPlaceHolder1_dvMaster_ctl08_dvMaster_labSplit' 
+                //    + page_id).parentNode.childNodes[0].href;
+                //eval(href);
             }, pcnt);
             var serials;
             setTimeout(function() {
