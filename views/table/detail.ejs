@@ -58,18 +58,12 @@
                 var broadcastDate = $('<td>').text(broadcastDate);
                 var program = $('<td>').text(program.slice(0, 20));
                 var tr = $('<tr>').append(sn).append(broadcastDate).append(program);
+                tr.attr('style', 'cursor: pointer');
                 tr.click(function(e) {
                     updateDetail($(this).children().eq(0).text()); 
                 });
                return tr;
             }
-            /*
-               <tr>
-               <td>John</td>
-               <td>Approved</td>
-               <td>None</td>
-               </tr>
-             */
 
             function setData(offset, size) {
                 var tbody = $('.ui.basic.table tbody'); 
