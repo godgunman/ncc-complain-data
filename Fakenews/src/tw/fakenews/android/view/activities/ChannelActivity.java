@@ -4,7 +4,6 @@ import tw.fakenews.android.Constants;
 import tw.fakenews.android.R;
 import tw.fakenews.android.models.Channel.Category;
 import tw.fakenews.android.view.fragment.CategoryListFragment;
-import tw.fakenews.android.view.fragment.ComplainDetailFragment;
 import tw.fakenews.android.view.fragment.ComplainListFragment;
 import tw.fakenews.android.view.fragment.CategoryListFragment.OnCategorySelectedListener;
 import tw.fakenews.android.view.fragment.ComplainListFragment.OnComplainSelectedListener;

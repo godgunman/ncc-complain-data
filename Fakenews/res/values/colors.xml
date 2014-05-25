@@ -4,5 +4,6 @@
     <color name="bg_gray">#ffe1e1e1</color>
     <color name="bg_aqua">#ff7FDEE2</color>
     <color name="text_gray">#ffcccccc</color>
+    <color name="text_darkgray">#ffacacac</color>
 
 </resources>

@@ -4,6 +4,7 @@ import tw.fakenews.android.R;
 import tw.fakenews.android.view.activities.MainActivity.PlaceholderFragment;
 import tw.fakenews.android.view.fragment.ComplainDetailFragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -15,15 +16,17 @@ public class ComplainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Fragment f = new ComplainDetailFragment();
+        f.setArguments(this.getIntent().getExtras());
+        
         if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new ComplainDetailFragment()).commit();
+                    .add(R.id.container, f).commit();
         }
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
