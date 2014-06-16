@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>7670FBD6-AA3A-49E7-B3DE-1B0C5545E617</string>
+	<key>IDESourceControlProjectName</key>
+	<string>fakenews</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>3ED31E24-10D8-4802-B23B-8EAE9DC6F315</key>
+		<string>ssh://github.com/godgunman/ncc-complain-data.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>fakenews.xcodeproj/project.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>3ED31E24-10D8-4802-B23B-8EAE9DC6F315</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>ssh://github.com/godgunman/ncc-complain-data.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>3ED31E24-10D8-4802-B23B-8EAE9DC6F315</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>3ED31E24-10D8-4802-B23B-8EAE9DC6F315</string>
+			<key>IDESourceControlWCCName</key>
+			<string>fakenews</string>
+		</dict>
+	</array>
+</dict>
+</plist>

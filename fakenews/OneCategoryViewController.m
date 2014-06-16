@@ -32,11 +32,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending))
+    {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+    else
+    {
+        [UIApplication sharedApplication].statusBarHidden = NO;
+    }
+    
     NSLog(@"selectedChannel:%@",self.selectedChannel);
     self.rankLable.text = [NSString stringWithFormat:@"%d",self.rank + 1];
     self.channelNameLable.text = [self.selectedChannel valueForKey:@"channelName"];
+    self.channelNameLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:18];
+
     self.channelNumberLable.text = [NSString stringWithFormat:@"%@",[self.selectedChannel valueForKey:@"size"]];
+    
+    self.rankLable.font = [UIFont fontWithName:@"Bebas Neue" size:20];
+    self.channelNumberLable.font = [UIFont fontWithName:@"Bebas Neue" size:38];
+
     if (self.rank == 0)
     {
         self.rankLable.hidden = YES;
@@ -53,11 +68,13 @@
         self.rankBackgroundImageView.image = [UIImage imageNamed:@"FP_rank-nogray-44x44"];
     }
     self.categoryNameLable.text = [self.selectedCategory valueForKey:@"categoryName"];
-    
+    self.categoryNameLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:18];
+
     self.categoryNumberLable.text = [NSString stringWithFormat:@"%@",[self.selectedCategory valueForKey:@"size"]];
-    
-    UITapGestureRecognizer *tapLogo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapLogo)];
-    [self.logoImageView addGestureRecognizer:tapLogo];
+    self.categoryNumberLable.font = [UIFont fontWithName:@"Bebas Neue" size:38];
+
+    UITapGestureRecognizer *tapBackButtonView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBackButtonView)];
+    [self.backButtonView addGestureRecognizer:tapBackButtonView];
     
     self.rotatingItemImageView = [[rotatingItem alloc] initWithFrame:CGRectMake(124, 237, 73, 73)];
     [self.view addSubview:self.rotatingItemImageView];
@@ -72,7 +89,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)tapLogo
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)tapBackButtonView
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -174,6 +196,8 @@
     NSMutableDictionary *eachRow = [self.complainArray objectAtIndex:indexPath.row];
     cell.cidLable.text = [NSString stringWithFormat:@"案號：%@",[eachRow valueForKey:@"cid"]];
     cell.titleLable.text = [eachRow valueForKey:@"complainTitle"];
+    cell.titleLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:16];
+
     if ([[eachRow valueForKey:@"status"] isEqualToString:@"pending"])
     {
         cell.statusLable.text = @"處理中";

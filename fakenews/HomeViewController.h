@@ -15,4 +15,7 @@
 @property rotatingItem *rotatingItemImageView;
 @property NSMutableArray *channelArray;
 @property IBOutlet UITableView *channelTableView;
+@property IBOutlet UILabel *pendingNumberLabel;
+@property NSString *pendingNumber;
+
 @end

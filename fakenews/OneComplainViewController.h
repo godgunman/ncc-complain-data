@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface OneComplainViewController : UIViewController
+@property IBOutlet UIView *closeButtonView;
 @property IBOutlet UIScrollView *oneComplainScrollView;
 @property IBOutlet UILabel *channelNameLable;
 @property IBOutlet UILabel *programNameLable;

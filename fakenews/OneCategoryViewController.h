@@ -13,7 +13,7 @@
 @property NSMutableDictionary *selectedChannel;
 @property NSMutableDictionary *selectedCategory;
 @property int rank;
-@property IBOutlet UIImageView *logoImageView;
+@property IBOutlet UIView *backButtonView;
 @property IBOutlet UILabel *rankLable;
 @property IBOutlet UIImageView *rankBackgroundImageView;
 @property IBOutlet UILabel *channelNameLable;

@@ -28,11 +28,25 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+
+    if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending))
+    {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+    else
+    {
+        [UIApplication sharedApplication].statusBarHidden = NO;
+    }
+    
     NSLog(@"selectedChannel:%@",self.selectedChannel);
     self.rankLable.text = [NSString stringWithFormat:@"%d",self.rank + 1];
     self.nameLable.text = [self.selectedChannel valueForKey:@"channelName"];
+    self.rankLable.font = [UIFont fontWithName:@"Bebas Neue" size:20];
+    self.numberLable.font = [UIFont fontWithName:@"Bebas Neue" size:38];
+
     self.numberLable.text = [NSString stringWithFormat:@"%@",[self.selectedChannel valueForKey:@"size"]];
+    self.nameLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:18];
+
     if (self.rank == 0)
     {
         self.rankLable.hidden = YES;
@@ -50,8 +64,8 @@
     }
     self.categoryArray = [self.selectedChannel valueForKey:@"category"];
     
-    UITapGestureRecognizer *tapLogo = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapLogo)];
-    [self.logoImageView addGestureRecognizer:tapLogo];
+    UITapGestureRecognizer *tapBackButtonView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBackButtonView)];
+    [self.backButtonView addGestureRecognizer:tapBackButtonView];
 }
 
 - (void)didReceiveMemoryWarning
@@ -60,7 +74,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)tapLogo
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)tapBackButtonView
 {
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -94,6 +113,8 @@
     cell.tag = indexPath.row;
     cell.categoryNameImageView.image = [UIImage imageNamed:[self getImageNameForCategoryName:[eachCategory valueForKeyPath:@"categoryName"]]];
     cell.numberLabel.text = [NSString stringWithFormat:@"%@",[eachCategory valueForKey:@"size"]];
+    cell.numberLabel.font = [UIFont fontWithName:@"Bebas Neue" size:32];
+
     return cell;
 }
 // 4

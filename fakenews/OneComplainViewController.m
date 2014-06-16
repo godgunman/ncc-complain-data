@@ -26,19 +26,49 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending))
+    {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+    else
+    {
+        [UIApplication sharedApplication].statusBarHidden = NO;
+    }
+    
+    UITapGestureRecognizer *tapBackButtonView = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapBackButtonView)];
+    [self.closeButtonView addGestureRecognizer:tapBackButtonView];
+    
     self.channelNameLable.text = [self.selectedComplain valueForKey:@"channelName"];
+    self.channelNameLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:18];
+
     self.programNameLable.text = [self.selectedComplain valueForKey:@"programName"];
+    self.programNameLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:18];
+
     self.cidLable.text = [NSString stringWithFormat:@"申訴案號 %@",[self.selectedComplain valueForKey:@"cid"]];
+    self.cidLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:13];
+
     NSString *complainDate = [self.selectedComplain valueForKey:@"date"];
     complainDate = [complainDate stringByReplacingOccurrencesOfString:@"-" withString:@"/"];
     complainDate = [[complainDate substringFromIndex:1] substringToIndex:9];
     self.complainDateLable.text = [NSString stringWithFormat:@"申訴日期 %@",complainDate];
+    self.complainDateLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:13];
+
     self.broadcastDateLable.text = [NSString stringWithFormat:@"播出日期 %@",[self.selectedComplain valueForKey:@"broadcastDate"]];
+    self.broadcastDateLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:13];
+
     self.broadcastTimeLable.text = [NSString stringWithFormat:@"播出時段 %@",[self.selectedComplain valueForKey:@"broadcastTime"]];
+    self.broadcastTimeLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:13];
+
     self.complainTitleLable.text = [self.selectedComplain valueForKey:@"complainTitle"];
+    self.complainTitleLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:14];
+
     self.complainContentLable.text = [self.selectedComplain valueForKey:@"complainContent"];
+    self.complainContentLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:14];
+
     self.replyContentLable.text = [self.selectedComplain valueForKey:@"replyContent"];
+    self.replyContentLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:14];
+
     
     CGFloat scrollViewHeight;
     CGFloat scrollViewWidth = self.oneComplainScrollView.contentSize.width;
@@ -93,10 +123,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)closeButtonClicked:(id)sender
+-(UIStatusBarStyle)preferredStatusBarStyle
 {
-    [self.navigationController popViewControllerAnimated:YES];
+    return UIStatusBarStyleLightContent;
 }
+
+- (void)tapBackButtonView
+{
+//    [self.navigationController popViewControllerAnimated:YES];
+    [self dismissViewControllerAnimated:YES completion:nil];
+    NSLog(@"fff");
+}
+
 /*
 #pragma mark - Navigation
 

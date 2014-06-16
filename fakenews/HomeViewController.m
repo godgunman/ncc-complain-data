@@ -23,19 +23,22 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending))
+    {
+        [self setNeedsStatusBarAppearanceUpdate];
+    }
+    else
+    {
+        [UIApplication sharedApplication].statusBarHidden = NO;
+    }
+    
     self.rotatingItemImageView = [[rotatingItem alloc] initWithFrame:CGRectMake(124, 237, 73, 73)];
     [self.view addSubview:self.rotatingItemImageView];
     [self.rotatingItemImageView startRotating];
 
-    /*
-    if (([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending))
-    {
-        NSLog(@">= iOS 7.0");
-        self.infoTableView.frame = CGRectMake(self.infoTableView.frame.origin.x, self.infoTableView.frame.origin.y-20, self.infoTableView.frame.size.width, self.infoTableView.frame.size.height + 20);
-    }*/
+    self.pendingNumberLabel.font = [UIFont fontWithName:@"Bebas Neue" size:38];
     self.channelArray  = [[NSMutableArray alloc] init];
-    [self loadChannelFromServer];
+    [self loadPendingNumberFromServer];
 }
 
 - (void)didReceiveMemoryWarning
@@ -47,6 +50,36 @@
 {
     // do version check for this app
 }
+
+-(UIStatusBarStyle)preferredStatusBarStyle
+{
+    return UIStatusBarStyleLightContent;
+}
+
+- (void)loadPendingNumberFromServer
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    //load offline
+    self.pendingNumberLabel.text = [defaults valueForKey:@"pendingNumber"];
+    if (!self.pendingNumberLabel.text || self.pendingNumberLabel.text == NULL)
+    {
+        self.pendingNumberLabel.text = @"----";
+    }
+    
+    //load from server
+    NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
+    NSURL *connection = [[NSURL alloc] initWithString:@"http://fakenews.tw/api/complain/count?status=pending"];
+    NSString *httpBodyString = @"";
+    [request setURL:connection];
+    [request setHTTPMethod:@"GET"];
+    [request setHTTPBody:[httpBodyString dataUsingEncoding:NSUTF8StringEncoding]];
+    linkType = @"pending";
+    m_channelRequestData = [[NSMutableData alloc] init];
+    [[[NSURLConnection alloc] initWithRequest:request delegate:self] start];
+
+}
+
 
 - (void)loadChannelFromServer
 {
@@ -106,19 +139,44 @@
     //NSLog(@"jsonString:%@", jsonString);
     id responses =  [jsonParser objectWithString:jsonString error:NULL];
     NSDictionary * feeds = (NSDictionary *)responses;
-    self.channelArray = [feeds objectForKey:@"result"];
-    //NSLog(@"self.channelArray:%@", self.channelArray);
+    
+    if([linkType isEqualToString:@"pending"])
+    {
+        if ([feeds objectForKey:@"result"] == NULL)
+        {
+            self.pendingNumberLabel.text = @"283";
+        }
+        else
+        {
+            self.pendingNumberLabel.text = [NSString stringWithFormat:@"%@",[feeds objectForKey:@"result"]];
+        }
+        [self loadChannelFromServer];
+    }
+    else if ([linkType isEqualToString:@"channel"])
+    {
+        self.channelArray = [feeds objectForKey:@"result"];
+        //NSLog(@"self.channelArray:%@", self.channelArray);
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults setValue:self.channelArray forKey:@"channelArray"];
+        [defaults synchronize];
+        
+        [self.channelTableView reloadData];
 
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    [defaults setValue:self.channelArray forKey:@"channelArray"];
-    [defaults synchronize];
+    }
 
-    [self.channelTableView reloadData];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
-    [self loadChannelFromServer];
+    if ([linkType isEqualToString:@"pending"])
+    {
+        [self loadPendingNumberFromServer];
+    }
+    else if ([linkType isEqualToString:@"channel"])
+    {
+        [self loadChannelFromServer];
+    }
 }
 
 #pragma mark - Table View
@@ -139,8 +197,15 @@
     cell.tag = indexPath.row;
     NSMutableDictionary *eachRow = [self.channelArray objectAtIndex:indexPath.row];
     cell.rankLable.text = [NSString stringWithFormat:@"%d",indexPath.row + 1];
+    cell.rankLable.font = [UIFont fontWithName:@"Bebas Neue" size:20];
+
     cell.nameLable.text = [eachRow valueForKey:@"channelName"];
+    cell.nameLable.font = [UIFont fontWithName:@"DFHeiStd-W7" size:18];
+
+    
     cell.numberLable.text = [NSString stringWithFormat:@"%@",[eachRow valueForKey:@"size"]];
+    cell.numberLable.font = [UIFont fontWithName:@"Bebas Neue" size:38];
+
     if (indexPath.row == 0)
     {
         cell.rankLable.hidden = YES;
