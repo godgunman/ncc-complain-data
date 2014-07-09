@@ -61,9 +61,12 @@ function getPageById(id, callback) {
 		if (callback) {
             console.log('try callback');
             var jsondata = parseHtml.parseByText(stdout);
-			if (stdout[0] == 'd') jsondata['status'] = 'done';
-			else jsondata['status'] = 'pending';  
-			console.log(jsondata);
+			if (stdout.indexOf('__data__inject__status=done') != -1) {
+                jsondata['status'] = 'done';
+            }
+			else {
+                jsondata['status'] = 'pending';
+            }
 			callback(jsondata);
         }
     });
