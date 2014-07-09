@@ -6,7 +6,6 @@ var Complain = require('./models').Complain;
 var Task = require('./models').Task;
 var async = require('async');
 
-var updateItemPerComplainDelay = 8000;
 
 var taskDelay = 1000 * 5;
 var taskLock = false;
@@ -62,40 +61,46 @@ function buildList () {
     });
 }
 
-var updateItemsLock = false;
+var updateItemsLock = {
+    new: false,
+    pending: false,
+};
 var updateItemsDelay = 1000 * 5;
-function updateItems() {
-    console.log('[updateItems] updateItemsLock=', updateItemsLock);
-    if (updateItemsLock) {
+var updateItemsPerComplainDelay = 1000 * 20;
+
+function updateItems(status) {
+    console.log(status, '[updateItems] updateItemsLock=', updateItemsLock[status]);
+    if (updateItemsLock[status]) {
         return ;
     }
-    updateItemsLock = true;
+    updateItemsLock[status] = true;
     //Complain.where('status').ne('done').exec(function(err, complains) {
-    Complain.where('status').equals('new').exec(function(err, complains) {
+    Complain.where('status').equals(status).sort({date:'asc'}).limit(100).exec(function(err, complains) {
         var complainIndex = 0;
-        console.log('[updateItems]', 'complain length=', complains.length);
+        console.log(status, '[updateItems]', 'complain length=', complains.length);
         var loop = setInterval(function() {
-            console.log('[updateItems.complainIndex]', complainIndex);
+            console.log(status, '[updateItems.complainIndex]', complainIndex);
             if (complainIndex == complains.length) {
-                updateItemsLock = false;
+                updateItemsLock[status] = false;
                 clearInterval(loop);
                 return;
             }
-            console.log('[updateItems] updating complain:', complains[complainIndex]);
-            var cid = complains[complainIndex].cid;
+            var complain = complains[complainIndex];
+            var cid = complain.cid || complain._id;
+            console.log(status, '[updateItems] updating complain:', cid);
             crawler.updateItem(cid, function(jsondata) {
-                console.log('[updateItems.crawler.updateItem]', 'cid=', cid, 'jsondata=', jsondata);
+                console.log(status, '[updateItems.crawler.updateItem]', 'cid=', cid, 'jsondata=', jsondata);
                 Complain.findByIdAndUpdate(
                     cid, 
                     jsondata, 
                     { upsert: true},
                     function(error, complain) {
-                        console.log('[updateItems.Complain.findByIdAndUpdate]', error, complain);
+                        console.log(status, '[updateItems.Complain.findByIdAndUpdate]', error, complain.cid);
                     }
                 );
             });
             ++complainIndex;
-        }, updateItemPerComplainDelay);
+        }, updateItemsPerComplainDelay);
     });
 
 }
@@ -103,5 +108,8 @@ function updateItems() {
 buildList();
 setInterval(buildList, taskDelay);
 
-updateItems();
-setInterval(updateItems, updateItemsDelay);
+updateItems('new');
+setInterval(function(){ updateItems('new');}, updateItemsDelay);
+
+updateItems('pending');
+setInterval(function(){ updateItems('pending');}, updateItemsDelay * 1000);
