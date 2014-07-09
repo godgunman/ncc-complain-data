@@ -10,7 +10,8 @@
         "cheerio": "*",
         "q":"*",
         "mongoose": "*",
-        "newrelic": "1.5"
+        "newrelic": "1.5",
+        "async": "*"
     },
     "scripts": {
         "start": "node main.js"
