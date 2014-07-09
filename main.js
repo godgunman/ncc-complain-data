@@ -6,8 +6,7 @@ var Complain = require('./models').Complain;
 var Task = require('./models').Task;
 var async = require('async');
 
-var single_delay = 8000;
-var delay = 1000 * 60 * 10;
+var updateItemPerComplainDelay = 8000;
 
 var taskDelay = 1000 * 5;
 var taskLock = false;
@@ -23,9 +22,10 @@ function buildList () {
             var date = new Date(task.year, task.month - 1, task.day);
             console.log('[task]', task, 'date =', date);
             crawler.crawlWithDate(date, function(item_list) {
-                console.log('item_list', item_list);
+                console.log('[crawler.crawlWithDate] item_list:', item_list);
                 var functions = [];
                 item_list.forEach(function(id) {
+                    if (!id || id.length == 0 || id === '') return;
                     functions.push(function(callback) {
                         Complain.findById(id, function(error, complain) {
                             console.log('[Complain.findById]', id, error, complain);
@@ -62,37 +62,40 @@ function buildList () {
     });
 }
 
-
+var updateItemsLock = false;
+var updateItemsDelay = 1000 * 5;
 function updateItems() {
+    console.log('[updateItems] updateItemsLock=', updateItemsLock);
+    if (updateItemsLock) {
+        return ;
+    }
+    updateItemsLock = true;
     //Complain.where('status').ne('done').exec(function(err, complains) {
     Complain.where('status').equals('new').exec(function(err, complains) {
         var complainIndex = 0;
         console.log('[updateItems]', 'complain length=', complains.length);
         var loop = setInterval(function() {
-            console.log('complainIndex', complainIndex);
+            console.log('[updateItems.complainIndex]', complainIndex);
             if (complainIndex == complains.length) {
+                updateItemsLock = false;
                 clearInterval(loop);
                 return;
             }
-            console.log('updating complain:', complains[complainIndex]);
+            console.log('[updateItems] updating complain:', complains[complainIndex]);
             var cid = complains[complainIndex].cid;
             crawler.updateItem(cid, function(jsondata) {
-                console.log('cid=', cid, 'jsondata=', jsondata);
+                console.log('[updateItems.crawler.updateItem]', 'cid=', cid, 'jsondata=', jsondata);
                 Complain.findByIdAndUpdate(
                     cid, 
                     jsondata, 
                     { upsert: true},
-                    function(err, complain) {
-                        if (err) {
-                            console.log('error:', err);
-                        } else {
-                            console.log('saved: id=', complain.id);
-                        }
+                    function(error, complain) {
+                        console.log('[updateItems.Complain.findByIdAndUpdate]', error, complain);
                     }
                 );
             });
             ++complainIndex;
-        }, single_delay);
+        }, updateItemPerComplainDelay);
     });
 
 }
@@ -101,4 +104,4 @@ buildList();
 setInterval(buildList, taskDelay);
 
 updateItems();
-setInterval(updateItems, delay * 2);
+setInterval(updateItems, updateItemsDelay);
