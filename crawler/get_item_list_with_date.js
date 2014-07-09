@@ -40,9 +40,12 @@ page.open('https://cabletvweb.ncc.gov.tw/SWSFront35/SWSF/SWSF01017.aspx', functi
             return document.documentElement.innerHTML;
         });
 
-        var item_count = parseInt(html.match(/共(\d+)筆/)[1]);
+        try {
+            var item_count = parseInt(html.match(/共(\d+)筆/)[1]);
+        } catch(e) {
+            var item_count = 0;
+        }
         var page_count = Math.ceil(item_count / 5);
-        //console.log(item_count);
 
         var loop = setInterval(function() {
             //var serials;
