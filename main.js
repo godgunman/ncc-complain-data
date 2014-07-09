@@ -6,7 +6,6 @@ var Complain = require('./models').Complain;
 var Task = require('./models').Task;
 var async = require('async');
 
-
 var taskDelay = 1000 * 5;
 var taskLock = false;
 //var time_diff  = 1000 * 60 * 5;
@@ -113,3 +112,5 @@ setInterval(function(){ updateItems('new');}, updateItemsDelay);
 
 updateItems('pending');
 setInterval(function(){ updateItems('pending');}, updateItemsDelay * 1000);
+
+require('cronjobs/dailyTask').run();
