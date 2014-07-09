@@ -35,7 +35,7 @@ function buildList () {
                             else {
                                 // if no error and no existed complain object then create new one.
                                 Complain.create({
-                                    cid: item_list[i],
+                                    cid: id,
                                     status: 'new',
                                 }, function(error, complain) {
                                     console.log('[Complain.create]', error, complain);
@@ -62,20 +62,20 @@ function buildList () {
     });
 }
 
-var complain_idx = 0;
 
 function updateItems() {
     //Complain.where('status').ne('done').exec(function(err, complains) {
     Complain.where('status').equals('new').exec(function(err, complains) {
-        console.log(complains);
+        var complainIndex = 0;
+        console.log('[updateItems]', 'complain length=', complains.length);
         var loop = setInterval(function() {
-            console.log('complain_idx', complain_idx);
-            if (complain_idx == complains.length) {
+            console.log('complainIndex', complainIndex);
+            if (complainIndex == complains.length) {
                 clearInterval(loop);
                 return;
             }
-            console.log('spirit breaker ' + complains[complain_idx]);
-            var cid = complains[complain_idx].cid;
+            console.log('updating complain:', complains[complainIndex]);
+            var cid = complains[complainIndex].cid;
             crawler.updateItem(cid, function(jsondata) {
                 console.log('cid=', cid, 'jsondata=', jsondata);
                 Complain.findByIdAndUpdate(
@@ -91,7 +91,7 @@ function updateItems() {
                     }
                 );
             });
-            ++complain_idx;
+            ++complainIndex;
         }, single_delay);
     });
 
