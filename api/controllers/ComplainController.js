@@ -39,4 +39,12 @@ module.exports = {
             });
         }
     },
+    count: function(req, res) {
+        Complain.count(req.query, function(error, count) {
+            res.json({
+                error: error,
+                count: count
+            });
+        });
+    },
 };

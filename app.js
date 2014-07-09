@@ -45,6 +45,7 @@ app.all('/', function(req, res, next) {
 
 app.get('/', HomeController.index);
 
+app.get('/api/complain/count', ComplainController.count);
 app.get('/api/complain/:id?', ComplainController.find);
 app.get('/api/channel', ChannelController.find);
 app.get('/api/channel/testData', ChannelController.testData);
