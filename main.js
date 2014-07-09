@@ -113,4 +113,4 @@ setInterval(function(){ updateItems('new');}, updateItemsDelay);
 updateItems('pending');
 setInterval(function(){ updateItems('pending');}, updateItemsDelay * 1000);
 
-require('cronjobs/dailyTask').run();
+require('./cronjobs/dailyTask').run();
