@@ -7,14 +7,18 @@ var Task = require('./models').Task;
 var async = require('async');
 
 var taskDelay = 1000 * 5;
-var taskLock = false;
+var taskLock = 0;
+var LOCK_COUNT = 100;
 //var time_diff  = 1000 * 60 * 5;
 
 function buildList () {
 
     console.log('[task]', 'task lock = ', taskLock);
-    if (taskLock) return ;
-    taskLock = true;
+    if (taskLock>0) { 
+        taskLock--;
+        return ;
+    }
+    taskLock = LOCK_COUNT;
     Task.findOne({status:'pending'}, function(err, task) {
         if (task) {
             var date = new Date(task.year, task.month - 1, task.day);
@@ -47,7 +51,7 @@ function buildList () {
                     console.log('[async.parallel]', error, results);
                     task.status = 'done';
                     task.save(function(error, task) {
-                        taskLock = false;
+                        taskLock = 0;
                     });
                 });
             });
@@ -55,24 +59,25 @@ function buildList () {
             task.save();
         } else {
             console.log('[task]', 'no task.');
-            taskLock = false;
+            taskLock = 0;
         }
     });
 }
 
 var updateItemsLock = {
-    new: false,
-    pending: false,
+    new: 0,
+    pending: 0,
 };
 var updateItemsDelay = 1000 * 5;
 var updateItemsPerComplainDelay = 1000 * 20;
 
 function updateItems(status) {
     console.log(status, '[updateItems] updateItemsLock=', updateItemsLock[status]);
-    if (updateItemsLock[status]) {
+    if (updateItemsLock[status]>0) {
+        updateItemsLock[status]--;
         return ;
     }
-    updateItemsLock[status] = true;
+    updateItemsLock[status] = LOCK_COUNT;
     //Complain.where('status').ne('done').exec(function(err, complains) {
     Complain.where('status').equals(status).sort({date:'asc'}).limit(100).exec(function(err, complains) {
         var complainIndex = 0;
@@ -80,7 +85,7 @@ function updateItems(status) {
         var loop = setInterval(function() {
             console.log(status, '[updateItems.complainIndex]', complainIndex);
             if (complainIndex == complains.length) {
-                updateItemsLock[status] = false;
+                updateItemsLock[status] = 0;
                 clearInterval(loop);
                 return;
             }
