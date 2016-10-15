@@ -1,0 +1,20 @@
+{
+  "repo" :"godgunman/ncc-complain-data",
+  "author" : "godgunman",
+  "status" : "",
+  "name": "ncc-complain-data",
+  "name_zh": "ncc-complain-data - 問題電視節目查詢",
+  "description": "ncc-complain-data",
+  "description_zh": "ncc-complain-data - 問題電視節目查詢",
+  "homepage" : "http://ncc.dm4.tw/",
+  "thumbnail" : "",
+  "document": "",
+  "repository": "https://github.com/godgunman/ncc-complain-data",
+  "licenses": [],
+  "keywords": [],
+  "audience": [],
+  "products" :[],
+  "partOf": "",
+  "contributors" :[],
+  "needs" : []
+}
